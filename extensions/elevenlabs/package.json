@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/elevenlabs-speech",
+  "name": "@quantumclaw/elevenlabs-speech",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw ElevenLabs speech plugin",
+  "description": "QuantumClaw ElevenLabs speech plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

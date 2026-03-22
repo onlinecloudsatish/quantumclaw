@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/moonshot-provider",
+  "name": "@quantumclaw/moonshot-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Moonshot provider plugin",
+  "description": "QuantumClaw Moonshot provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

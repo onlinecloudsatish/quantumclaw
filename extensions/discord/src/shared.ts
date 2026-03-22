@@ -1,5 +1,5 @@
-import { formatAllowFromLowercase } from "openclaw/plugin-sdk/allow-from";
-import { createChannelPluginBase } from "openclaw/plugin-sdk/core";
+import { formatAllowFromLowercase } from "quantumclaw/plugin-sdk/allow-from";
+import { createChannelPluginBase } from "quantumclaw/plugin-sdk/core";
 import { inspectDiscordAccount } from "./account-inspect.js";
 import {
   listDiscordAccountIds,

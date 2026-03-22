@@ -1,9 +1,9 @@
 import { randomUUID } from "node:crypto";
 import { DisconnectReason } from "@whiskeysockets/baileys";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { danger, info, success } from "openclaw/plugin-sdk/runtime-env";
-import { defaultRuntime, type RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { logInfo } from "openclaw/plugin-sdk/text-runtime";
+import { loadConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { danger, info, success } from "quantumclaw/plugin-sdk/runtime-env";
+import { defaultRuntime, type RuntimeEnv } from "quantumclaw/plugin-sdk/runtime-env";
+import { logInfo } from "quantumclaw/plugin-sdk/text-runtime";
 import { resolveWhatsAppAccount } from "./accounts.js";
 import { renderQrPngBase64 } from "./qr-image.js";
 import {

@@ -1,9 +1,9 @@
-import { buildDmGroupAccountAllowlistAdapter } from "openclaw/plugin-sdk/allowlist-config-edit";
-import { createAttachedChannelResultAdapter } from "openclaw/plugin-sdk/channel-send-result";
-import { buildPassiveProbedChannelStatusSummary } from "openclaw/plugin-sdk/extension-shared";
-import { createLazyRuntimeModule } from "openclaw/plugin-sdk/lazy-runtime";
-import { resolveOutboundSendDep } from "openclaw/plugin-sdk/outbound-runtime";
-import { buildOutboundBaseSessionKey, type RoutePeer } from "openclaw/plugin-sdk/routing";
+import { buildDmGroupAccountAllowlistAdapter } from "quantumclaw/plugin-sdk/allowlist-config-edit";
+import { createAttachedChannelResultAdapter } from "quantumclaw/plugin-sdk/channel-send-result";
+import { buildPassiveProbedChannelStatusSummary } from "quantumclaw/plugin-sdk/extension-shared";
+import { createLazyRuntimeModule } from "quantumclaw/plugin-sdk/lazy-runtime";
+import { resolveOutboundSendDep } from "quantumclaw/plugin-sdk/outbound-runtime";
+import { buildOutboundBaseSessionKey, type RoutePeer } from "quantumclaw/plugin-sdk/routing";
 import {
   collectStatusIssuesFromLastError,
   DEFAULT_ACCOUNT_ID,

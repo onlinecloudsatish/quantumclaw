@@ -1,17 +1,17 @@
 export type {
   ChannelPlugin,
-  OpenClawConfig,
-  OpenClawPluginApi,
+  QuantumClawConfig,
+  QuantumClawPluginApi,
   PluginRuntime,
-} from "openclaw/plugin-sdk/core";
-export { buildChannelConfigSchema, clearAccountEntryFields } from "openclaw/plugin-sdk/core";
-export type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-export type { ChannelAccountSnapshot, ChannelGatewayContext } from "openclaw/plugin-sdk/testing";
-export type { ChannelStatusIssue } from "openclaw/plugin-sdk/channel-contract";
+} from "quantumclaw/plugin-sdk/core";
+export { buildChannelConfigSchema, clearAccountEntryFields } from "quantumclaw/plugin-sdk/core";
+export type { ReplyPayload } from "quantumclaw/plugin-sdk/reply-runtime";
+export type { ChannelAccountSnapshot, ChannelGatewayContext } from "quantumclaw/plugin-sdk/testing";
+export type { ChannelStatusIssue } from "quantumclaw/plugin-sdk/channel-contract";
 export {
   buildComputedAccountStatusSnapshot,
   buildTokenChannelStatusSummary,
-} from "openclaw/plugin-sdk/status-helpers";
+} from "quantumclaw/plugin-sdk/status-helpers";
 export type {
   CardAction,
   LineChannelData,

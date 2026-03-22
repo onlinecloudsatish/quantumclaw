@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/together-provider",
+  "name": "@quantumclaw/together-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Together provider plugin",
+  "description": "QuantumClaw Together provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

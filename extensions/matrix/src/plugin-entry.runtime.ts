@@ -1,4 +1,4 @@
-import type { GatewayRequestHandlerOptions } from "openclaw/plugin-sdk/core";
+import type { GatewayRequestHandlerOptions } from "quantumclaw/plugin-sdk/core";
 import {
   bootstrapMatrixVerification,
   getMatrixVerificationStatus,

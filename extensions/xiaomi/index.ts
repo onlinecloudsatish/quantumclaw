@@ -1,7 +1,7 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
-import { buildSingleProviderApiKeyCatalog } from "openclaw/plugin-sdk/provider-catalog";
-import { PROVIDER_LABELS } from "openclaw/plugin-sdk/provider-usage";
+import { definePluginEntry } from "quantumclaw/plugin-sdk/plugin-entry";
+import { createProviderApiKeyAuthMethod } from "quantumclaw/plugin-sdk/provider-auth";
+import { buildSingleProviderApiKeyCatalog } from "quantumclaw/plugin-sdk/provider-catalog";
+import { PROVIDER_LABELS } from "quantumclaw/plugin-sdk/provider-usage";
 import { applyXiaomiConfig, XIAOMI_DEFAULT_MODEL_REF } from "./onboard.js";
 import { buildXiaomiProvider } from "./provider-catalog.js";
 

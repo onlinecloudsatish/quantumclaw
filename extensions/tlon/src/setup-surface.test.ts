@@ -5,7 +5,7 @@ import {
   runSetupWizardConfigure,
   type WizardPrompter,
 } from "../../../test/helpers/extensions/setup-wizard.js";
-import type { OpenClawConfig } from "../api.js";
+import type { QuantumClawConfig } from "../api.js";
 import { tlonPlugin } from "./channel.js";
 
 const tlonConfigure = createPluginSetupWizardConfigure(tlonPlugin);
@@ -47,7 +47,7 @@ describe("tlon setup wizard", () => {
 
     const result = await runSetupWizardConfigure({
       configure: tlonConfigure,
-      cfg: {} as OpenClawConfig,
+      cfg: {} as QuantumClawConfig,
       prompter,
       options: {},
     });

@@ -1,18 +1,18 @@
 import { describe, expect, it, vi } from "vitest";
 import { createTestPluginApi } from "../../test/helpers/extensions/plugin-api.js";
 import plugin from "./index.js";
-import type { OpenClawPluginApi } from "./runtime-api.js";
+import type { QuantumClawPluginApi } from "./runtime-api.js";
 
 function createApi(
-  registrationMode: OpenClawPluginApi["registrationMode"],
+  registrationMode: QuantumClawPluginApi["registrationMode"],
   registerHttpRoute = vi.fn(),
-): OpenClawPluginApi {
+): QuantumClawPluginApi {
   return createTestPluginApi({
     id: "mattermost",
     name: "Mattermost",
     source: "test",
     config: {},
-    runtime: {} as OpenClawPluginApi["runtime"],
+    runtime: {} as QuantumClawPluginApi["runtime"],
     registrationMode,
     registerHttpRoute,
   });

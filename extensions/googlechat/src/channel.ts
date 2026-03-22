@@ -1,19 +1,19 @@
-import { formatNormalizedAllowFromEntries } from "openclaw/plugin-sdk/allow-from";
-import { createScopedChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
+import { formatNormalizedAllowFromEntries } from "quantumclaw/plugin-sdk/allow-from";
+import { createScopedChannelConfigAdapter } from "quantumclaw/plugin-sdk/channel-config-helpers";
 import {
   composeWarningCollectors,
   createAllowlistProviderGroupPolicyWarningCollector,
   createConditionalWarningCollector,
   createAllowlistProviderOpenWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
-import { createChatChannelPlugin } from "openclaw/plugin-sdk/core";
+} from "quantumclaw/plugin-sdk/channel-policy";
+import { createChatChannelPlugin } from "quantumclaw/plugin-sdk/core";
 import {
   createChannelDirectoryAdapter,
   listResolvedDirectoryGroupEntriesFromMapKeys,
   listResolvedDirectoryUserEntriesFromAllowFrom,
-} from "openclaw/plugin-sdk/directory-runtime";
-import { buildPassiveProbedChannelStatusSummary } from "openclaw/plugin-sdk/extension-shared";
-import { createLazyRuntimeNamedExport } from "openclaw/plugin-sdk/lazy-runtime";
+} from "quantumclaw/plugin-sdk/directory-runtime";
+import { buildPassiveProbedChannelStatusSummary } from "quantumclaw/plugin-sdk/extension-shared";
+import { createLazyRuntimeNamedExport } from "quantumclaw/plugin-sdk/lazy-runtime";
 import {
   buildComputedAccountStatusSnapshot,
   buildChannelConfigSchema,
@@ -26,7 +26,7 @@ import {
   runPassiveAccountLifecycle,
   type ChannelMessageActionAdapter,
   type ChannelStatusIssue,
-  type OpenClawConfig,
+  type QuantumClawConfig,
 } from "../runtime-api.js";
 import { GoogleChatConfigSchema } from "../runtime-api.js";
 import {
@@ -110,7 +110,7 @@ const collectGoogleChatGroupPolicyWarnings =
   });
 
 const collectGoogleChatSecurityWarnings = composeWarningCollectors<{
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   account: ResolvedGoogleChatAccount;
 }>(
   collectGoogleChatGroupPolicyWarnings,

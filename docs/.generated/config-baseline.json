@@ -1450,7 +1450,7 @@
         "advanced"
       ],
       "label": "Embedded Pi",
-      "help": "Embedded Pi runner hardening controls for how workspace-local Pi settings are trusted and applied in OpenClaw sessions.",
+      "help": "Embedded Pi runner hardening controls for how workspace-local Pi settings are trusted and applied in QuantumClaw sessions.",
       "hasChildren": true
     },
     {
@@ -2619,7 +2619,7 @@
         "storage"
       ],
       "label": "Memory Search Index Path",
-      "help": "Sets where the SQLite memory index is stored on disk for each agent. Keep the default `~/.openclaw/memory/{agentId}.sqlite` unless you need custom storage placement or backup policy alignment.",
+      "help": "Sets where the SQLite memory index is stored on disk for each agent. Keep the default `~/.quantumclaw/memory/{agentId}.sqlite` unless you need custom storage placement or backup policy alignment.",
       "hasChildren": false
     },
     {
@@ -3163,7 +3163,7 @@
         "storage"
       ],
       "label": "Sandbox Browser Network",
-      "help": "Docker network for sandbox browser containers (default: openclaw-sandbox-browser). Avoid bridge if you need stricter isolation.",
+      "help": "Docker network for sandbox browser containers (default: quantumclaw-sandbox-browser). Avoid bridge if you need stricter isolation.",
       "hasChildren": false
     },
     {
@@ -5270,7 +5270,7 @@
         "advanced"
       ],
       "label": "Agent Runtime",
-      "help": "Optional runtime descriptor for this agent. Use embedded for default OpenClaw execution or acp for external ACP harness defaults.",
+      "help": "Optional runtime descriptor for this agent. Use embedded for default QuantumClaw execution or acp for external ACP harness defaults.",
       "hasChildren": true
     },
     {
@@ -5298,7 +5298,7 @@
         "advanced"
       ],
       "label": "Agent ACP Harness Agent",
-      "help": "Optional ACP harness agent id to use for this OpenClaw agent (for example codex, claude).",
+      "help": "Optional ACP harness agent id to use for this QuantumClaw agent (for example codex, claude).",
       "hasChildren": false
     },
     {
@@ -5358,7 +5358,7 @@
         "advanced"
       ],
       "label": "Agent Runtime Type",
-      "help": "Runtime type for this agent: \"embedded\" (default OpenClaw runtime) or \"acp\" (ACP harness defaults).",
+      "help": "Runtime type for this agent: \"embedded\" (default QuantumClaw runtime) or \"acp\" (ACP harness defaults).",
       "hasChildren": false
     },
     {
@@ -8153,7 +8153,7 @@
         "storage"
       ],
       "label": "Browser Profile Driver",
-      "help": "Per-profile browser driver mode. Use \"openclaw\" (or legacy \"clawd\") for CDP-based profiles, or use \"existing-session\" for host-local Chrome DevTools MCP attachment.",
+      "help": "Per-profile browser driver mode. Use \"quantumclaw\" (or legacy \"clawd\") for CDP-based profiles, or use \"existing-session\" for host-local Chrome DevTools MCP attachment.",
       "hasChildren": false
     },
     {
@@ -13076,7 +13076,7 @@
         "performance"
       ],
       "label": "Discord EventQueue Listener Timeout (ms)",
-      "help": "Canonical Discord listener timeout control in ms for gateway normalization/enqueue handlers. Default is 120000 in OpenClaw; set per account via channels.discord.accounts.<id>.eventQueue.listenerTimeout.",
+      "help": "Canonical Discord listener timeout control in ms for gateway normalization/enqueue handlers. Default is 120000 in QuantumClaw; set per account via channels.discord.accounts.<id>.eventQueue.listenerTimeout.",
       "hasChildren": false
     },
     {
@@ -31085,7 +31085,7 @@
         "network"
       ],
       "label": "Synology Chat",
-      "help": "Connect your Synology NAS Chat to OpenClaw with full agent capabilities.",
+      "help": "Connect your Synology NAS Chat to QuantumClaw with full agent capabilities.",
       "hasChildren": true
     },
     {
@@ -38836,7 +38836,7 @@
         "advanced"
       ],
       "label": "Allow /mcp",
-      "help": "Allow /mcp chat command to manage OpenClaw MCP server config under mcp.servers (default: false).",
+      "help": "Allow /mcp chat command to manage QuantumClaw MCP server config under mcp.servers (default: false).",
       "hasChildren": false
     },
     {
@@ -39439,7 +39439,7 @@
         "storage"
       ],
       "label": "Cache Trace File Path",
-      "help": "JSONL output path for cache trace logs (default: $OPENCLAW_STATE_DIR/logs/cache-trace.jsonl).",
+      "help": "JSONL output path for cache trace logs (default: $QUANTUMCLAW_STATE_DIR/logs/cache-trace.jsonl).",
       "hasChildren": false
     },
     {
@@ -39777,7 +39777,7 @@
         "network"
       ],
       "label": "Wide-area Discovery Domain",
-      "help": "Optional unicast DNS-SD domain for wide-area discovery, such as openclaw.internal. Use this when you intentionally publish gateway discovery beyond local mDNS scopes.",
+      "help": "Optional unicast DNS-SD domain for wide-area discovery, such as quantumclaw.internal. Use this when you intentionally publish gateway discovery beyond local mDNS scopes.",
       "hasChildren": false
     },
     {
@@ -39871,7 +39871,7 @@
         "advanced"
       ],
       "label": "Environment Variable Overrides",
-      "help": "Explicit key/value environment variable overrides merged into runtime process environment for OpenClaw. Use this for deterministic env configuration instead of relying only on shell profile side effects.",
+      "help": "Explicit key/value environment variable overrides merged into runtime process environment for QuantumClaw. Use this for deterministic env configuration instead of relying only on shell profile side effects.",
       "hasChildren": true
     },
     {
@@ -40302,7 +40302,7 @@
         "storage"
       ],
       "label": "Control UI Base Path",
-      "help": "Optional URL prefix where the Control UI is served (e.g. /openclaw).",
+      "help": "Optional URL prefix where the Control UI is served (e.g. /quantumclaw).",
       "hasChildren": false
     },
     {
@@ -40949,7 +40949,7 @@
         "network"
       ],
       "label": "Gateway Node Allowlist (Extra Commands)",
-      "help": "Extra node.invoke commands to allow beyond the gateway defaults (array of command strings). Enabling dangerous commands here is a security-sensitive override and is flagged by `openclaw security audit`.",
+      "help": "Extra node.invoke commands to allow beyond the gateway defaults (array of command strings). Enabling dangerous commands here is a security-sensitive override and is flagged by `quantumclaw security audit`.",
       "hasChildren": true
     },
     {
@@ -41585,7 +41585,7 @@
         "advanced"
       ],
       "label": "Hooks",
-      "help": "Inbound webhook automation surface for mapping external events into wake or agent actions in OpenClaw. Keep this locked down with explicit token/session/agent controls before exposing it beyond trusted networks.",
+      "help": "Inbound webhook automation surface for mapping external events into wake or agent actions in QuantumClaw. Keep this locked down with explicit token/session/agent controls before exposing it beyond trusted networks.",
       "hasChildren": true
     },
     {
@@ -42906,7 +42906,7 @@
         "advanced"
       ],
       "label": "MCP",
-      "help": "Global MCP server definitions managed by OpenClaw. Embedded Pi and other runtime adapters can consume these servers without storing them inside Pi-owned project settings.",
+      "help": "Global MCP server definitions managed by QuantumClaw. Embedded Pi and other runtime adapters can consume these servers without storing them inside Pi-owned project settings.",
       "hasChildren": true
     },
     {
@@ -42920,7 +42920,7 @@
         "advanced"
       ],
       "label": "MCP Servers",
-      "help": "Named MCP server definitions. OpenClaw stores them in its own config and runtime adapters decide which transports are supported at execution time.",
+      "help": "Named MCP server definitions. QuantumClaw stores them in its own config and runtime adapters decide which transports are supported at execution time.",
       "hasChildren": true
     },
     {
@@ -43093,7 +43093,7 @@
         "storage"
       ],
       "label": "Memory Backend",
-      "help": "Selects the global memory engine: \"builtin\" uses OpenClaw memory internals, while \"qmd\" uses the QMD sidecar pipeline. Keep \"builtin\" unless you intentionally operate QMD.",
+      "help": "Selects the global memory engine: \"builtin\" uses QuantumClaw memory internals, while \"qmd\" uses the QMD sidecar pipeline. Keep \"builtin\" unless you intentionally operate QMD.",
       "hasChildren": false
     },
     {
@@ -44954,7 +44954,7 @@
         "advanced"
       ],
       "label": "Metadata",
-      "help": "Metadata fields automatically maintained by OpenClaw to record write/version history for this config file. Keep these values system-managed and avoid manual edits unless debugging migration history.",
+      "help": "Metadata fields automatically maintained by QuantumClaw to record write/version history for this config file. Keep these values system-managed and avoid manual edits unless debugging migration history.",
       "hasChildren": true
     },
     {
@@ -44982,7 +44982,7 @@
         "media"
       ],
       "label": "Config Last Touched Version",
-      "help": "Auto-set when OpenClaw writes the config.",
+      "help": "Auto-set when QuantumClaw writes the config.",
       "hasChildren": false
     },
     {
@@ -45335,7 +45335,7 @@
         "models"
       ],
       "label": "Model Provider Inject num_ctx (OpenAI Compat)",
-      "help": "Controls whether OpenClaw injects `options.num_ctx` for Ollama providers configured with the OpenAI-compatible adapter (`openai-completions`). Default is true. Set false only if your proxy/upstream rejects unknown `options` payload fields.",
+      "help": "Controls whether QuantumClaw injects `options.num_ctx` for Ollama providers configured with the OpenAI-compatible adapter (`openai-completions`). Default is true. Set false only if your proxy/upstream rejects unknown `options` payload fields.",
       "hasChildren": false
     },
     {
@@ -46170,7 +46170,7 @@
         "advanced"
       ],
       "label": "Queue Owner TTL Seconds",
-      "help": "Idle queue-owner TTL for acpx prompt turns. Keep this short in OpenClaw to avoid delayed completion after each turn.",
+      "help": "Idle queue-owner TTL for acpx prompt turns. Keep this short in QuantumClaw to avoid delayed completion after each turn.",
       "hasChildren": false
     },
     {
@@ -46305,8 +46305,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/amazon-bedrock-provider",
-      "help": "OpenClaw Amazon Bedrock provider plugin (plugin: amazon-bedrock)",
+      "label": "@quantumclaw/amazon-bedrock-provider",
+      "help": "QuantumClaw Amazon Bedrock provider plugin (plugin: amazon-bedrock)",
       "hasChildren": true
     },
     {
@@ -46319,7 +46319,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/amazon-bedrock-provider Config",
+      "label": "@quantumclaw/amazon-bedrock-provider Config",
       "help": "Plugin-defined config payload for amazon-bedrock.",
       "hasChildren": false
     },
@@ -46333,7 +46333,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/amazon-bedrock-provider",
+      "label": "Enable @quantumclaw/amazon-bedrock-provider",
       "hasChildren": false
     },
     {
@@ -46426,8 +46426,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/anthropic-provider",
-      "help": "OpenClaw Anthropic provider plugin (plugin: anthropic)",
+      "label": "@quantumclaw/anthropic-provider",
+      "help": "QuantumClaw Anthropic provider plugin (plugin: anthropic)",
       "hasChildren": true
     },
     {
@@ -46440,7 +46440,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/anthropic-provider Config",
+      "label": "@quantumclaw/anthropic-provider Config",
       "help": "Plugin-defined config payload for anthropic.",
       "hasChildren": false
     },
@@ -46454,7 +46454,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/anthropic-provider",
+      "label": "Enable @quantumclaw/anthropic-provider",
       "hasChildren": false
     },
     {
@@ -46547,8 +46547,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/bluebubbles",
-      "help": "OpenClaw BlueBubbles channel plugin (plugin: bluebubbles)",
+      "label": "@quantumclaw/bluebubbles",
+      "help": "QuantumClaw BlueBubbles channel plugin (plugin: bluebubbles)",
       "hasChildren": true
     },
     {
@@ -46561,7 +46561,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/bluebubbles Config",
+      "label": "@quantumclaw/bluebubbles Config",
       "help": "Plugin-defined config payload for bluebubbles.",
       "hasChildren": false
     },
@@ -46575,7 +46575,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/bluebubbles",
+      "label": "Enable @quantumclaw/bluebubbles",
       "hasChildren": false
     },
     {
@@ -46668,8 +46668,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/brave-plugin",
-      "help": "OpenClaw Brave plugin (plugin: brave)",
+      "label": "@quantumclaw/brave-plugin",
+      "help": "QuantumClaw Brave plugin (plugin: brave)",
       "hasChildren": true
     },
     {
@@ -46682,7 +46682,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/brave-plugin Config",
+      "label": "@quantumclaw/brave-plugin Config",
       "help": "Plugin-defined config payload for brave.",
       "hasChildren": true
     },
@@ -46742,7 +46742,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/brave-plugin",
+      "label": "Enable @quantumclaw/brave-plugin",
       "hasChildren": false
     },
     {
@@ -46835,8 +46835,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/byteplus-provider",
-      "help": "OpenClaw BytePlus provider plugin (plugin: byteplus)",
+      "label": "@quantumclaw/byteplus-provider",
+      "help": "QuantumClaw BytePlus provider plugin (plugin: byteplus)",
       "hasChildren": true
     },
     {
@@ -46849,7 +46849,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/byteplus-provider Config",
+      "label": "@quantumclaw/byteplus-provider Config",
       "help": "Plugin-defined config payload for byteplus.",
       "hasChildren": false
     },
@@ -46863,7 +46863,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/byteplus-provider",
+      "label": "Enable @quantumclaw/byteplus-provider",
       "hasChildren": false
     },
     {
@@ -46956,8 +46956,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/chutes-provider",
-      "help": "OpenClaw Chutes.ai provider plugin (plugin: chutes)",
+      "label": "@quantumclaw/chutes-provider",
+      "help": "QuantumClaw Chutes.ai provider plugin (plugin: chutes)",
       "hasChildren": true
     },
     {
@@ -46970,7 +46970,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/chutes-provider Config",
+      "label": "@quantumclaw/chutes-provider Config",
       "help": "Plugin-defined config payload for chutes.",
       "hasChildren": false
     },
@@ -46984,7 +46984,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/chutes-provider",
+      "label": "Enable @quantumclaw/chutes-provider",
       "hasChildren": false
     },
     {
@@ -47077,8 +47077,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/cloudflare-ai-gateway-provider",
-      "help": "OpenClaw Cloudflare AI Gateway provider plugin (plugin: cloudflare-ai-gateway)",
+      "label": "@quantumclaw/cloudflare-ai-gateway-provider",
+      "help": "QuantumClaw Cloudflare AI Gateway provider plugin (plugin: cloudflare-ai-gateway)",
       "hasChildren": true
     },
     {
@@ -47091,7 +47091,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/cloudflare-ai-gateway-provider Config",
+      "label": "@quantumclaw/cloudflare-ai-gateway-provider Config",
       "help": "Plugin-defined config payload for cloudflare-ai-gateway.",
       "hasChildren": false
     },
@@ -47105,7 +47105,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/cloudflare-ai-gateway-provider",
+      "label": "Enable @quantumclaw/cloudflare-ai-gateway-provider",
       "hasChildren": false
     },
     {
@@ -47198,8 +47198,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/copilot-proxy",
-      "help": "OpenClaw Copilot Proxy provider plugin (plugin: copilot-proxy)",
+      "label": "@quantumclaw/copilot-proxy",
+      "help": "QuantumClaw Copilot Proxy provider plugin (plugin: copilot-proxy)",
       "hasChildren": true
     },
     {
@@ -47212,7 +47212,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/copilot-proxy Config",
+      "label": "@quantumclaw/copilot-proxy Config",
       "help": "Plugin-defined config payload for copilot-proxy.",
       "hasChildren": false
     },
@@ -47226,7 +47226,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/copilot-proxy",
+      "label": "Enable @quantumclaw/copilot-proxy",
       "hasChildren": false
     },
     {
@@ -47454,8 +47454,8 @@
       "tags": [
         "observability"
       ],
-      "label": "@openclaw/diagnostics-otel",
-      "help": "OpenClaw diagnostics OpenTelemetry exporter (plugin: diagnostics-otel)",
+      "label": "@quantumclaw/diagnostics-otel",
+      "help": "QuantumClaw diagnostics OpenTelemetry exporter (plugin: diagnostics-otel)",
       "hasChildren": true
     },
     {
@@ -47468,7 +47468,7 @@
       "tags": [
         "observability"
       ],
-      "label": "@openclaw/diagnostics-otel Config",
+      "label": "@quantumclaw/diagnostics-otel Config",
       "help": "Plugin-defined config payload for diagnostics-otel.",
       "hasChildren": false
     },
@@ -47482,7 +47482,7 @@
       "tags": [
         "observability"
       ],
-      "label": "Enable @openclaw/diagnostics-otel",
+      "label": "Enable @quantumclaw/diagnostics-otel",
       "hasChildren": false
     },
     {
@@ -48033,8 +48033,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/discord",
-      "help": "OpenClaw Discord channel plugin (plugin: discord)",
+      "label": "@quantumclaw/discord",
+      "help": "QuantumClaw Discord channel plugin (plugin: discord)",
       "hasChildren": true
     },
     {
@@ -48047,7 +48047,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/discord Config",
+      "label": "@quantumclaw/discord Config",
       "help": "Plugin-defined config payload for discord.",
       "hasChildren": false
     },
@@ -48061,7 +48061,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/discord",
+      "label": "Enable @quantumclaw/discord",
       "hasChildren": false
     },
     {
@@ -48154,8 +48154,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/elevenlabs-speech",
-      "help": "OpenClaw ElevenLabs speech plugin (plugin: elevenlabs)",
+      "label": "@quantumclaw/elevenlabs-speech",
+      "help": "QuantumClaw ElevenLabs speech plugin (plugin: elevenlabs)",
       "hasChildren": true
     },
     {
@@ -48168,7 +48168,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/elevenlabs-speech Config",
+      "label": "@quantumclaw/elevenlabs-speech Config",
       "help": "Plugin-defined config payload for elevenlabs.",
       "hasChildren": false
     },
@@ -48182,7 +48182,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/elevenlabs-speech",
+      "label": "Enable @quantumclaw/elevenlabs-speech",
       "hasChildren": false
     },
     {
@@ -48275,8 +48275,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/fal-provider",
-      "help": "OpenClaw fal provider plugin (plugin: fal)",
+      "label": "@quantumclaw/fal-provider",
+      "help": "QuantumClaw fal provider plugin (plugin: fal)",
       "hasChildren": true
     },
     {
@@ -48289,7 +48289,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/fal-provider Config",
+      "label": "@quantumclaw/fal-provider Config",
       "help": "Plugin-defined config payload for fal.",
       "hasChildren": false
     },
@@ -48303,7 +48303,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/fal-provider",
+      "label": "Enable @quantumclaw/fal-provider",
       "hasChildren": false
     },
     {
@@ -48396,8 +48396,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/feishu",
-      "help": "OpenClaw Feishu/Lark channel plugin (community maintained by @m1heng) (plugin: feishu)",
+      "label": "@quantumclaw/feishu",
+      "help": "QuantumClaw Feishu/Lark channel plugin (community maintained by @m1heng) (plugin: feishu)",
       "hasChildren": true
     },
     {
@@ -48410,7 +48410,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/feishu Config",
+      "label": "@quantumclaw/feishu Config",
       "help": "Plugin-defined config payload for feishu.",
       "hasChildren": false
     },
@@ -48424,7 +48424,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/feishu",
+      "label": "Enable @quantumclaw/feishu",
       "hasChildren": false
     },
     {
@@ -48517,8 +48517,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/firecrawl-plugin",
-      "help": "OpenClaw Firecrawl plugin (plugin: firecrawl)",
+      "label": "@quantumclaw/firecrawl-plugin",
+      "help": "QuantumClaw Firecrawl plugin (plugin: firecrawl)",
       "hasChildren": true
     },
     {
@@ -48531,7 +48531,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/firecrawl-plugin Config",
+      "label": "@quantumclaw/firecrawl-plugin Config",
       "help": "Plugin-defined config payload for firecrawl.",
       "hasChildren": true
     },
@@ -48587,7 +48587,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/firecrawl-plugin",
+      "label": "Enable @quantumclaw/firecrawl-plugin",
       "hasChildren": false
     },
     {
@@ -48680,8 +48680,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/github-copilot-provider",
-      "help": "OpenClaw GitHub Copilot provider plugin (plugin: github-copilot)",
+      "label": "@quantumclaw/github-copilot-provider",
+      "help": "QuantumClaw GitHub Copilot provider plugin (plugin: github-copilot)",
       "hasChildren": true
     },
     {
@@ -48694,7 +48694,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/github-copilot-provider Config",
+      "label": "@quantumclaw/github-copilot-provider Config",
       "help": "Plugin-defined config payload for github-copilot.",
       "hasChildren": false
     },
@@ -48708,7 +48708,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/github-copilot-provider",
+      "label": "Enable @quantumclaw/github-copilot-provider",
       "hasChildren": false
     },
     {
@@ -48801,8 +48801,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/google-plugin",
-      "help": "OpenClaw Google plugin (plugin: google)",
+      "label": "@quantumclaw/google-plugin",
+      "help": "QuantumClaw Google plugin (plugin: google)",
       "hasChildren": true
     },
     {
@@ -48815,7 +48815,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/google-plugin Config",
+      "label": "@quantumclaw/google-plugin Config",
       "help": "Plugin-defined config payload for google.",
       "hasChildren": true
     },
@@ -48871,7 +48871,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/google-plugin",
+      "label": "Enable @quantumclaw/google-plugin",
       "hasChildren": false
     },
     {
@@ -48964,8 +48964,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/googlechat",
-      "help": "OpenClaw Google Chat channel plugin (plugin: googlechat)",
+      "label": "@quantumclaw/googlechat",
+      "help": "QuantumClaw Google Chat channel plugin (plugin: googlechat)",
       "hasChildren": true
     },
     {
@@ -48978,7 +48978,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/googlechat Config",
+      "label": "@quantumclaw/googlechat Config",
       "help": "Plugin-defined config payload for googlechat.",
       "hasChildren": false
     },
@@ -48992,7 +48992,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/googlechat",
+      "label": "Enable @quantumclaw/googlechat",
       "hasChildren": false
     },
     {
@@ -49085,8 +49085,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/huggingface-provider",
-      "help": "OpenClaw Hugging Face provider plugin (plugin: huggingface)",
+      "label": "@quantumclaw/huggingface-provider",
+      "help": "QuantumClaw Hugging Face provider plugin (plugin: huggingface)",
       "hasChildren": true
     },
     {
@@ -49099,7 +49099,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/huggingface-provider Config",
+      "label": "@quantumclaw/huggingface-provider Config",
       "help": "Plugin-defined config payload for huggingface.",
       "hasChildren": false
     },
@@ -49113,7 +49113,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/huggingface-provider",
+      "label": "Enable @quantumclaw/huggingface-provider",
       "hasChildren": false
     },
     {
@@ -49206,8 +49206,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/imessage",
-      "help": "OpenClaw iMessage channel plugin (plugin: imessage)",
+      "label": "@quantumclaw/imessage",
+      "help": "QuantumClaw iMessage channel plugin (plugin: imessage)",
       "hasChildren": true
     },
     {
@@ -49220,7 +49220,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/imessage Config",
+      "label": "@quantumclaw/imessage Config",
       "help": "Plugin-defined config payload for imessage.",
       "hasChildren": false
     },
@@ -49234,7 +49234,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/imessage",
+      "label": "Enable @quantumclaw/imessage",
       "hasChildren": false
     },
     {
@@ -49327,8 +49327,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/irc",
-      "help": "OpenClaw IRC channel plugin (plugin: irc)",
+      "label": "@quantumclaw/irc",
+      "help": "QuantumClaw IRC channel plugin (plugin: irc)",
       "hasChildren": true
     },
     {
@@ -49341,7 +49341,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/irc Config",
+      "label": "@quantumclaw/irc Config",
       "help": "Plugin-defined config payload for irc.",
       "hasChildren": false
     },
@@ -49355,7 +49355,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/irc",
+      "label": "Enable @quantumclaw/irc",
       "hasChildren": false
     },
     {
@@ -49448,8 +49448,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/kilocode-provider",
-      "help": "OpenClaw Kilo Gateway provider plugin (plugin: kilocode)",
+      "label": "@quantumclaw/kilocode-provider",
+      "help": "QuantumClaw Kilo Gateway provider plugin (plugin: kilocode)",
       "hasChildren": true
     },
     {
@@ -49462,7 +49462,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/kilocode-provider Config",
+      "label": "@quantumclaw/kilocode-provider Config",
       "help": "Plugin-defined config payload for kilocode.",
       "hasChildren": false
     },
@@ -49476,7 +49476,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/kilocode-provider",
+      "label": "Enable @quantumclaw/kilocode-provider",
       "hasChildren": false
     },
     {
@@ -49569,8 +49569,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/kimi-provider",
-      "help": "OpenClaw Kimi provider plugin (plugin: kimi)",
+      "label": "@quantumclaw/kimi-provider",
+      "help": "QuantumClaw Kimi provider plugin (plugin: kimi)",
       "hasChildren": true
     },
     {
@@ -49583,7 +49583,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/kimi-provider Config",
+      "label": "@quantumclaw/kimi-provider Config",
       "help": "Plugin-defined config payload for kimi.",
       "hasChildren": false
     },
@@ -49597,7 +49597,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/kimi-provider",
+      "label": "Enable @quantumclaw/kimi-provider",
       "hasChildren": false
     },
     {
@@ -49690,8 +49690,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/line",
-      "help": "OpenClaw LINE channel plugin (plugin: line)",
+      "label": "@quantumclaw/line",
+      "help": "QuantumClaw LINE channel plugin (plugin: line)",
       "hasChildren": true
     },
     {
@@ -49704,7 +49704,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/line Config",
+      "label": "@quantumclaw/line Config",
       "help": "Plugin-defined config payload for line.",
       "hasChildren": false
     },
@@ -49718,7 +49718,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/line",
+      "label": "Enable @quantumclaw/line",
       "hasChildren": false
     },
     {
@@ -50123,8 +50123,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/matrix",
-      "help": "OpenClaw Matrix channel plugin (plugin: matrix)",
+      "label": "@quantumclaw/matrix",
+      "help": "QuantumClaw Matrix channel plugin (plugin: matrix)",
       "hasChildren": true
     },
     {
@@ -50137,7 +50137,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/matrix Config",
+      "label": "@quantumclaw/matrix Config",
       "help": "Plugin-defined config payload for matrix.",
       "hasChildren": false
     },
@@ -50151,7 +50151,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/matrix",
+      "label": "Enable @quantumclaw/matrix",
       "hasChildren": false
     },
     {
@@ -50244,8 +50244,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/mattermost",
-      "help": "OpenClaw Mattermost channel plugin (plugin: mattermost)",
+      "label": "@quantumclaw/mattermost",
+      "help": "QuantumClaw Mattermost channel plugin (plugin: mattermost)",
       "hasChildren": true
     },
     {
@@ -50258,7 +50258,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/mattermost Config",
+      "label": "@quantumclaw/mattermost Config",
       "help": "Plugin-defined config payload for mattermost.",
       "hasChildren": false
     },
@@ -50272,7 +50272,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/mattermost",
+      "label": "Enable @quantumclaw/mattermost",
       "hasChildren": false
     },
     {
@@ -50365,8 +50365,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/memory-core",
-      "help": "OpenClaw core memory search plugin (plugin: memory-core)",
+      "label": "@quantumclaw/memory-core",
+      "help": "QuantumClaw core memory search plugin (plugin: memory-core)",
       "hasChildren": true
     },
     {
@@ -50379,7 +50379,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/memory-core Config",
+      "label": "@quantumclaw/memory-core Config",
       "help": "Plugin-defined config payload for memory-core.",
       "hasChildren": false
     },
@@ -50393,7 +50393,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/memory-core",
+      "label": "Enable @quantumclaw/memory-core",
       "hasChildren": false
     },
     {
@@ -50486,8 +50486,8 @@
       "tags": [
         "storage"
       ],
-      "label": "@openclaw/memory-lancedb",
-      "help": "OpenClaw LanceDB-backed long-term memory plugin with auto-recall/capture (plugin: memory-lancedb)",
+      "label": "@quantumclaw/memory-lancedb",
+      "help": "QuantumClaw LanceDB-backed long-term memory plugin with auto-recall/capture (plugin: memory-lancedb)",
       "hasChildren": true
     },
     {
@@ -50500,7 +50500,7 @@
       "tags": [
         "storage"
       ],
-      "label": "@openclaw/memory-lancedb Config",
+      "label": "@quantumclaw/memory-lancedb Config",
       "help": "Plugin-defined config payload for memory-lancedb.",
       "hasChildren": true
     },
@@ -50643,7 +50643,7 @@
       "tags": [
         "storage"
       ],
-      "label": "Enable @openclaw/memory-lancedb",
+      "label": "Enable @quantumclaw/memory-lancedb",
       "hasChildren": false
     },
     {
@@ -50736,8 +50736,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/microsoft-speech",
-      "help": "OpenClaw Microsoft speech plugin (plugin: microsoft)",
+      "label": "@quantumclaw/microsoft-speech",
+      "help": "QuantumClaw Microsoft speech plugin (plugin: microsoft)",
       "hasChildren": true
     },
     {
@@ -50750,7 +50750,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/microsoft-speech Config",
+      "label": "@quantumclaw/microsoft-speech Config",
       "help": "Plugin-defined config payload for microsoft.",
       "hasChildren": false
     },
@@ -50764,7 +50764,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/microsoft-speech",
+      "label": "Enable @quantumclaw/microsoft-speech",
       "hasChildren": false
     },
     {
@@ -50857,8 +50857,8 @@
       "tags": [
         "performance"
       ],
-      "label": "@openclaw/minimax-provider",
-      "help": "OpenClaw MiniMax provider and OAuth plugin (plugin: minimax)",
+      "label": "@quantumclaw/minimax-provider",
+      "help": "QuantumClaw MiniMax provider and OAuth plugin (plugin: minimax)",
       "hasChildren": true
     },
     {
@@ -50871,7 +50871,7 @@
       "tags": [
         "performance"
       ],
-      "label": "@openclaw/minimax-provider Config",
+      "label": "@quantumclaw/minimax-provider Config",
       "help": "Plugin-defined config payload for minimax.",
       "hasChildren": false
     },
@@ -50885,7 +50885,7 @@
       "tags": [
         "performance"
       ],
-      "label": "Enable @openclaw/minimax-provider",
+      "label": "Enable @quantumclaw/minimax-provider",
       "hasChildren": false
     },
     {
@@ -50978,8 +50978,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/mistral-provider",
-      "help": "OpenClaw Mistral provider plugin (plugin: mistral)",
+      "label": "@quantumclaw/mistral-provider",
+      "help": "QuantumClaw Mistral provider plugin (plugin: mistral)",
       "hasChildren": true
     },
     {
@@ -50992,7 +50992,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/mistral-provider Config",
+      "label": "@quantumclaw/mistral-provider Config",
       "help": "Plugin-defined config payload for mistral.",
       "hasChildren": false
     },
@@ -51006,7 +51006,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/mistral-provider",
+      "label": "Enable @quantumclaw/mistral-provider",
       "hasChildren": false
     },
     {
@@ -51099,8 +51099,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/modelstudio-provider",
-      "help": "OpenClaw Model Studio provider plugin (plugin: modelstudio)",
+      "label": "@quantumclaw/modelstudio-provider",
+      "help": "QuantumClaw Model Studio provider plugin (plugin: modelstudio)",
       "hasChildren": true
     },
     {
@@ -51113,7 +51113,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/modelstudio-provider Config",
+      "label": "@quantumclaw/modelstudio-provider Config",
       "help": "Plugin-defined config payload for modelstudio.",
       "hasChildren": false
     },
@@ -51127,7 +51127,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/modelstudio-provider",
+      "label": "Enable @quantumclaw/modelstudio-provider",
       "hasChildren": false
     },
     {
@@ -51220,8 +51220,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/moonshot-provider",
-      "help": "OpenClaw Moonshot provider plugin (plugin: moonshot)",
+      "label": "@quantumclaw/moonshot-provider",
+      "help": "QuantumClaw Moonshot provider plugin (plugin: moonshot)",
       "hasChildren": true
     },
     {
@@ -51234,7 +51234,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/moonshot-provider Config",
+      "label": "@quantumclaw/moonshot-provider Config",
       "help": "Plugin-defined config payload for moonshot.",
       "hasChildren": true
     },
@@ -51304,7 +51304,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/moonshot-provider",
+      "label": "Enable @quantumclaw/moonshot-provider",
       "hasChildren": false
     },
     {
@@ -51397,8 +51397,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/msteams",
-      "help": "OpenClaw Microsoft Teams channel plugin (plugin: msteams)",
+      "label": "@quantumclaw/msteams",
+      "help": "QuantumClaw Microsoft Teams channel plugin (plugin: msteams)",
       "hasChildren": true
     },
     {
@@ -51411,7 +51411,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/msteams Config",
+      "label": "@quantumclaw/msteams Config",
       "help": "Plugin-defined config payload for msteams.",
       "hasChildren": false
     },
@@ -51425,7 +51425,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/msteams",
+      "label": "Enable @quantumclaw/msteams",
       "hasChildren": false
     },
     {
@@ -51518,8 +51518,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nextcloud-talk",
-      "help": "OpenClaw Nextcloud Talk channel plugin (plugin: nextcloud-talk)",
+      "label": "@quantumclaw/nextcloud-talk",
+      "help": "QuantumClaw Nextcloud Talk channel plugin (plugin: nextcloud-talk)",
       "hasChildren": true
     },
     {
@@ -51532,7 +51532,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nextcloud-talk Config",
+      "label": "@quantumclaw/nextcloud-talk Config",
       "help": "Plugin-defined config payload for nextcloud-talk.",
       "hasChildren": false
     },
@@ -51546,7 +51546,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/nextcloud-talk",
+      "label": "Enable @quantumclaw/nextcloud-talk",
       "hasChildren": false
     },
     {
@@ -51639,8 +51639,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nostr",
-      "help": "OpenClaw Nostr channel plugin for NIP-04 encrypted DMs (plugin: nostr)",
+      "label": "@quantumclaw/nostr",
+      "help": "QuantumClaw Nostr channel plugin for NIP-04 encrypted DMs (plugin: nostr)",
       "hasChildren": true
     },
     {
@@ -51653,7 +51653,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nostr Config",
+      "label": "@quantumclaw/nostr Config",
       "help": "Plugin-defined config payload for nostr.",
       "hasChildren": false
     },
@@ -51667,7 +51667,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/nostr",
+      "label": "Enable @quantumclaw/nostr",
       "hasChildren": false
     },
     {
@@ -51760,8 +51760,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nvidia-provider",
-      "help": "OpenClaw NVIDIA provider plugin (plugin: nvidia)",
+      "label": "@quantumclaw/nvidia-provider",
+      "help": "QuantumClaw NVIDIA provider plugin (plugin: nvidia)",
       "hasChildren": true
     },
     {
@@ -51774,7 +51774,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nvidia-provider Config",
+      "label": "@quantumclaw/nvidia-provider Config",
       "help": "Plugin-defined config payload for nvidia.",
       "hasChildren": false
     },
@@ -51788,7 +51788,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/nvidia-provider",
+      "label": "Enable @quantumclaw/nvidia-provider",
       "hasChildren": false
     },
     {
@@ -51881,8 +51881,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/ollama-provider",
-      "help": "OpenClaw Ollama provider plugin (plugin: ollama)",
+      "label": "@quantumclaw/ollama-provider",
+      "help": "QuantumClaw Ollama provider plugin (plugin: ollama)",
       "hasChildren": true
     },
     {
@@ -51895,7 +51895,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/ollama-provider Config",
+      "label": "@quantumclaw/ollama-provider Config",
       "help": "Plugin-defined config payload for ollama.",
       "hasChildren": false
     },
@@ -51909,7 +51909,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/ollama-provider",
+      "label": "Enable @quantumclaw/ollama-provider",
       "hasChildren": false
     },
     {
@@ -52123,8 +52123,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/openai-provider",
-      "help": "OpenClaw OpenAI provider plugins (plugin: openai)",
+      "label": "@quantumclaw/openai-provider",
+      "help": "QuantumClaw OpenAI provider plugins (plugin: openai)",
       "hasChildren": true
     },
     {
@@ -52137,7 +52137,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/openai-provider Config",
+      "label": "@quantumclaw/openai-provider Config",
       "help": "Plugin-defined config payload for openai.",
       "hasChildren": false
     },
@@ -52151,7 +52151,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/openai-provider",
+      "label": "Enable @quantumclaw/openai-provider",
       "hasChildren": false
     },
     {
@@ -52244,8 +52244,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/opencode-provider",
-      "help": "OpenClaw OpenCode Zen provider plugin (plugin: opencode)",
+      "label": "@quantumclaw/opencode-provider",
+      "help": "QuantumClaw OpenCode Zen provider plugin (plugin: opencode)",
       "hasChildren": true
     },
     {
@@ -52258,8 +52258,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/opencode-go-provider",
-      "help": "OpenClaw OpenCode Go provider plugin (plugin: opencode-go)",
+      "label": "@quantumclaw/opencode-go-provider",
+      "help": "QuantumClaw OpenCode Go provider plugin (plugin: opencode-go)",
       "hasChildren": true
     },
     {
@@ -52272,7 +52272,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/opencode-go-provider Config",
+      "label": "@quantumclaw/opencode-go-provider Config",
       "help": "Plugin-defined config payload for opencode-go.",
       "hasChildren": false
     },
@@ -52286,7 +52286,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/opencode-go-provider",
+      "label": "Enable @quantumclaw/opencode-go-provider",
       "hasChildren": false
     },
     {
@@ -52379,7 +52379,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/opencode-provider Config",
+      "label": "@quantumclaw/opencode-provider Config",
       "help": "Plugin-defined config payload for opencode.",
       "hasChildren": false
     },
@@ -52393,7 +52393,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/opencode-provider",
+      "label": "Enable @quantumclaw/opencode-provider",
       "hasChildren": false
     },
     {
@@ -52486,8 +52486,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/openrouter-provider",
-      "help": "OpenClaw OpenRouter provider plugin (plugin: openrouter)",
+      "label": "@quantumclaw/openrouter-provider",
+      "help": "QuantumClaw OpenRouter provider plugin (plugin: openrouter)",
       "hasChildren": true
     },
     {
@@ -52500,7 +52500,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/openrouter-provider Config",
+      "label": "@quantumclaw/openrouter-provider Config",
       "help": "Plugin-defined config payload for openrouter.",
       "hasChildren": false
     },
@@ -52514,7 +52514,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/openrouter-provider",
+      "label": "Enable @quantumclaw/openrouter-provider",
       "hasChildren": false
     },
     {
@@ -52664,7 +52664,7 @@
         "advanced"
       ],
       "label": "Sandbox Source",
-      "help": "OpenShell sandbox source for first-time create. Defaults to openclaw.",
+      "help": "OpenShell sandbox source for first-time create. Defaults to quantumclaw.",
       "hasChildren": false
     },
     {
@@ -52895,8 +52895,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/perplexity-plugin",
-      "help": "OpenClaw Perplexity plugin (plugin: perplexity)",
+      "label": "@quantumclaw/perplexity-plugin",
+      "help": "QuantumClaw Perplexity plugin (plugin: perplexity)",
       "hasChildren": true
     },
     {
@@ -52909,7 +52909,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/perplexity-plugin Config",
+      "label": "@quantumclaw/perplexity-plugin Config",
       "help": "Plugin-defined config payload for perplexity.",
       "hasChildren": true
     },
@@ -52979,7 +52979,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/perplexity-plugin",
+      "label": "Enable @quantumclaw/perplexity-plugin",
       "hasChildren": false
     },
     {
@@ -53193,8 +53193,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/qianfan-provider",
-      "help": "OpenClaw Qianfan provider plugin (plugin: qianfan)",
+      "label": "@quantumclaw/qianfan-provider",
+      "help": "QuantumClaw Qianfan provider plugin (plugin: qianfan)",
       "hasChildren": true
     },
     {
@@ -53207,7 +53207,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/qianfan-provider Config",
+      "label": "@quantumclaw/qianfan-provider Config",
       "help": "Plugin-defined config payload for qianfan.",
       "hasChildren": false
     },
@@ -53221,7 +53221,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/qianfan-provider",
+      "label": "Enable @quantumclaw/qianfan-provider",
       "hasChildren": false
     },
     {
@@ -53435,8 +53435,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/sglang-provider",
-      "help": "OpenClaw SGLang provider plugin (plugin: sglang)",
+      "label": "@quantumclaw/sglang-provider",
+      "help": "QuantumClaw SGLang provider plugin (plugin: sglang)",
       "hasChildren": true
     },
     {
@@ -53449,7 +53449,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/sglang-provider Config",
+      "label": "@quantumclaw/sglang-provider Config",
       "help": "Plugin-defined config payload for sglang.",
       "hasChildren": false
     },
@@ -53463,7 +53463,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/sglang-provider",
+      "label": "Enable @quantumclaw/sglang-provider",
       "hasChildren": false
     },
     {
@@ -53556,8 +53556,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/signal",
-      "help": "OpenClaw Signal channel plugin (plugin: signal)",
+      "label": "@quantumclaw/signal",
+      "help": "QuantumClaw Signal channel plugin (plugin: signal)",
       "hasChildren": true
     },
     {
@@ -53570,7 +53570,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/signal Config",
+      "label": "@quantumclaw/signal Config",
       "help": "Plugin-defined config payload for signal.",
       "hasChildren": false
     },
@@ -53584,7 +53584,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/signal",
+      "label": "Enable @quantumclaw/signal",
       "hasChildren": false
     },
     {
@@ -53677,8 +53677,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/slack",
-      "help": "OpenClaw Slack channel plugin (plugin: slack)",
+      "label": "@quantumclaw/slack",
+      "help": "QuantumClaw Slack channel plugin (plugin: slack)",
       "hasChildren": true
     },
     {
@@ -53691,7 +53691,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/slack Config",
+      "label": "@quantumclaw/slack Config",
       "help": "Plugin-defined config payload for slack.",
       "hasChildren": false
     },
@@ -53705,7 +53705,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/slack",
+      "label": "Enable @quantumclaw/slack",
       "hasChildren": false
     },
     {
@@ -53798,8 +53798,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/synology-chat",
-      "help": "Synology Chat channel plugin for OpenClaw (plugin: synology-chat)",
+      "label": "@quantumclaw/synology-chat",
+      "help": "Synology Chat channel plugin for QuantumClaw (plugin: synology-chat)",
       "hasChildren": true
     },
     {
@@ -53812,7 +53812,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/synology-chat Config",
+      "label": "@quantumclaw/synology-chat Config",
       "help": "Plugin-defined config payload for synology-chat.",
       "hasChildren": false
     },
@@ -53826,7 +53826,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/synology-chat",
+      "label": "Enable @quantumclaw/synology-chat",
       "hasChildren": false
     },
     {
@@ -53919,8 +53919,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/synthetic-provider",
-      "help": "OpenClaw Synthetic provider plugin (plugin: synthetic)",
+      "label": "@quantumclaw/synthetic-provider",
+      "help": "QuantumClaw Synthetic provider plugin (plugin: synthetic)",
       "hasChildren": true
     },
     {
@@ -53933,7 +53933,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/synthetic-provider Config",
+      "label": "@quantumclaw/synthetic-provider Config",
       "help": "Plugin-defined config payload for synthetic.",
       "hasChildren": false
     },
@@ -53947,7 +53947,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/synthetic-provider",
+      "label": "Enable @quantumclaw/synthetic-provider",
       "hasChildren": false
     },
     {
@@ -54161,8 +54161,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/tavily-plugin",
-      "help": "OpenClaw Tavily plugin (plugin: tavily)",
+      "label": "@quantumclaw/tavily-plugin",
+      "help": "QuantumClaw Tavily plugin (plugin: tavily)",
       "hasChildren": true
     },
     {
@@ -54175,7 +54175,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/tavily-plugin Config",
+      "label": "@quantumclaw/tavily-plugin Config",
       "help": "Plugin-defined config payload for tavily.",
       "hasChildren": true
     },
@@ -54231,7 +54231,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/tavily-plugin",
+      "label": "Enable @quantumclaw/tavily-plugin",
       "hasChildren": false
     },
     {
@@ -54324,8 +54324,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/telegram",
-      "help": "OpenClaw Telegram channel plugin (plugin: telegram)",
+      "label": "@quantumclaw/telegram",
+      "help": "QuantumClaw Telegram channel plugin (plugin: telegram)",
       "hasChildren": true
     },
     {
@@ -54338,7 +54338,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/telegram Config",
+      "label": "@quantumclaw/telegram Config",
       "help": "Plugin-defined config payload for telegram.",
       "hasChildren": false
     },
@@ -54352,7 +54352,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/telegram",
+      "label": "Enable @quantumclaw/telegram",
       "hasChildren": false
     },
     {
@@ -54604,8 +54604,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/tlon",
-      "help": "OpenClaw Tlon/Urbit channel plugin (plugin: tlon)",
+      "label": "@quantumclaw/tlon",
+      "help": "QuantumClaw Tlon/Urbit channel plugin (plugin: tlon)",
       "hasChildren": true
     },
     {
@@ -54618,7 +54618,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/tlon Config",
+      "label": "@quantumclaw/tlon Config",
       "help": "Plugin-defined config payload for tlon.",
       "hasChildren": false
     },
@@ -54632,7 +54632,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/tlon",
+      "label": "Enable @quantumclaw/tlon",
       "hasChildren": false
     },
     {
@@ -54725,8 +54725,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/together-provider",
-      "help": "OpenClaw Together provider plugin (plugin: together)",
+      "label": "@quantumclaw/together-provider",
+      "help": "QuantumClaw Together provider plugin (plugin: together)",
       "hasChildren": true
     },
     {
@@ -54739,7 +54739,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/together-provider Config",
+      "label": "@quantumclaw/together-provider Config",
       "help": "Plugin-defined config payload for together.",
       "hasChildren": false
     },
@@ -54753,7 +54753,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/together-provider",
+      "label": "Enable @quantumclaw/together-provider",
       "hasChildren": false
     },
     {
@@ -54846,8 +54846,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/twitch",
-      "help": "OpenClaw Twitch channel plugin (plugin: twitch)",
+      "label": "@quantumclaw/twitch",
+      "help": "QuantumClaw Twitch channel plugin (plugin: twitch)",
       "hasChildren": true
     },
     {
@@ -54860,7 +54860,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/twitch Config",
+      "label": "@quantumclaw/twitch Config",
       "help": "Plugin-defined config payload for twitch.",
       "hasChildren": false
     },
@@ -54874,7 +54874,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/twitch",
+      "label": "Enable @quantumclaw/twitch",
       "hasChildren": false
     },
     {
@@ -54967,8 +54967,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/venice-provider",
-      "help": "OpenClaw Venice provider plugin (plugin: venice)",
+      "label": "@quantumclaw/venice-provider",
+      "help": "QuantumClaw Venice provider plugin (plugin: venice)",
       "hasChildren": true
     },
     {
@@ -54981,7 +54981,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/venice-provider Config",
+      "label": "@quantumclaw/venice-provider Config",
       "help": "Plugin-defined config payload for venice.",
       "hasChildren": false
     },
@@ -54995,7 +54995,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/venice-provider",
+      "label": "Enable @quantumclaw/venice-provider",
       "hasChildren": false
     },
     {
@@ -55088,8 +55088,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/vercel-ai-gateway-provider",
-      "help": "OpenClaw Vercel AI Gateway provider plugin (plugin: vercel-ai-gateway)",
+      "label": "@quantumclaw/vercel-ai-gateway-provider",
+      "help": "QuantumClaw Vercel AI Gateway provider plugin (plugin: vercel-ai-gateway)",
       "hasChildren": true
     },
     {
@@ -55102,7 +55102,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/vercel-ai-gateway-provider Config",
+      "label": "@quantumclaw/vercel-ai-gateway-provider Config",
       "help": "Plugin-defined config payload for vercel-ai-gateway.",
       "hasChildren": false
     },
@@ -55116,7 +55116,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/vercel-ai-gateway-provider",
+      "label": "Enable @quantumclaw/vercel-ai-gateway-provider",
       "hasChildren": false
     },
     {
@@ -55209,8 +55209,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/vllm-provider",
-      "help": "OpenClaw vLLM provider plugin (plugin: vllm)",
+      "label": "@quantumclaw/vllm-provider",
+      "help": "QuantumClaw vLLM provider plugin (plugin: vllm)",
       "hasChildren": true
     },
     {
@@ -55223,7 +55223,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/vllm-provider Config",
+      "label": "@quantumclaw/vllm-provider Config",
       "help": "Plugin-defined config payload for vllm.",
       "hasChildren": false
     },
@@ -55237,7 +55237,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/vllm-provider",
+      "label": "Enable @quantumclaw/vllm-provider",
       "hasChildren": false
     },
     {
@@ -55330,8 +55330,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/voice-call",
-      "help": "OpenClaw voice-call plugin (plugin: voice-call)",
+      "label": "@quantumclaw/voice-call",
+      "help": "QuantumClaw voice-call plugin (plugin: voice-call)",
       "hasChildren": true
     },
     {
@@ -55344,7 +55344,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/voice-call Config",
+      "label": "@quantumclaw/voice-call Config",
       "help": "Plugin-defined config payload for voice-call.",
       "hasChildren": true
     },
@@ -56714,7 +56714,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/voice-call",
+      "label": "Enable @quantumclaw/voice-call",
       "hasChildren": false
     },
     {
@@ -56807,8 +56807,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/volcengine-provider",
-      "help": "OpenClaw Volcengine provider plugin (plugin: volcengine)",
+      "label": "@quantumclaw/volcengine-provider",
+      "help": "QuantumClaw Volcengine provider plugin (plugin: volcengine)",
       "hasChildren": true
     },
     {
@@ -56821,7 +56821,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/volcengine-provider Config",
+      "label": "@quantumclaw/volcengine-provider Config",
       "help": "Plugin-defined config payload for volcengine.",
       "hasChildren": false
     },
@@ -56835,7 +56835,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/volcengine-provider",
+      "label": "Enable @quantumclaw/volcengine-provider",
       "hasChildren": false
     },
     {
@@ -56928,8 +56928,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/whatsapp",
-      "help": "OpenClaw WhatsApp channel plugin (plugin: whatsapp)",
+      "label": "@quantumclaw/whatsapp",
+      "help": "QuantumClaw WhatsApp channel plugin (plugin: whatsapp)",
       "hasChildren": true
     },
     {
@@ -56942,7 +56942,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/whatsapp Config",
+      "label": "@quantumclaw/whatsapp Config",
       "help": "Plugin-defined config payload for whatsapp.",
       "hasChildren": false
     },
@@ -56956,7 +56956,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/whatsapp",
+      "label": "Enable @quantumclaw/whatsapp",
       "hasChildren": false
     },
     {
@@ -57049,8 +57049,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/xai-plugin",
-      "help": "OpenClaw xAI plugin (plugin: xai)",
+      "label": "@quantumclaw/xai-plugin",
+      "help": "QuantumClaw xAI plugin (plugin: xai)",
       "hasChildren": true
     },
     {
@@ -57063,7 +57063,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/xai-plugin Config",
+      "label": "@quantumclaw/xai-plugin Config",
       "help": "Plugin-defined config payload for xai.",
       "hasChildren": true
     },
@@ -57133,7 +57133,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/xai-plugin",
+      "label": "Enable @quantumclaw/xai-plugin",
       "hasChildren": false
     },
     {
@@ -57226,8 +57226,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/xiaomi-provider",
-      "help": "OpenClaw Xiaomi provider plugin (plugin: xiaomi)",
+      "label": "@quantumclaw/xiaomi-provider",
+      "help": "QuantumClaw Xiaomi provider plugin (plugin: xiaomi)",
       "hasChildren": true
     },
     {
@@ -57240,7 +57240,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/xiaomi-provider Config",
+      "label": "@quantumclaw/xiaomi-provider Config",
       "help": "Plugin-defined config payload for xiaomi.",
       "hasChildren": false
     },
@@ -57254,7 +57254,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/xiaomi-provider",
+      "label": "Enable @quantumclaw/xiaomi-provider",
       "hasChildren": false
     },
     {
@@ -57347,8 +57347,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zai-provider",
-      "help": "OpenClaw Z.AI provider plugin (plugin: zai)",
+      "label": "@quantumclaw/zai-provider",
+      "help": "QuantumClaw Z.AI provider plugin (plugin: zai)",
       "hasChildren": true
     },
     {
@@ -57361,7 +57361,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zai-provider Config",
+      "label": "@quantumclaw/zai-provider Config",
       "help": "Plugin-defined config payload for zai.",
       "hasChildren": false
     },
@@ -57375,7 +57375,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/zai-provider",
+      "label": "Enable @quantumclaw/zai-provider",
       "hasChildren": false
     },
     {
@@ -57468,8 +57468,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalo",
-      "help": "OpenClaw Zalo channel plugin (plugin: zalo)",
+      "label": "@quantumclaw/zalo",
+      "help": "QuantumClaw Zalo channel plugin (plugin: zalo)",
       "hasChildren": true
     },
     {
@@ -57482,7 +57482,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalo Config",
+      "label": "@quantumclaw/zalo Config",
       "help": "Plugin-defined config payload for zalo.",
       "hasChildren": false
     },
@@ -57496,7 +57496,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/zalo",
+      "label": "Enable @quantumclaw/zalo",
       "hasChildren": false
     },
     {
@@ -57589,8 +57589,8 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalouser",
-      "help": "OpenClaw Zalo Personal Account plugin via native zca-js integration (plugin: zalouser)",
+      "label": "@quantumclaw/zalouser",
+      "help": "QuantumClaw Zalo Personal Account plugin via native zca-js integration (plugin: zalouser)",
       "hasChildren": true
     },
     {
@@ -57603,7 +57603,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalouser Config",
+      "label": "@quantumclaw/zalouser Config",
       "help": "Plugin-defined config payload for zalouser.",
       "hasChildren": false
     },
@@ -57617,7 +57617,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/zalouser",
+      "label": "Enable @quantumclaw/zalouser",
       "hasChildren": false
     },
     {
@@ -57711,7 +57711,7 @@
         "advanced"
       ],
       "label": "Plugin Install Records",
-      "help": "CLI-managed install metadata (used by `openclaw plugins update` to locate install sources).",
+      "help": "CLI-managed install metadata (used by `quantumclaw plugins update` to locate install sources).",
       "hasChildren": true
     },
     {
@@ -57789,7 +57789,7 @@
         "storage"
       ],
       "label": "Plugin Install Path",
-      "help": "Resolved install directory (usually ~/.openclaw/extensions/<id>).",
+      "help": "Resolved install directory (usually ~/.quantumclaw/extensions/<id>).",
       "hasChildren": false
     },
     {
@@ -58655,7 +58655,7 @@
         "storage"
       ],
       "label": "Session Parent Fork Max Tokens",
-      "help": "Maximum parent-session token count allowed for thread/session inheritance forking. If the parent exceeds this, OpenClaw starts a fresh thread session instead of forking; set 0 to disable this protection.",
+      "help": "Maximum parent-session token count allowed for thread/session inheritance forking. If the parent exceeds this, QuantumClaw starts a fresh thread session instead of forking; set 0 to disable this protection.",
       "hasChildren": false
     },
     {
@@ -64614,7 +64614,7 @@
         "advanced"
       ],
       "label": "Updates",
-      "help": "Update-channel and startup-check behavior for keeping OpenClaw runtime versions current. Use conservative channels in production and more experimental channels only in controlled environments.",
+      "help": "Update-channel and startup-check behavior for keeping QuantumClaw runtime versions current. Use conservative channels in production and more experimental channels only in controlled environments.",
       "hasChildren": true
     },
     {
@@ -64918,7 +64918,7 @@
         "advanced"
       ],
       "label": "Wizard Last Run Version",
-      "help": "OpenClaw version recorded at the time of the most recent wizard run on this config. Use this when diagnosing behavior differences across version-to-version setup changes.",
+      "help": "QuantumClaw version recorded at the time of the most recent wizard run on this config. Use this when diagnosing behavior differences across version-to-version setup changes.",
       "hasChildren": false
     }
   ]

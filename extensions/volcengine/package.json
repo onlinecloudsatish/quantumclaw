@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/volcengine-provider",
+  "name": "@quantumclaw/volcengine-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Volcengine provider plugin",
+  "description": "QuantumClaw Volcengine provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

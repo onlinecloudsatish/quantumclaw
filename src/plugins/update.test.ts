@@ -38,8 +38,8 @@ describe("updateNpmInstalledPlugins", () => {
   it("skips integrity drift checks for unpinned npm specs during dry-run updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "opik-openclaw",
-      targetDir: "/tmp/opik-openclaw",
+      pluginId: "opik-quantumclaw",
+      targetDir: "/tmp/opik-quantumclaw",
       version: "0.2.6",
       extensions: ["index.ts"],
     });
@@ -48,22 +48,22 @@ describe("updateNpmInstalledPlugins", () => {
       config: {
         plugins: {
           installs: {
-            "opik-openclaw": {
+            "opik-quantumclaw": {
               source: "npm",
-              spec: "@opik/opik-openclaw",
+              spec: "@opik/opik-quantumclaw",
               integrity: "sha512-old",
-              installPath: "/tmp/opik-openclaw",
+              installPath: "/tmp/opik-quantumclaw",
             },
           },
         },
       },
-      pluginIds: ["opik-openclaw"],
+      pluginIds: ["opik-quantumclaw"],
       dryRun: true,
     });
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "@opik/opik-openclaw",
+        spec: "@opik/opik-quantumclaw",
         expectedIntegrity: undefined,
       }),
     );
@@ -72,8 +72,8 @@ describe("updateNpmInstalledPlugins", () => {
   it("keeps integrity drift checks for exact-version npm specs during dry-run updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "opik-openclaw",
-      targetDir: "/tmp/opik-openclaw",
+      pluginId: "opik-quantumclaw",
+      targetDir: "/tmp/opik-quantumclaw",
       version: "0.2.6",
       extensions: ["index.ts"],
     });
@@ -82,22 +82,22 @@ describe("updateNpmInstalledPlugins", () => {
       config: {
         plugins: {
           installs: {
-            "opik-openclaw": {
+            "opik-quantumclaw": {
               source: "npm",
-              spec: "@opik/opik-openclaw@0.2.5",
+              spec: "@opik/opik-quantumclaw@0.2.5",
               integrity: "sha512-old",
-              installPath: "/tmp/opik-openclaw",
+              installPath: "/tmp/opik-quantumclaw",
             },
           },
         },
       },
-      pluginIds: ["opik-openclaw"],
+      pluginIds: ["opik-quantumclaw"],
       dryRun: true,
     });
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "@opik/opik-openclaw@0.2.5",
+        spec: "@opik/opik-quantumclaw@0.2.5",
         expectedIntegrity: "sha512-old",
       }),
     );
@@ -107,7 +107,7 @@ describe("updateNpmInstalledPlugins", () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: false,
       code: "npm_package_not_found",
-      error: "Package not found on npm: @openclaw/missing.",
+      error: "Package not found on npm: @quantumclaw/missing.",
     });
 
     const result = await updateNpmInstalledPlugins({
@@ -116,7 +116,7 @@ describe("updateNpmInstalledPlugins", () => {
           installs: {
             missing: {
               source: "npm",
-              spec: "@openclaw/missing",
+              spec: "@quantumclaw/missing",
               installPath: "/tmp/missing",
             },
           },
@@ -130,7 +130,7 @@ describe("updateNpmInstalledPlugins", () => {
       {
         pluginId: "missing",
         status: "error",
-        message: "Failed to check missing: npm package not found for @openclaw/missing.",
+        message: "Failed to check missing: npm package not found for @quantumclaw/missing.",
       },
     ]);
   });
@@ -170,8 +170,8 @@ describe("updateNpmInstalledPlugins", () => {
   it("reuses a recorded npm dist-tag spec for id-based updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "openclaw-codex-app-server",
-      targetDir: "/tmp/openclaw-codex-app-server",
+      pluginId: "quantumclaw-codex-app-server",
+      targetDir: "/tmp/quantumclaw-codex-app-server",
       version: "0.2.0-beta.4",
       extensions: ["index.ts"],
     });
@@ -180,29 +180,29 @@ describe("updateNpmInstalledPlugins", () => {
       config: {
         plugins: {
           installs: {
-            "openclaw-codex-app-server": {
+            "quantumclaw-codex-app-server": {
               source: "npm",
-              spec: "openclaw-codex-app-server@beta",
-              installPath: "/tmp/openclaw-codex-app-server",
-              resolvedName: "openclaw-codex-app-server",
-              resolvedSpec: "openclaw-codex-app-server@0.2.0-beta.3",
+              spec: "quantumclaw-codex-app-server@beta",
+              installPath: "/tmp/quantumclaw-codex-app-server",
+              resolvedName: "quantumclaw-codex-app-server",
+              resolvedSpec: "quantumclaw-codex-app-server@0.2.0-beta.3",
             },
           },
         },
       },
-      pluginIds: ["openclaw-codex-app-server"],
+      pluginIds: ["quantumclaw-codex-app-server"],
     });
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "openclaw-codex-app-server@beta",
-        expectedPluginId: "openclaw-codex-app-server",
+        spec: "quantumclaw-codex-app-server@beta",
+        expectedPluginId: "quantumclaw-codex-app-server",
       }),
     );
-    expect(result.config.plugins?.installs?.["openclaw-codex-app-server"]).toMatchObject({
+    expect(result.config.plugins?.installs?.["quantumclaw-codex-app-server"]).toMatchObject({
       source: "npm",
-      spec: "openclaw-codex-app-server@beta",
-      installPath: "/tmp/openclaw-codex-app-server",
+      spec: "quantumclaw-codex-app-server@beta",
+      installPath: "/tmp/quantumclaw-codex-app-server",
       version: "0.2.0-beta.4",
     });
   });
@@ -210,14 +210,14 @@ describe("updateNpmInstalledPlugins", () => {
   it("uses and persists an explicit npm spec override during updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "openclaw-codex-app-server",
-      targetDir: "/tmp/openclaw-codex-app-server",
+      pluginId: "quantumclaw-codex-app-server",
+      targetDir: "/tmp/quantumclaw-codex-app-server",
       version: "0.2.0-beta.4",
       extensions: ["index.ts"],
       npmResolution: {
-        name: "openclaw-codex-app-server",
+        name: "quantumclaw-codex-app-server",
         version: "0.2.0-beta.4",
-        resolvedSpec: "openclaw-codex-app-server@0.2.0-beta.4",
+        resolvedSpec: "quantumclaw-codex-app-server@0.2.0-beta.4",
       },
     });
 
@@ -225,32 +225,32 @@ describe("updateNpmInstalledPlugins", () => {
       config: {
         plugins: {
           installs: {
-            "openclaw-codex-app-server": {
+            "quantumclaw-codex-app-server": {
               source: "npm",
-              spec: "openclaw-codex-app-server",
-              installPath: "/tmp/openclaw-codex-app-server",
+              spec: "quantumclaw-codex-app-server",
+              installPath: "/tmp/quantumclaw-codex-app-server",
             },
           },
         },
       },
-      pluginIds: ["openclaw-codex-app-server"],
+      pluginIds: ["quantumclaw-codex-app-server"],
       specOverrides: {
-        "openclaw-codex-app-server": "openclaw-codex-app-server@beta",
+        "quantumclaw-codex-app-server": "quantumclaw-codex-app-server@beta",
       },
     });
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "openclaw-codex-app-server@beta",
-        expectedPluginId: "openclaw-codex-app-server",
+        spec: "quantumclaw-codex-app-server@beta",
+        expectedPluginId: "quantumclaw-codex-app-server",
       }),
     );
-    expect(result.config.plugins?.installs?.["openclaw-codex-app-server"]).toMatchObject({
+    expect(result.config.plugins?.installs?.["quantumclaw-codex-app-server"]).toMatchObject({
       source: "npm",
-      spec: "openclaw-codex-app-server@beta",
-      installPath: "/tmp/openclaw-codex-app-server",
+      spec: "quantumclaw-codex-app-server@beta",
+      installPath: "/tmp/quantumclaw-codex-app-server",
       version: "0.2.0-beta.4",
-      resolvedSpec: "openclaw-codex-app-server@0.2.0-beta.4",
+      resolvedSpec: "quantumclaw-codex-app-server@0.2.0-beta.4",
     });
   });
 
@@ -313,8 +313,8 @@ describe("updateNpmInstalledPlugins", () => {
   it("skips recorded integrity checks when an explicit npm version override changes the spec", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "openclaw-codex-app-server",
-      targetDir: "/tmp/openclaw-codex-app-server",
+      pluginId: "quantumclaw-codex-app-server",
+      targetDir: "/tmp/quantumclaw-codex-app-server",
       version: "0.2.0-beta.4",
       extensions: ["index.ts"],
     });
@@ -323,24 +323,24 @@ describe("updateNpmInstalledPlugins", () => {
       config: {
         plugins: {
           installs: {
-            "openclaw-codex-app-server": {
+            "quantumclaw-codex-app-server": {
               source: "npm",
-              spec: "openclaw-codex-app-server@0.2.0-beta.3",
+              spec: "quantumclaw-codex-app-server@0.2.0-beta.3",
               integrity: "sha512-old",
-              installPath: "/tmp/openclaw-codex-app-server",
+              installPath: "/tmp/quantumclaw-codex-app-server",
             },
           },
         },
       },
-      pluginIds: ["openclaw-codex-app-server"],
+      pluginIds: ["quantumclaw-codex-app-server"],
       specOverrides: {
-        "openclaw-codex-app-server": "openclaw-codex-app-server@0.2.0-beta.4",
+        "quantumclaw-codex-app-server": "quantumclaw-codex-app-server@0.2.0-beta.4",
       },
     });
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "openclaw-codex-app-server@0.2.0-beta.4",
+        spec: "quantumclaw-codex-app-server@0.2.0-beta.4",
         expectedIntegrity: undefined,
       }),
     );
@@ -349,8 +349,8 @@ describe("updateNpmInstalledPlugins", () => {
   it("migrates legacy unscoped install keys when a scoped npm package updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "@openclaw/voice-call",
-      targetDir: "/tmp/openclaw-voice-call",
+      pluginId: "@quantumclaw/voice-call",
+      targetDir: "/tmp/quantumclaw-voice-call",
       version: "0.0.2",
       extensions: ["index.ts"],
     });
@@ -370,7 +370,7 @@ describe("updateNpmInstalledPlugins", () => {
           installs: {
             "voice-call": {
               source: "npm",
-              spec: "@openclaw/voice-call",
+              spec: "@quantumclaw/voice-call",
               installPath: "/tmp/voice-call",
             },
           },
@@ -381,22 +381,22 @@ describe("updateNpmInstalledPlugins", () => {
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "@openclaw/voice-call",
+        spec: "@quantumclaw/voice-call",
         expectedPluginId: "voice-call",
       }),
     );
-    expect(result.config.plugins?.allow).toEqual(["@openclaw/voice-call"]);
-    expect(result.config.plugins?.deny).toEqual(["@openclaw/voice-call"]);
-    expect(result.config.plugins?.slots?.memory).toBe("@openclaw/voice-call");
-    expect(result.config.plugins?.entries?.["@openclaw/voice-call"]).toEqual({
+    expect(result.config.plugins?.allow).toEqual(["@quantumclaw/voice-call"]);
+    expect(result.config.plugins?.deny).toEqual(["@quantumclaw/voice-call"]);
+    expect(result.config.plugins?.slots?.memory).toBe("@quantumclaw/voice-call");
+    expect(result.config.plugins?.entries?.["@quantumclaw/voice-call"]).toEqual({
       enabled: false,
       hooks: { allowPromptInjection: false },
     });
     expect(result.config.plugins?.entries?.["voice-call"]).toBeUndefined();
-    expect(result.config.plugins?.installs?.["@openclaw/voice-call"]).toMatchObject({
+    expect(result.config.plugins?.installs?.["@quantumclaw/voice-call"]).toMatchObject({
       source: "npm",
-      spec: "@openclaw/voice-call",
-      installPath: "/tmp/openclaw-voice-call",
+      spec: "@quantumclaw/voice-call",
+      installPath: "/tmp/quantumclaw-voice-call",
       version: "0.0.2",
     });
     expect(result.config.plugins?.installs?.["voice-call"]).toBeUndefined();
@@ -504,7 +504,7 @@ describe("syncPluginsForUpdateChannel", () => {
           {
             pluginId: "feishu",
             localPath: "/app/extensions/feishu",
-            npmSpec: "@openclaw/feishu",
+            npmSpec: "@quantumclaw/feishu",
           },
         ],
       ]),
@@ -520,7 +520,7 @@ describe("syncPluginsForUpdateChannel", () => {
               source: "path",
               sourcePath: "/app/extensions/feishu",
               installPath: "/app/extensions/feishu",
-              spec: "@openclaw/feishu",
+              spec: "@quantumclaw/feishu",
             },
           },
         },
@@ -542,7 +542,7 @@ describe("syncPluginsForUpdateChannel", () => {
           {
             pluginId: "feishu",
             localPath: "/app/extensions/feishu",
-            npmSpec: "@openclaw/feishu",
+            npmSpec: "@quantumclaw/feishu",
           },
         ],
       ]),
@@ -558,7 +558,7 @@ describe("syncPluginsForUpdateChannel", () => {
               source: "path",
               sourcePath: "/app/extensions/feishu",
               installPath: "/tmp/old-feishu",
-              spec: "@openclaw/feishu",
+              spec: "@quantumclaw/feishu",
             },
           },
         },
@@ -571,14 +571,14 @@ describe("syncPluginsForUpdateChannel", () => {
       source: "path",
       sourcePath: "/app/extensions/feishu",
       installPath: "/app/extensions/feishu",
-      spec: "@openclaw/feishu",
+      spec: "@quantumclaw/feishu",
     });
     expect(installPluginFromNpmSpecMock).not.toHaveBeenCalled();
   });
 
   it("forwards an explicit env to bundled plugin source resolution", async () => {
     resolveBundledPluginSourcesMock.mockReturnValue(new Map());
-    const env = { OPENCLAW_HOME: "/srv/openclaw-home" } as NodeJS.ProcessEnv;
+    const env = { QUANTUMCLAW_HOME: "/srv/quantumclaw-home" } as NodeJS.ProcessEnv;
 
     await syncPluginsForUpdateChannel({
       channel: "beta",
@@ -594,7 +594,7 @@ describe("syncPluginsForUpdateChannel", () => {
   });
 
   it("uses the provided env when matching bundled load and install paths", async () => {
-    const bundledHome = "/tmp/openclaw-home";
+    const bundledHome = "/tmp/quantumclaw-home";
     resolveBundledPluginSourcesMock.mockReturnValue(
       new Map([
         [
@@ -602,7 +602,7 @@ describe("syncPluginsForUpdateChannel", () => {
           {
             pluginId: "feishu",
             localPath: `${bundledHome}/plugins/feishu`,
-            npmSpec: "@openclaw/feishu",
+            npmSpec: "@quantumclaw/feishu",
           },
         ],
       ]),
@@ -615,7 +615,7 @@ describe("syncPluginsForUpdateChannel", () => {
         channel: "beta",
         env: {
           ...process.env,
-          OPENCLAW_HOME: bundledHome,
+          QUANTUMCLAW_HOME: bundledHome,
           HOME: "/tmp/ignored-home",
         },
         config: {
@@ -626,7 +626,7 @@ describe("syncPluginsForUpdateChannel", () => {
                 source: "path",
                 sourcePath: "~/plugins/feishu",
                 installPath: "~/plugins/feishu",
-                spec: "@openclaw/feishu",
+                spec: "@quantumclaw/feishu",
               },
             },
           },

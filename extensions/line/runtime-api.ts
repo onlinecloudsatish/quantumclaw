@@ -1,7 +1,7 @@
 // Private runtime barrel for the bundled LINE extension.
 // Keep this barrel thin and aligned with the local extension surface.
 
-export * from "openclaw/plugin-sdk/line";
+export * from "quantumclaw/plugin-sdk/line";
 export {
   DEFAULT_ACCOUNT_ID,
   formatDocsLink,
@@ -10,4 +10,4 @@ export {
   splitSetupEntries,
   type ChannelSetupDmPolicy,
   type ChannelSetupWizard,
-} from "openclaw/plugin-sdk/line-core";
+} from "quantumclaw/plugin-sdk/line-core";

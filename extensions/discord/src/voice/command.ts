@@ -10,10 +10,10 @@ import {
   ChannelType as DiscordChannelType,
   type APIApplicationCommandChannelOption,
 } from "discord-api-types/v10";
-import { resolveCommandAuthorizedFromAuthorizers } from "openclaw/plugin-sdk/command-auth";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { isDangerousNameMatchingEnabled } from "openclaw/plugin-sdk/config-runtime";
-import type { DiscordAccountConfig } from "openclaw/plugin-sdk/config-runtime";
+import { resolveCommandAuthorizedFromAuthorizers } from "quantumclaw/plugin-sdk/command-auth";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { isDangerousNameMatchingEnabled } from "quantumclaw/plugin-sdk/config-runtime";
+import type { DiscordAccountConfig } from "quantumclaw/plugin-sdk/config-runtime";
 import { formatMention } from "../mentions.js";
 import {
   isDiscordGroupAllowedByPolicy,
@@ -34,7 +34,7 @@ const VOICE_CHANNEL_TYPES: NonNullable<APIApplicationCommandChannelOption["chann
 ];
 
 type VoiceCommandContext = {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   discordConfig: DiscordAccountConfig;
   accountId: string;
   groupPolicy: "open" | "disabled" | "allowlist";

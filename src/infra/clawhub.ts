@@ -33,7 +33,7 @@ export type ClawHubPackageDetail = {
         tags?: Record<string, string>;
         compatibility?: {
           pluginApiRange?: string;
-          builtWithOpenClawVersion?: string;
+          builtWithQuantumClawVersion?: string;
           minGatewayVersion?: string;
         } | null;
         capabilities?: {
@@ -195,7 +195,7 @@ export class ClawHubRequestError extends Error {
 
 function normalizeBaseUrl(baseUrl?: string): string {
   const envValue =
-    process.env.OPENCLAW_CLAWHUB_URL?.trim() ||
+    process.env.QUANTUMCLAW_CLAWHUB_URL?.trim() ||
     process.env.CLAWHUB_URL?.trim() ||
     DEFAULT_CLAWHUB_URL;
   const value = (baseUrl?.trim() || envValue).replace(/\/+$/, "");
@@ -590,7 +590,7 @@ export async function downloadClawHubPackageArchive(params: {
     });
   }
   const bytes = new Uint8Array(await response.arrayBuffer());
-  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-clawhub-package-"));
+  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "quantumclaw-clawhub-package-"));
   const archivePath = path.join(tmpDir, `${params.name}.zip`);
   await fs.writeFile(archivePath, bytes);
   return {
@@ -628,7 +628,7 @@ export async function downloadClawHubSkillArchive(params: {
     });
   }
   const bytes = new Uint8Array(await response.arrayBuffer());
-  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-clawhub-skill-"));
+  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "quantumclaw-clawhub-skill-"));
   const archivePath = path.join(tmpDir, `${params.slug}.zip`);
   await fs.writeFile(archivePath, bytes);
   return {

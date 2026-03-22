@@ -1,7 +1,7 @@
 import { Type } from "@sinclair/typebox";
-import { jsonResult, readNumberParam, readStringParam } from "openclaw/plugin-sdk/agent-runtime";
-import { optionalStringEnum } from "openclaw/plugin-sdk/core";
-import type { OpenClawPluginApi } from "openclaw/plugin-sdk/plugin-runtime";
+import { jsonResult, readNumberParam, readStringParam } from "quantumclaw/plugin-sdk/agent-runtime";
+import { optionalStringEnum } from "quantumclaw/plugin-sdk/core";
+import type { QuantumClawPluginApi } from "quantumclaw/plugin-sdk/plugin-runtime";
 import { runTavilySearch } from "./tavily-client.js";
 
 const TavilySearchToolSchema = Type.Object(
@@ -42,7 +42,7 @@ const TavilySearchToolSchema = Type.Object(
   { additionalProperties: false },
 );
 
-export function createTavilySearchTool(api: OpenClawPluginApi) {
+export function createTavilySearchTool(api: QuantumClawPluginApi) {
   return {
     name: "tavily_search",
     label: "Tavily Search",

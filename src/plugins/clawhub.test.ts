@@ -88,7 +88,7 @@ describe("installPluginFromClawHub", () => {
     installPluginFromArchiveMock.mockResolvedValue({
       ok: true,
       pluginId: "demo",
-      targetDir: "/tmp/openclaw/plugins/demo",
+      targetDir: "/tmp/quantumclaw/plugins/demo",
       version: "1.2.3",
     });
   });
@@ -157,7 +157,7 @@ describe("installPluginFromClawHub", () => {
     await expect(installPluginFromClawHub({ spec: "clawhub:calendar" })).resolves.toMatchObject({
       ok: false,
       code: CLAWHUB_INSTALL_ERROR_CODE.SKILL_PACKAGE,
-      error: '"calendar" is a skill. Use "openclaw skills install calendar" instead.',
+      error: '"calendar" is a skill. Use "quantumclaw skills install calendar" instead.',
     });
   });
 

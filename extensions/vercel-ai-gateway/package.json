@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/vercel-ai-gateway-provider",
+  "name": "@quantumclaw/vercel-ai-gateway-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Vercel AI Gateway provider plugin",
+  "description": "QuantumClaw Vercel AI Gateway provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

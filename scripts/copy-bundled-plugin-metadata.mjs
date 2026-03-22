@@ -179,9 +179,9 @@ export function copyBundledPluginMetadata(params = {}) {
     sourcePluginDirs.add(dirent.name);
 
     const pluginDir = path.join(extensionsRoot, dirent.name);
-    const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+    const manifestPath = path.join(pluginDir, "quantumclaw.plugin.json");
     const distPluginDir = path.join(distExtensionsRoot, dirent.name);
-    const distManifestPath = path.join(distPluginDir, "openclaw.plugin.json");
+    const distManifestPath = path.join(distPluginDir, "quantumclaw.plugin.json");
     const distPackageJsonPath = path.join(distPluginDir, "package.json");
     if (!fs.existsSync(manifestPath)) {
       removePathIfExists(distPluginDir);
@@ -211,12 +211,12 @@ export function copyBundledPluginMetadata(params = {}) {
     }
 
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
-    if (packageJson.openclaw && "extensions" in packageJson.openclaw) {
-      packageJson.openclaw = {
-        ...packageJson.openclaw,
-        extensions: rewritePackageExtensions(packageJson.openclaw.extensions),
-        ...(typeof packageJson.openclaw.setupEntry === "string"
-          ? { setupEntry: rewritePackageEntry(packageJson.openclaw.setupEntry) }
+    if (packageJson.quantumclaw && "extensions" in packageJson.quantumclaw) {
+      packageJson.quantumclaw = {
+        ...packageJson.quantumclaw,
+        extensions: rewritePackageExtensions(packageJson.quantumclaw.extensions),
+        ...(typeof packageJson.quantumclaw.setupEntry === "string"
+          ? { setupEntry: rewritePackageEntry(packageJson.quantumclaw.setupEntry) }
           : {}),
       };
     }

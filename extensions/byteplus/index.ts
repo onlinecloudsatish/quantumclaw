@@ -1,6 +1,6 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
-import { ensureModelAllowlistEntry } from "openclaw/plugin-sdk/provider-onboard";
+import { definePluginEntry } from "quantumclaw/plugin-sdk/plugin-entry";
+import { createProviderApiKeyAuthMethod } from "quantumclaw/plugin-sdk/provider-auth";
+import { ensureModelAllowlistEntry } from "quantumclaw/plugin-sdk/provider-onboard";
 import { buildBytePlusCodingProvider, buildBytePlusProvider } from "./provider-catalog.js";
 
 const PROVIDER_ID = "byteplus";

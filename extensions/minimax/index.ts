@@ -3,15 +3,15 @@ import {
   type ProviderAuthContext,
   type ProviderAuthResult,
   type ProviderCatalogContext,
-} from "openclaw/plugin-sdk/plugin-entry";
+} from "quantumclaw/plugin-sdk/plugin-entry";
 import {
   MINIMAX_OAUTH_MARKER,
   createProviderApiKeyAuthMethod,
   ensureAuthProfileStore,
   listProfilesForProvider,
-} from "openclaw/plugin-sdk/provider-auth";
-import { buildOauthProviderAuthResult } from "openclaw/plugin-sdk/provider-auth";
-import { fetchMinimaxUsage } from "openclaw/plugin-sdk/provider-usage";
+} from "quantumclaw/plugin-sdk/provider-auth";
+import { buildOauthProviderAuthResult } from "quantumclaw/plugin-sdk/provider-auth";
+import { fetchMinimaxUsage } from "quantumclaw/plugin-sdk/provider-usage";
 import {
   minimaxMediaUnderstandingProvider,
   minimaxPortalMediaUnderstandingProvider,

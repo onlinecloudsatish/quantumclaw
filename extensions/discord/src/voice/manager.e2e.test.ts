@@ -85,19 +85,19 @@ vi.mock("@discordjs/voice", () => ({
   joinVoiceChannel: joinVoiceChannelMock,
 }));
 
-vi.mock("openclaw/plugin-sdk/routing", () => ({
+vi.mock("quantumclaw/plugin-sdk/routing", () => ({
   resolveAgentRoute: resolveAgentRouteMock,
 }));
 
-vi.mock("openclaw/plugin-sdk/agent-runtime", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("openclaw/plugin-sdk/agent-runtime")>();
+vi.mock("quantumclaw/plugin-sdk/agent-runtime", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("quantumclaw/plugin-sdk/agent-runtime")>();
   return {
     ...actual,
     agentCommandFromIngress: agentCommandMock,
   };
 });
 
-vi.mock("openclaw/plugin-sdk/media-understanding-runtime", () => ({
+vi.mock("quantumclaw/plugin-sdk/media-understanding-runtime", () => ({
   transcribeAudioFile: transcribeAudioFileMock,
 }));
 

@@ -1,9 +1,9 @@
 import type { WebClient as SlackWebClient } from "@slack/web-api";
-import { normalizeHostname } from "openclaw/plugin-sdk/infra-runtime";
-import type { FetchLike } from "openclaw/plugin-sdk/media-runtime";
-import { fetchRemoteMedia } from "openclaw/plugin-sdk/media-runtime";
-import { saveMediaBuffer } from "openclaw/plugin-sdk/media-runtime";
-import { resolveRequestUrl } from "openclaw/plugin-sdk/request-url";
+import { normalizeHostname } from "quantumclaw/plugin-sdk/infra-runtime";
+import type { FetchLike } from "quantumclaw/plugin-sdk/media-runtime";
+import { fetchRemoteMedia } from "quantumclaw/plugin-sdk/media-runtime";
+import { saveMediaBuffer } from "quantumclaw/plugin-sdk/media-runtime";
+import { resolveRequestUrl } from "quantumclaw/plugin-sdk/request-url";
 import type { SlackAttachment, SlackFile } from "../types.js";
 
 function isSlackHostname(hostname: string): boolean {

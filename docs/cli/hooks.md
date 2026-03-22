@@ -1,12 +1,12 @@
 ---
-summary: "CLI reference for `openclaw hooks` (agent hooks)"
+summary: "CLI reference for `quantumclaw hooks` (agent hooks)"
 read_when:
   - You want to manage agent hooks
   - You want to inspect hook availability or enable workspace hooks
 title: "hooks"
 ---
 
-# `openclaw hooks`
+# `quantumclaw hooks`
 
 Manage agent hooks (event-driven automations for commands like `/new`, `/reset`, and gateway startup).
 
@@ -18,7 +18,7 @@ Related:
 ## List All Hooks
 
 ```bash
-openclaw hooks list
+quantumclaw hooks list
 ```
 
 List all discovered hooks from workspace, managed, extra, and bundled directories.
@@ -44,7 +44,7 @@ Ready:
 **Example (verbose):**
 
 ```bash
-openclaw hooks list --verbose
+quantumclaw hooks list --verbose
 ```
 
 Shows missing requirements for ineligible hooks.
@@ -52,7 +52,7 @@ Shows missing requirements for ineligible hooks.
 **Example (JSON):**
 
 ```bash
-openclaw hooks list --json
+quantumclaw hooks list --json
 ```
 
 Returns structured JSON for programmatic use.
@@ -60,7 +60,7 @@ Returns structured JSON for programmatic use.
 ## Get Hook Information
 
 ```bash
-openclaw hooks info <name>
+quantumclaw hooks info <name>
 ```
 
 Show detailed information about a specific hook.
@@ -76,7 +76,7 @@ Show detailed information about a specific hook.
 **Example:**
 
 ```bash
-openclaw hooks info session-memory
+quantumclaw hooks info session-memory
 ```
 
 **Output:**
@@ -87,10 +87,10 @@ openclaw hooks info session-memory
 Save session context to memory when /new command is issued
 
 Details:
-  Source: openclaw-bundled
-  Path: /path/to/openclaw/hooks/bundled/session-memory/HOOK.md
-  Handler: /path/to/openclaw/hooks/bundled/session-memory/handler.ts
-  Homepage: https://docs.openclaw.ai/automation/hooks#session-memory
+  Source: quantumclaw-bundled
+  Path: /path/to/quantumclaw/hooks/bundled/session-memory/HOOK.md
+  Handler: /path/to/quantumclaw/hooks/bundled/session-memory/handler.ts
+  Homepage: https://docs.quantumclaw.ai/automation/hooks#session-memory
   Events: command:new
 
 Requirements:
@@ -100,7 +100,7 @@ Requirements:
 ## Check Hooks Eligibility
 
 ```bash
-openclaw hooks check
+quantumclaw hooks check
 ```
 
 Show summary of hook eligibility status (how many are ready vs. not ready).
@@ -122,12 +122,12 @@ Not ready: 0
 ## Enable a Hook
 
 ```bash
-openclaw hooks enable <name>
+quantumclaw hooks enable <name>
 ```
 
-Enable a specific hook by adding it to your config (`~/.openclaw/config.json`).
+Enable a specific hook by adding it to your config (`~/.quantumclaw/config.json`).
 
-**Note:** Workspace hooks are disabled by default until enabled here or in config. Hooks managed by plugins show `plugin:<id>` in `openclaw hooks list` and can’t be enabled/disabled here. Enable/disable the plugin instead.
+**Note:** Workspace hooks are disabled by default until enabled here or in config. Hooks managed by plugins show `plugin:<id>` in `quantumclaw hooks list` and can’t be enabled/disabled here. Enable/disable the plugin instead.
 
 **Arguments:**
 
@@ -136,7 +136,7 @@ Enable a specific hook by adding it to your config (`~/.openclaw/config.json`).
 **Example:**
 
 ```bash
-openclaw hooks enable session-memory
+quantumclaw hooks enable session-memory
 ```
 
 **Output:**
@@ -161,7 +161,7 @@ the Gateway will load it.
 ## Disable a Hook
 
 ```bash
-openclaw hooks disable <name>
+quantumclaw hooks disable <name>
 ```
 
 Disable a specific hook by updating your config.
@@ -173,7 +173,7 @@ Disable a specific hook by updating your config.
 **Example:**
 
 ```bash
-openclaw hooks disable command-logger
+quantumclaw hooks disable command-logger
 ```
 
 **Output:**
@@ -189,26 +189,26 @@ openclaw hooks disable command-logger
 ## Install Hook Packs
 
 ```bash
-openclaw plugins install <path-or-spec>
-openclaw plugins install <npm-spec> --pin
+quantumclaw plugins install <path-or-spec>
+quantumclaw plugins install <npm-spec> --pin
 ```
 
 Install hook packs through the unified plugins installer.
 
-`openclaw hooks install` still works as a compatibility alias, but it prints a
-deprecation warning and forwards to `openclaw plugins install`.
+`quantumclaw hooks install` still works as a compatibility alias, but it prints a
+deprecation warning and forwards to `quantumclaw plugins install`.
 
 Npm specs are **registry-only** (package name + optional **exact version** or
 **dist-tag**). Git/URL/file specs and semver ranges are rejected. Dependency
 installs run with `--ignore-scripts` for safety.
 
 Bare specs and `@latest` stay on the stable track. If npm resolves either of
-those to a prerelease, OpenClaw stops and asks you to opt in explicitly with a
+those to a prerelease, QuantumClaw stops and asks you to opt in explicitly with a
 prerelease tag such as `@beta`/`@rc` or an exact prerelease version.
 
 **What it does:**
 
-- Copies the hook pack into `~/.openclaw/hooks/<id>`
+- Copies the hook pack into `~/.quantumclaw/hooks/<id>`
 - Enables the installed hooks in `hooks.internal.entries.*`
 - Records the install under `hooks.internal.installs`
 
@@ -223,16 +223,16 @@ prerelease tag such as `@beta`/`@rc` or an exact prerelease version.
 
 ```bash
 # Local directory
-openclaw plugins install ./my-hook-pack
+quantumclaw plugins install ./my-hook-pack
 
 # Local archive
-openclaw plugins install ./my-hook-pack.zip
+quantumclaw plugins install ./my-hook-pack.zip
 
 # NPM package
-openclaw plugins install @openclaw/my-hook-pack
+quantumclaw plugins install @quantumclaw/my-hook-pack
 
 # Link a local directory without copying
-openclaw plugins install -l ./my-hook-pack
+quantumclaw plugins install -l ./my-hook-pack
 ```
 
 Linked hook packs are treated as managed hooks from an operator-configured
@@ -241,14 +241,14 @@ directory, not as workspace hooks.
 ## Update Hook Packs
 
 ```bash
-openclaw plugins update <id>
-openclaw plugins update --all
+quantumclaw plugins update <id>
+quantumclaw plugins update --all
 ```
 
 Update tracked npm-based hook packs through the unified plugins updater.
 
-`openclaw hooks update` still works as a compatibility alias, but it prints a
-deprecation warning and forwards to `openclaw plugins update`.
+`quantumclaw hooks update` still works as a compatibility alias, but it prints a
+deprecation warning and forwards to `quantumclaw plugins update`.
 
 **Options:**
 
@@ -256,7 +256,7 @@ deprecation warning and forwards to `openclaw plugins update`.
 - `--dry-run`: Show what would change without writing
 
 When a stored integrity hash exists and the fetched artifact hash changes,
-OpenClaw prints a warning and asks for confirmation before proceeding. Use
+QuantumClaw prints a warning and asks for confirmation before proceeding. Use
 global `--yes` to bypass prompts in CI/non-interactive runs.
 
 ## Bundled Hooks
@@ -268,10 +268,10 @@ Saves session context to memory when you issue `/new`.
 **Enable:**
 
 ```bash
-openclaw hooks enable session-memory
+quantumclaw hooks enable session-memory
 ```
 
-**Output:** `~/.openclaw/workspace/memory/YYYY-MM-DD-slug.md`
+**Output:** `~/.quantumclaw/workspace/memory/YYYY-MM-DD-slug.md`
 
 **See:** [session-memory documentation](/automation/hooks#session-memory)
 
@@ -282,7 +282,7 @@ Injects additional bootstrap files (for example monorepo-local `AGENTS.md` / `TO
 **Enable:**
 
 ```bash
-openclaw hooks enable bootstrap-extra-files
+quantumclaw hooks enable bootstrap-extra-files
 ```
 
 **See:** [bootstrap-extra-files documentation](/automation/hooks#bootstrap-extra-files)
@@ -294,22 +294,22 @@ Logs all command events to a centralized audit file.
 **Enable:**
 
 ```bash
-openclaw hooks enable command-logger
+quantumclaw hooks enable command-logger
 ```
 
-**Output:** `~/.openclaw/logs/commands.log`
+**Output:** `~/.quantumclaw/logs/commands.log`
 
 **View logs:**
 
 ```bash
 # Recent commands
-tail -n 20 ~/.openclaw/logs/commands.log
+tail -n 20 ~/.quantumclaw/logs/commands.log
 
 # Pretty-print
-cat ~/.openclaw/logs/commands.log | jq .
+cat ~/.quantumclaw/logs/commands.log | jq .
 
 # Filter by action
-grep '"action":"new"' ~/.openclaw/logs/commands.log | jq .
+grep '"action":"new"' ~/.quantumclaw/logs/commands.log | jq .
 ```
 
 **See:** [command-logger documentation](/automation/hooks#command-logger)
@@ -323,7 +323,7 @@ Runs `BOOT.md` when the gateway starts (after channels start).
 **Enable**:
 
 ```bash
-openclaw hooks enable boot-md
+quantumclaw hooks enable boot-md
 ```
 
 **See:** [boot-md documentation](/automation/hooks#boot-md)

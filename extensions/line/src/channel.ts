@@ -1,15 +1,15 @@
-import { createScopedDmSecurityResolver } from "openclaw/plugin-sdk/channel-config-helpers";
+import { createScopedDmSecurityResolver } from "quantumclaw/plugin-sdk/channel-config-helpers";
 import {
   createPairingPrefixStripper,
   createTextPairingAdapter,
-} from "openclaw/plugin-sdk/channel-pairing";
-import { createAllowlistProviderRestrictSendersWarningCollector } from "openclaw/plugin-sdk/channel-policy";
+} from "quantumclaw/plugin-sdk/channel-pairing";
+import { createAllowlistProviderRestrictSendersWarningCollector } from "quantumclaw/plugin-sdk/channel-policy";
 import {
   createAttachedChannelResultAdapter,
   createEmptyChannelResult,
-} from "openclaw/plugin-sdk/channel-send-result";
-import { createEmptyChannelDirectoryAdapter } from "openclaw/plugin-sdk/directory-runtime";
-import { resolveOutboundMediaUrls } from "openclaw/plugin-sdk/reply-payload";
+} from "quantumclaw/plugin-sdk/channel-send-result";
+import { createEmptyChannelDirectoryAdapter } from "quantumclaw/plugin-sdk/directory-runtime";
+import { resolveOutboundMediaUrls } from "quantumclaw/plugin-sdk/reply-payload";
 import {
   buildComputedAccountStatusSnapshot,
   buildTokenChannelStatusSummary,
@@ -20,7 +20,7 @@ import {
   type ChannelStatusIssue,
   type LineConfig,
   type LineChannelData,
-  type OpenClawConfig,
+  type QuantumClawConfig,
   type ResolvedLineAccount,
 } from "../api.js";
 import { lineChannelPluginCommon } from "./channel-shared.js";
@@ -34,7 +34,7 @@ const resolveLineDmPolicy = createScopedDmSecurityResolver<ResolvedLineAccount>(
   resolvePolicy: (account) => account.config.dmPolicy,
   resolveAllowFrom: (account) => account.config.allowFrom,
   policyPathSuffix: "dmPolicy",
-  approveHint: "openclaw pairing approve line <code>",
+  approveHint: "quantumclaw pairing approve line <code>",
   normalizeEntry: (raw) => raw.replace(/^line:(?:user:)?/i, ""),
 });
 
@@ -54,7 +54,7 @@ export const linePlugin: ChannelPlugin<ResolvedLineAccount> = {
   ...lineChannelPluginCommon,
   pairing: createTextPairingAdapter({
     idLabel: "lineUserId",
-    message: "OpenClaw: your access has been approved.",
+    message: "QuantumClaw: your access has been approved.",
     // LINE IDs are case-sensitive; only strip prefix variants (line: / line:user:).
     normalizeAllowEntry: createPairingPrefixStripper(/^line:(?:user:)?/i),
     notify: async ({ cfg, id, message }) => {
@@ -421,7 +421,7 @@ export const linePlugin: ChannelPlugin<ResolvedLineAccount> = {
     },
     logoutAccount: async ({ accountId, cfg }) => {
       const envToken = process.env.LINE_CHANNEL_ACCESS_TOKEN?.trim() ?? "";
-      const nextCfg = { ...cfg } as OpenClawConfig;
+      const nextCfg = { ...cfg } as QuantumClawConfig;
       const lineConfig = (cfg.channels?.line ?? {}) as LineConfig;
       const nextLine = { ...lineConfig };
       let cleared = false;

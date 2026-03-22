@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/signal",
+  "name": "@quantumclaw/signal",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Signal channel plugin",
+  "description": "QuantumClaw Signal channel plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ],

@@ -15,7 +15,7 @@ x-i18n:
 
 # 平台
 
-OpenClaw 核心使用 TypeScript 编写。**Node 是推荐的运行时**。
+QuantumClaw 核心使用 TypeScript 编写。**Node 是推荐的运行时**。
 不建议将 Bun 用于 Gateway 网关（存在 WhatsApp/Telegram bug）。
 
 已提供适用于 macOS（菜单栏应用）和移动节点（iOS/Android）的配套应用。Windows 和
@@ -43,18 +43,18 @@ Linux 配套应用已在规划中，但 Gateway 网关目前已得到完全支�
 - 安装指南：[入门指南](/start/getting-started)
 - Gateway 网关运行手册：[Gateway 网关](/gateway)
 - Gateway 网关配置：[配置](/gateway/configuration)
-- 服务状态：`openclaw gateway status`
+- 服务状态：`quantumclaw gateway status`
 
 ## Gateway 网关服务安装（CLI）
 
 使用以下任一方式（均受支持）：
 
-- 向导（推荐）：`openclaw onboard --install-daemon`
-- 直接安装：`openclaw gateway install`
-- 配置流程：`openclaw configure` → 选择 **Gateway 服务**
-- 修复/迁移：`openclaw doctor`（会提供安装或修复服务的选项）
+- 向导（推荐）：`quantumclaw onboard --install-daemon`
+- 直接安装：`quantumclaw gateway install`
+- 配置流程：`quantumclaw configure` → 选择 **Gateway 服务**
+- 修复/迁移：`quantumclaw doctor`（会提供安装或修复服务的选项）
 
 服务目标取决于操作系统：
 
-- macOS：LaunchAgent（`ai.openclaw.gateway` 或 `ai.openclaw.<profile>`；旧版为 `com.openclaw.*`）
-- Linux/WSL2：systemd 用户服务（`openclaw-gateway[-<profile>].service`）
+- macOS：LaunchAgent（`ai.quantumclaw.gateway` 或 `ai.quantumclaw.<profile>`；旧版为 `com.quantumclaw.*`）
+- Linux/WSL2：systemd 用户服务（`quantumclaw-gateway[-<profile>].service`）

@@ -3,24 +3,24 @@ import {
   SGLANG_DEFAULT_BASE_URL,
   SGLANG_MODEL_PLACEHOLDER,
   SGLANG_PROVIDER_LABEL,
-} from "openclaw/plugin-sdk/agent-runtime";
+} from "quantumclaw/plugin-sdk/agent-runtime";
 import {
   definePluginEntry,
-  type OpenClawPluginApi,
+  type QuantumClawPluginApi,
   type ProviderAuthMethodNonInteractiveContext,
-} from "openclaw/plugin-sdk/plugin-entry";
+} from "quantumclaw/plugin-sdk/plugin-entry";
 
 const PROVIDER_ID = "sglang";
 
 async function loadProviderSetup() {
-  return await import("openclaw/plugin-sdk/self-hosted-provider-setup");
+  return await import("quantumclaw/plugin-sdk/self-hosted-provider-setup");
 }
 
 export default definePluginEntry({
   id: "sglang",
   name: "SGLang Provider",
   description: "Bundled SGLang provider plugin",
-  register(api: OpenClawPluginApi) {
+  register(api: QuantumClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "SGLang",

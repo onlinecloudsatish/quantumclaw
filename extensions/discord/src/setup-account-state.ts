@@ -1,9 +1,9 @@
-import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "openclaw/plugin-sdk/account-id";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
+import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "quantumclaw/plugin-sdk/account-id";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
 import {
   hasConfiguredSecretInput,
   normalizeSecretInputString,
-} from "openclaw/plugin-sdk/secret-input";
+} from "quantumclaw/plugin-sdk/secret-input";
 import { mergeDiscordAccountConfig, resolveDiscordAccountConfig } from "./accounts.js";
 import type { DiscordAccountConfig } from "./runtime-api.js";
 import { resolveDiscordToken } from "./token.js";
@@ -41,7 +41,7 @@ function inspectConfiguredToken(value: unknown): {
   return null;
 }
 
-export function listDiscordSetupAccountIds(cfg: OpenClawConfig): string[] {
+export function listDiscordSetupAccountIds(cfg: QuantumClawConfig): string[] {
   const accounts = cfg.channels?.discord?.accounts;
   const ids =
     accounts && typeof accounts === "object" && !Array.isArray(accounts)
@@ -52,12 +52,12 @@ export function listDiscordSetupAccountIds(cfg: OpenClawConfig): string[] {
   return [...new Set([DEFAULT_ACCOUNT_ID, ...ids])];
 }
 
-export function resolveDefaultDiscordSetupAccountId(cfg: OpenClawConfig): string {
+export function resolveDefaultDiscordSetupAccountId(cfg: QuantumClawConfig): string {
   return listDiscordSetupAccountIds(cfg)[0] ?? DEFAULT_ACCOUNT_ID;
 }
 
 export function resolveDiscordSetupAccountConfig(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   accountId?: string | null;
 }): { accountId: string; config: DiscordAccountConfig } {
   const accountId = normalizeAccountId(params.accountId ?? DEFAULT_ACCOUNT_ID);
@@ -68,7 +68,7 @@ export function resolveDiscordSetupAccountConfig(params: {
 }
 
 export function inspectDiscordSetupAccount(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   accountId?: string | null;
 }): InspectedDiscordSetupAccount {
   const { accountId, config } = resolveDiscordSetupAccountConfig(params);

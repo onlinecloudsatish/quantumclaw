@@ -1,5 +1,5 @@
 ---
-summary: "CLI reference for `openclaw skills` (search/install/update/list/info/check)"
+summary: "CLI reference for `quantumclaw skills` (search/install/update/list/info/check)"
 read_when:
   - You want to see which skills are available and ready to run
   - You want to search, install, or update skills from ClawHub
@@ -7,7 +7,7 @@ read_when:
 title: "skills"
 ---
 
-# `openclaw skills`
+# `quantumclaw skills`
 
 Inspect local skills and install/update skills from ClawHub.
 
@@ -20,15 +20,15 @@ Related:
 ## Commands
 
 ```bash
-openclaw skills search "calendar"
-openclaw skills install <slug>
-openclaw skills install <slug> --version <version>
-openclaw skills update <slug>
-openclaw skills update --all
-openclaw skills list
-openclaw skills list --eligible
-openclaw skills info <name>
-openclaw skills check
+quantumclaw skills search "calendar"
+quantumclaw skills install <slug>
+quantumclaw skills install <slug> --version <version>
+quantumclaw skills update <slug>
+quantumclaw skills update --all
+quantumclaw skills list
+quantumclaw skills list --eligible
+quantumclaw skills info <name>
+quantumclaw skills check
 ```
 
 `search`/`install`/`update` use ClawHub directly and install into the active

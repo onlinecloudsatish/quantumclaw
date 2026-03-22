@@ -2,7 +2,7 @@ import type { AgentToolResult } from "@mariozechner/pi-agent-core";
 import {
   type ChannelMessageActionAdapter,
   type ChannelMessageToolDiscovery,
-} from "openclaw/plugin-sdk/channel-contract";
+} from "quantumclaw/plugin-sdk/channel-contract";
 import type { SlackActionContext } from "./action-runtime.js";
 import { handleSlackAction } from "./action-runtime.js";
 import { isSlackInteractiveRepliesEnabled } from "./interactive-replies.js";

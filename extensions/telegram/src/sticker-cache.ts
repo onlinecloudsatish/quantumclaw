@@ -1,19 +1,19 @@
 import path from "node:path";
-import { resolveApiKeyForProvider } from "openclaw/plugin-sdk/agent-runtime";
-import type { ModelCatalogEntry } from "openclaw/plugin-sdk/agent-runtime";
+import { resolveApiKeyForProvider } from "quantumclaw/plugin-sdk/agent-runtime";
+import type { ModelCatalogEntry } from "quantumclaw/plugin-sdk/agent-runtime";
 import {
   findModelInCatalog,
   loadModelCatalog,
   modelSupportsVision,
-} from "openclaw/plugin-sdk/agent-runtime";
-import { resolveDefaultModelForAgent } from "openclaw/plugin-sdk/agent-runtime";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { loadJsonFile, saveJsonFile } from "openclaw/plugin-sdk/json-store";
-import { AUTO_IMAGE_KEY_PROVIDERS, DEFAULT_IMAGE_MODELS } from "openclaw/plugin-sdk/media-runtime";
-import { resolveAutoImageModel } from "openclaw/plugin-sdk/media-runtime";
-import { describeImageFileWithModel } from "openclaw/plugin-sdk/media-understanding-runtime";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { STATE_DIR } from "openclaw/plugin-sdk/state-paths";
+} from "quantumclaw/plugin-sdk/agent-runtime";
+import { resolveDefaultModelForAgent } from "quantumclaw/plugin-sdk/agent-runtime";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { loadJsonFile, saveJsonFile } from "quantumclaw/plugin-sdk/json-store";
+import { AUTO_IMAGE_KEY_PROVIDERS, DEFAULT_IMAGE_MODELS } from "quantumclaw/plugin-sdk/media-runtime";
+import { resolveAutoImageModel } from "quantumclaw/plugin-sdk/media-runtime";
+import { describeImageFileWithModel } from "quantumclaw/plugin-sdk/media-understanding-runtime";
+import { logVerbose } from "quantumclaw/plugin-sdk/runtime-env";
+import { STATE_DIR } from "quantumclaw/plugin-sdk/state-paths";
 
 const CACHE_FILE = path.join(STATE_DIR, "telegram", "sticker-cache.json");
 const CACHE_VERSION = 1;
@@ -146,7 +146,7 @@ const STICKER_DESCRIPTION_PROMPT =
 
 export interface DescribeStickerParams {
   imagePath: string;
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   agentDir?: string;
   agentId?: string;
 }

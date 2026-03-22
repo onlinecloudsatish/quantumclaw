@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/xai-plugin",
+  "name": "@quantumclaw/xai-plugin",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw xAI plugin",
+  "description": "QuantumClaw xAI plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

@@ -1,20 +1,20 @@
-import { formatNormalizedAllowFromEntries } from "openclaw/plugin-sdk/allow-from";
-import { createMessageToolButtonsSchema } from "openclaw/plugin-sdk/channel-actions";
+import { formatNormalizedAllowFromEntries } from "quantumclaw/plugin-sdk/allow-from";
+import { createMessageToolButtonsSchema } from "quantumclaw/plugin-sdk/channel-actions";
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
+} from "quantumclaw/plugin-sdk/channel-config-helpers";
 import type {
   ChannelMessageActionAdapter,
   ChannelMessageActionName,
   ChannelMessageToolDiscovery,
-} from "openclaw/plugin-sdk/channel-contract";
-import { createLoggedPairingApprovalNotifier } from "openclaw/plugin-sdk/channel-pairing";
-import { createAllowlistProviderRestrictSendersWarningCollector } from "openclaw/plugin-sdk/channel-policy";
-import { createAttachedChannelResultAdapter } from "openclaw/plugin-sdk/channel-send-result";
-import { createScopedAccountReplyToModeResolver } from "openclaw/plugin-sdk/conversation-runtime";
-import { createChannelDirectoryAdapter } from "openclaw/plugin-sdk/directory-runtime";
-import { buildPassiveProbedChannelStatusSummary } from "openclaw/plugin-sdk/extension-shared";
+} from "quantumclaw/plugin-sdk/channel-contract";
+import { createLoggedPairingApprovalNotifier } from "quantumclaw/plugin-sdk/channel-pairing";
+import { createAllowlistProviderRestrictSendersWarningCollector } from "quantumclaw/plugin-sdk/channel-policy";
+import { createAttachedChannelResultAdapter } from "quantumclaw/plugin-sdk/channel-send-result";
+import { createScopedAccountReplyToModeResolver } from "quantumclaw/plugin-sdk/conversation-runtime";
+import { createChannelDirectoryAdapter } from "quantumclaw/plugin-sdk/directory-runtime";
+import { buildPassiveProbedChannelStatusSummary } from "quantumclaw/plugin-sdk/extension-shared";
 import { MattermostConfigSchema } from "./config-schema.js";
 import { resolveMattermostGroupRequireMention } from "./group-mentions.js";
 import {

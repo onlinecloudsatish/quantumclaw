@@ -1,5 +1,5 @@
 /**
- * Synology Chat Channel Plugin for OpenClaw.
+ * Synology Chat Channel Plugin for QuantumClaw.
  *
  * Implements the ChannelPlugin interface following the LINE pattern.
  */
@@ -7,16 +7,16 @@
 import {
   createHybridChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { buildChannelConfigSchema } from "openclaw/plugin-sdk/channel-config-schema";
-import { createTextPairingAdapter } from "openclaw/plugin-sdk/channel-pairing";
+} from "quantumclaw/plugin-sdk/channel-config-helpers";
+import { buildChannelConfigSchema } from "quantumclaw/plugin-sdk/channel-config-schema";
+import { createTextPairingAdapter } from "quantumclaw/plugin-sdk/channel-pairing";
 import {
   createConditionalWarningCollector,
   projectWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
-import { attachChannelToResult } from "openclaw/plugin-sdk/channel-send-result";
-import { createEmptyChannelDirectoryAdapter } from "openclaw/plugin-sdk/directory-runtime";
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/setup";
+} from "quantumclaw/plugin-sdk/channel-policy";
+import { attachChannelToResult } from "quantumclaw/plugin-sdk/channel-send-result";
+import { createEmptyChannelDirectoryAdapter } from "quantumclaw/plugin-sdk/directory-runtime";
+import { DEFAULT_ACCOUNT_ID } from "quantumclaw/plugin-sdk/setup";
 import { z } from "zod";
 import { listAccountIds, resolveAccount } from "./accounts.js";
 import { sendMessage, sendFileUrl } from "./client.js";
@@ -37,7 +37,7 @@ const resolveSynologyChatDmPolicy = createScopedDmSecurityResolver<ResolvedSynol
   resolveAllowFrom: (account) => account.allowedUserIds,
   policyPathSuffix: "dmPolicy",
   defaultPolicy: "allowlist",
-  approveHint: "openclaw pairing approve synology-chat <code>",
+  approveHint: "quantumclaw pairing approve synology-chat <code>",
   normalizeEntry: (raw) => raw.toLowerCase().trim(),
 });
 
@@ -92,7 +92,7 @@ export function createSynologyChatPlugin() {
       selectionLabel: "Synology Chat (Webhook)",
       detailLabel: "Synology Chat (Webhook)",
       docsPath: "/channels/synology-chat",
-      blurb: "Connect your Synology NAS Chat to OpenClaw",
+      blurb: "Connect your Synology NAS Chat to QuantumClaw",
       order: 90,
     },
 
@@ -120,7 +120,7 @@ export function createSynologyChatPlugin() {
 
     pairing: createTextPairingAdapter({
       idLabel: "synologyChatUserId",
-      message: "OpenClaw: your access has been approved.",
+      message: "QuantumClaw: your access has been approved.",
       normalizeAllowEntry: (entry: string) => entry.toLowerCase().trim(),
       notify: async ({ cfg, id, message }) => {
         const account = resolveAccount(cfg);

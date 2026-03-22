@@ -1,1 +1,1 @@
-export type { OpenClawPluginCommandDefinition } from "openclaw/plugin-sdk/core";
+export type { QuantumClawPluginCommandDefinition } from "quantumclaw/plugin-sdk/core";

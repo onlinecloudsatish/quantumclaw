@@ -2,15 +2,15 @@ import {
   buildHuggingfaceModelDefinition,
   HUGGINGFACE_BASE_URL,
   HUGGINGFACE_MODEL_CATALOG,
-} from "openclaw/plugin-sdk/provider-models";
+} from "quantumclaw/plugin-sdk/provider-models";
 import {
   applyProviderConfigWithModelCatalogPreset,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type QuantumClawConfig,
+} from "quantumclaw/plugin-sdk/provider-onboard";
 
 export const HUGGINGFACE_DEFAULT_MODEL_REF = "huggingface/deepseek-ai/DeepSeek-R1";
 
-function applyHuggingfacePreset(cfg: OpenClawConfig, primaryModelRef?: string): OpenClawConfig {
+function applyHuggingfacePreset(cfg: QuantumClawConfig, primaryModelRef?: string): QuantumClawConfig {
   return applyProviderConfigWithModelCatalogPreset(cfg, {
     providerId: "huggingface",
     api: "openai-completions",
@@ -21,10 +21,10 @@ function applyHuggingfacePreset(cfg: OpenClawConfig, primaryModelRef?: string): 
   });
 }
 
-export function applyHuggingfaceProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyHuggingfaceProviderConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applyHuggingfacePreset(cfg);
 }
 
-export function applyHuggingfaceConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyHuggingfaceConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applyHuggingfacePreset(cfg, HUGGINGFACE_DEFAULT_MODEL_REF);
 }

@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/config.js";
+import type { QuantumClawConfig } from "../../config/config.js";
 import {
   resolveAccountEntry,
   resolveNormalizedAccountEntry,
@@ -13,7 +13,7 @@ export function createAccountListHelpers(
   channelKey: string,
   options?: { normalizeAccountId?: (id: string) => string },
 ) {
-  function resolveConfiguredDefaultAccountId(cfg: OpenClawConfig): string | undefined {
+  function resolveConfiguredDefaultAccountId(cfg: QuantumClawConfig): string | undefined {
     const channel = cfg.channels?.[channelKey] as Record<string, unknown> | undefined;
     const preferred = normalizeOptionalAccountId(
       typeof channel?.defaultAccount === "string" ? channel.defaultAccount : undefined,
@@ -28,7 +28,7 @@ export function createAccountListHelpers(
     return undefined;
   }
 
-  function listConfiguredAccountIds(cfg: OpenClawConfig): string[] {
+  function listConfiguredAccountIds(cfg: QuantumClawConfig): string[] {
     const channel = cfg.channels?.[channelKey];
     const accounts = (channel as Record<string, unknown> | undefined)?.accounts;
     if (!accounts || typeof accounts !== "object") {
@@ -42,7 +42,7 @@ export function createAccountListHelpers(
     return [...new Set(ids.map((id) => normalizeConfiguredAccountId(id)).filter(Boolean))];
   }
 
-  function listAccountIds(cfg: OpenClawConfig): string[] {
+  function listAccountIds(cfg: QuantumClawConfig): string[] {
     const ids = listConfiguredAccountIds(cfg);
     if (ids.length === 0) {
       return [DEFAULT_ACCOUNT_ID];
@@ -50,7 +50,7 @@ export function createAccountListHelpers(
     return ids.toSorted((a, b) => a.localeCompare(b));
   }
 
-  function resolveDefaultAccountId(cfg: OpenClawConfig): string {
+  function resolveDefaultAccountId(cfg: QuantumClawConfig): string {
     const preferred = resolveConfiguredDefaultAccountId(cfg);
     if (preferred) {
       return preferred;

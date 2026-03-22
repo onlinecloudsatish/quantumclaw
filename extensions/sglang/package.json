@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/sglang-provider",
+  "name": "@quantumclaw/sglang-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw SGLang provider plugin",
+  "description": "QuantumClaw SGLang provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

@@ -7,7 +7,7 @@ import {
   resolveOllamaApiBase,
   type OllamaModelWithContext,
 } from "../agents/ollama-models.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { QuantumClawConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { WizardCancelledError, type WizardPrompter } from "../wizard/prompts.js";
 import { applyAgentDefaultModelPrimary } from "./provider-onboarding-config.js";
@@ -255,11 +255,11 @@ function buildOllamaModelsConfig(
 }
 
 function applyOllamaProviderConfig(
-  cfg: OpenClawConfig,
+  cfg: QuantumClawConfig,
   baseUrl: string,
   modelNames: string[],
   discoveredModelsByName?: Map<string, OllamaModelWithContext>,
-): OpenClawConfig {
+): QuantumClawConfig {
   return {
     ...cfg,
     models: {
@@ -291,9 +291,9 @@ async function storeOllamaCredential(agentDir?: string): Promise<void> {
  * Model selection is handled by the standard model picker downstream.
  */
 export async function promptAndConfigureOllama(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   prompter: WizardPrompter;
-}): Promise<{ config: OpenClawConfig }> {
+}): Promise<{ config: QuantumClawConfig }> {
   const { prompter } = params;
 
   // 1. Prompt base URL
@@ -409,10 +409,10 @@ export async function promptAndConfigureOllama(params: {
 
 /** Non-interactive: auto-discover models and configure provider. */
 export async function configureOllamaNonInteractive(params: {
-  nextConfig: OpenClawConfig;
+  nextConfig: QuantumClawConfig;
   opts: OllamaSetupOptions;
   runtime: RuntimeEnv;
-}): Promise<OpenClawConfig> {
+}): Promise<QuantumClawConfig> {
   const { opts, runtime } = params;
   const configuredBaseUrl = (opts.customBaseUrl?.trim() || OLLAMA_DEFAULT_BASE_URL).replace(
     /\/+$/,
@@ -510,7 +510,7 @@ export async function configureOllamaNonInteractive(params: {
 
 /** Pull the configured default Ollama model if it isn't already available locally. */
 export async function ensureOllamaModelPulled(params: {
-  config: OpenClawConfig;
+  config: QuantumClawConfig;
   model: string;
   prompter: WizardPrompter;
 }): Promise<void> {

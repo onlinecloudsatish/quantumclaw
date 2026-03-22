@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/copilot-proxy",
+  "name": "@quantumclaw/copilot-proxy",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Copilot Proxy provider plugin",
+  "description": "QuantumClaw Copilot Proxy provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

@@ -1,20 +1,20 @@
-import { formatNormalizedAllowFromEntries } from "openclaw/plugin-sdk/allow-from";
+import { formatNormalizedAllowFromEntries } from "quantumclaw/plugin-sdk/allow-from";
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createTextPairingAdapter } from "openclaw/plugin-sdk/channel-pairing";
+} from "quantumclaw/plugin-sdk/channel-config-helpers";
+import { createTextPairingAdapter } from "quantumclaw/plugin-sdk/channel-pairing";
 import {
   composeWarningCollectors,
   createAllowlistProviderOpenWarningCollector,
   createConditionalWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
-import { createAttachedChannelResultAdapter } from "openclaw/plugin-sdk/channel-send-result";
+} from "quantumclaw/plugin-sdk/channel-policy";
+import { createAttachedChannelResultAdapter } from "quantumclaw/plugin-sdk/channel-send-result";
 import {
   createChannelDirectoryAdapter,
   listResolvedDirectoryEntriesFromSources,
-} from "openclaw/plugin-sdk/directory-runtime";
-import { runStoppablePassiveMonitor } from "openclaw/plugin-sdk/extension-shared";
+} from "quantumclaw/plugin-sdk/directory-runtime";
+import { runStoppablePassiveMonitor } from "quantumclaw/plugin-sdk/extension-shared";
 import {
   listIrcAccountIds,
   resolveDefaultIrcAccountId,

@@ -5,9 +5,9 @@ import {
   type RequestClient,
 } from "@buape/carbon";
 import { ChannelType, Routes } from "discord-api-types/v10";
-import { loadConfig, type OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import { loadWebMedia } from "openclaw/plugin-sdk/web-media";
+import { loadConfig, type QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { recordChannelActivity } from "quantumclaw/plugin-sdk/infra-runtime";
+import { loadWebMedia } from "quantumclaw/plugin-sdk/web-media";
 import { resolveDiscordAccount } from "./accounts.js";
 import { registerDiscordComponentEntries } from "./components-registry.js";
 import {
@@ -42,7 +42,7 @@ function extractComponentAttachmentNames(spec: DiscordComponentMessageSpec): str
 }
 
 type DiscordComponentSendOpts = {
-  cfg?: OpenClawConfig;
+  cfg?: QuantumClawConfig;
   accountId?: string;
   token?: string;
   rest?: RequestClient;

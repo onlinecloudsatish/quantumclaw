@@ -1,9 +1,9 @@
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAllowlistProviderRestrictSendersWarningCollector } from "openclaw/plugin-sdk/channel-policy";
-import { createChannelPluginBase } from "openclaw/plugin-sdk/core";
+} from "quantumclaw/plugin-sdk/channel-config-helpers";
+import { createAllowlistProviderRestrictSendersWarningCollector } from "quantumclaw/plugin-sdk/channel-policy";
+import { createChannelPluginBase } from "quantumclaw/plugin-sdk/core";
 import {
   listSignalAccountIds,
   resolveDefaultSignalAccountId,

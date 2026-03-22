@@ -129,9 +129,9 @@ PY`,
 
 describe("openshell remote fs bridge", () => {
   it("writes, reads, renames, and removes files without local host paths", async () => {
-    const workspaceDir = await makeTempDir("openclaw-openshell-remote-local-");
-    const remoteWorkspaceDir = await makeTempDir("openclaw-openshell-remote-workspace-");
-    const remoteAgentDir = await makeTempDir("openclaw-openshell-remote-agent-");
+    const workspaceDir = await makeTempDir("quantumclaw-openshell-remote-local-");
+    const remoteWorkspaceDir = await makeTempDir("quantumclaw-openshell-remote-workspace-");
+    const remoteAgentDir = await makeTempDir("quantumclaw-openshell-remote-agent-");
     const remoteWorkspaceRealDir = await fs.realpath(remoteWorkspaceDir);
     const remoteAgentRealDir = await fs.realpath(remoteAgentDir);
     const backend = createBackendMock({

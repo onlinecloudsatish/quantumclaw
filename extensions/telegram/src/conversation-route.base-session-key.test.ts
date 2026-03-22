@@ -1,10 +1,10 @@
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { resolveThreadSessionKeys } from "openclaw/plugin-sdk/routing";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { resolveThreadSessionKeys } from "quantumclaw/plugin-sdk/routing";
 import { describe, expect, it } from "vitest";
 import { resolveTelegramConversationBaseSessionKey } from "./conversation-route.js";
 
 describe("resolveTelegramConversationBaseSessionKey", () => {
-  const cfg: OpenClawConfig = {};
+  const cfg: QuantumClawConfig = {};
 
   it("keeps the routed session key for the default account", () => {
     expect(

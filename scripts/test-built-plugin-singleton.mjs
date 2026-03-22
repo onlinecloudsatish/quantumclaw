@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { stageBundledPluginRuntime } from "./stage-bundled-plugin-runtime.mjs";
 
-const warningFilterKey = Symbol.for("openclaw.warning-filter");
+const warningFilterKey = Symbol.for("quantumclaw.warning-filter");
 
 function installProcessWarningFilter() {
   if (globalThis[warningFilterKey]?.installed) {
@@ -52,7 +52,7 @@ assert.equal(typeof clearPluginCommands, "function", "clearPluginCommands missin
 assert.equal(typeof getPluginCommandSpecs, "function", "getPluginCommandSpecs missing");
 assert.equal(typeof matchPluginCommand, "function", "matchPluginCommand missing");
 
-const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-build-smoke-"));
+const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "quantumclaw-build-smoke-"));
 
 function cleanup() {
   clearPluginCommands();
@@ -77,9 +77,9 @@ fs.writeFileSync(
   path.join(distPluginDir, "package.json"),
   JSON.stringify(
     {
-      name: "@openclaw/build-smoke-plugin",
+      name: "@quantumclaw/build-smoke-plugin",
       type: "module",
-      openclaw: {
+      quantumclaw: {
         extensions: ["./index.js"],
       },
     },
@@ -89,7 +89,7 @@ fs.writeFileSync(
   "utf8",
 );
 fs.writeFileSync(
-  path.join(distPluginDir, "openclaw.plugin.json"),
+  path.join(distPluginDir, "quantumclaw.plugin.json"),
   JSON.stringify(
     {
       id: pluginId,
@@ -107,7 +107,7 @@ fs.writeFileSync(
 fs.writeFileSync(
   path.join(distPluginDir, "index.js"),
   [
-    "import sdk from 'openclaw/plugin-sdk';",
+    "import sdk from 'quantumclaw/plugin-sdk';",
     "const { emptyPluginConfigSchema } = sdk;",
     "",
     "export default {",

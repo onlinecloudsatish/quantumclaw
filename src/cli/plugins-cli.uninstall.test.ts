@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { QuantumClawConfig } from "../config/config.js";
 import {
   buildPluginStatusReport,
   loadConfig,
@@ -28,12 +28,12 @@ describe("plugins cli uninstall", () => {
         installs: {
           alpha: {
             source: "path",
-            sourcePath: "/tmp/openclaw-state/extensions/alpha",
-            installPath: "/tmp/openclaw-state/extensions/alpha",
+            sourcePath: "/tmp/quantumclaw-state/extensions/alpha",
+            installPath: "/tmp/quantumclaw-state/extensions/alpha",
           },
         },
       },
-    } as OpenClawConfig);
+    } as QuantumClawConfig);
     buildPluginStatusReport.mockReturnValue({
       plugins: [{ id: "alpha", name: "alpha" }],
       diagnostics: [],
@@ -55,18 +55,18 @@ describe("plugins cli uninstall", () => {
         installs: {
           alpha: {
             source: "path",
-            sourcePath: "/tmp/openclaw-state/extensions/alpha",
-            installPath: "/tmp/openclaw-state/extensions/alpha",
+            sourcePath: "/tmp/quantumclaw-state/extensions/alpha",
+            installPath: "/tmp/quantumclaw-state/extensions/alpha",
           },
         },
       },
-    } as OpenClawConfig;
+    } as QuantumClawConfig;
     const nextConfig = {
       plugins: {
         entries: {},
         installs: {},
       },
-    } as OpenClawConfig;
+    } as QuantumClawConfig;
 
     loadConfig.mockReturnValue(baseConfig);
     buildPluginStatusReport.mockReturnValue({
@@ -105,7 +105,7 @@ describe("plugins cli uninstall", () => {
         entries: {},
         installs: {},
       },
-    } as OpenClawConfig);
+    } as QuantumClawConfig);
     buildPluginStatusReport.mockReturnValue({
       plugins: [{ id: "alpha", name: "alpha" }],
       diagnostics: [],

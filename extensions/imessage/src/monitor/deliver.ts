@@ -1,13 +1,13 @@
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { resolveMarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
+import { loadConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { resolveMarkdownTableMode } from "quantumclaw/plugin-sdk/config-runtime";
 import {
   deliverTextOrMediaReply,
   resolveSendableOutboundReplyParts,
-} from "openclaw/plugin-sdk/reply-payload";
-import { chunkTextWithMode, resolveChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { convertMarkdownTables } from "openclaw/plugin-sdk/text-runtime";
+} from "quantumclaw/plugin-sdk/reply-payload";
+import { chunkTextWithMode, resolveChunkMode } from "quantumclaw/plugin-sdk/reply-runtime";
+import type { ReplyPayload } from "quantumclaw/plugin-sdk/reply-runtime";
+import type { RuntimeEnv } from "quantumclaw/plugin-sdk/runtime-env";
+import { convertMarkdownTables } from "quantumclaw/plugin-sdk/text-runtime";
 import type { createIMessageRpcClient } from "../client.js";
 import { sendMessageIMessage } from "../send.js";
 import type { SentMessageCache } from "./echo-cache.js";

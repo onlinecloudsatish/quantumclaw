@@ -1,7 +1,7 @@
 {
-  "name": "@openclaw/msteams",
+  "name": "@quantumclaw/msteams",
   "version": "2026.3.22",
-  "description": "OpenClaw Microsoft Teams channel plugin",
+  "description": "QuantumClaw Microsoft Teams channel plugin",
   "type": "module",
   "dependencies": {
     "@microsoft/agents-hosting": "^1.4.1",
@@ -9,17 +9,17 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "quantumclaw": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.3.22"
+    "quantumclaw": ">=2026.3.22"
   },
   "peerDependenciesMeta": {
-    "openclaw": {
+    "quantumclaw": {
       "optional": true
     }
   },
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -37,7 +37,7 @@
       "order": 60
     },
     "install": {
-      "npmSpec": "@openclaw/msteams",
+      "npmSpec": "@quantumclaw/msteams",
       "localPath": "extensions/msteams",
       "defaultChoice": "npm",
       "minHostVersion": ">=2026.3.22"

@@ -1,7 +1,7 @@
 import {
   applyProviderConfigWithDefaultModelPreset,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type QuantumClawConfig,
+} from "quantumclaw/plugin-sdk/provider-onboard";
 import {
   buildKimiCodingProvider,
   KIMI_CODING_BASE_URL,
@@ -15,7 +15,7 @@ function resolveKimiCodingDefaultModel() {
   return buildKimiCodingProvider().models[0];
 }
 
-function applyKimiCodingPreset(cfg: OpenClawConfig, primaryModelRef?: string): OpenClawConfig {
+function applyKimiCodingPreset(cfg: QuantumClawConfig, primaryModelRef?: string): QuantumClawConfig {
   const defaultModel = resolveKimiCodingDefaultModel();
   if (!defaultModel) {
     return cfg;
@@ -31,10 +31,10 @@ function applyKimiCodingPreset(cfg: OpenClawConfig, primaryModelRef?: string): O
   });
 }
 
-export function applyKimiCodeProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyKimiCodeProviderConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applyKimiCodingPreset(cfg);
 }
 
-export function applyKimiCodeConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyKimiCodeConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applyKimiCodingPreset(cfg, KIMI_MODEL_REF);
 }

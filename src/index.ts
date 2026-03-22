@@ -92,12 +92,12 @@ if (isMain) {
   installUnhandledRejectionHandler();
 
   process.on("uncaughtException", (error) => {
-    console.error("[openclaw] Uncaught exception:", formatUncaughtError(error));
+    console.error("[quantumclaw] Uncaught exception:", formatUncaughtError(error));
     process.exit(1);
   });
 
   void runLegacyCliEntry(process.argv).catch((err) => {
-    console.error("[openclaw] CLI failed:", formatUncaughtError(err));
+    console.error("[quantumclaw] CLI failed:", formatUncaughtError(err));
     process.exit(1);
   });
 }

@@ -1,6 +1,6 @@
-import type { ChannelSetupAdapter } from "openclaw/plugin-sdk/channel-setup";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/routing";
+import type { ChannelSetupAdapter } from "quantumclaw/plugin-sdk/channel-setup";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { DEFAULT_ACCOUNT_ID } from "quantumclaw/plugin-sdk/routing";
 import {
   createTopLevelChannelAllowFromSetter,
   createTopLevelChannelDmPolicy,
@@ -9,11 +9,11 @@ import {
   patchTopLevelChannelConfigSection,
   promptParsedAllowFromForAccount,
   splitSetupEntries,
-} from "openclaw/plugin-sdk/setup";
-import type { ChannelSetupDmPolicy } from "openclaw/plugin-sdk/setup";
-import type { ChannelSetupWizard } from "openclaw/plugin-sdk/setup";
-import { formatDocsLink } from "openclaw/plugin-sdk/setup";
-import type { WizardPrompter } from "openclaw/plugin-sdk/setup";
+} from "quantumclaw/plugin-sdk/setup";
+import type { ChannelSetupDmPolicy } from "quantumclaw/plugin-sdk/setup";
+import type { ChannelSetupWizard } from "quantumclaw/plugin-sdk/setup";
+import { formatDocsLink } from "quantumclaw/plugin-sdk/setup";
+import type { WizardPrompter } from "quantumclaw/plugin-sdk/setup";
 import { DEFAULT_RELAYS } from "./default-relays.js";
 import { getPublicKeyFromPrivate, normalizePubkey } from "./nostr-bus.js";
 import { resolveNostrAccount } from "./types.js";
@@ -69,9 +69,9 @@ function parseNostrAllowFrom(raw: string): { entries: string[]; error?: string }
 }
 
 async function promptNostrAllowFrom(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   prompter: WizardPrompter;
-}): Promise<OpenClawConfig> {
+}): Promise<QuantumClawConfig> {
   return await promptParsedAllowFromForAccount({
     cfg: params.cfg,
     defaultAccountId: DEFAULT_ACCOUNT_ID,

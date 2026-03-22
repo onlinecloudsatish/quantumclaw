@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { hasPotentialConfiguredChannels } from "../channels/config-presence.js";
 import { resolveConfigPath, resolveStateDir } from "../config/paths.js";
-import type { OpenClawConfig } from "../config/types.js";
+import type { QuantumClawConfig } from "../config/types.js";
 import { resolveOsSummary } from "../infra/os-summary.js";
 import { runExec } from "../process/exec.js";
 import type { RuntimeEnv } from "../runtime.js";
@@ -90,7 +90,7 @@ function buildColdStartUpdateResult(): Awaited<ReturnType<typeof getUpdateCheckR
   };
 }
 
-function shouldCollectPluginCompatibility(cfg: OpenClawConfig): boolean {
+function shouldCollectPluginCompatibility(cfg: QuantumClawConfig): boolean {
   if (hasPotentialConfiguredChannels(cfg)) {
     return true;
   }
@@ -102,7 +102,7 @@ function resolveDefaultMemoryStorePath(agentId: string): string {
 }
 
 async function resolveMemoryStatusSnapshot(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   agentStatus: Awaited<ReturnType<typeof getAgentLocalStatuses>>;
   memoryPlugin: MemoryPluginStatus;
 }): Promise<MemoryStatusSnapshot | null> {
@@ -118,7 +118,7 @@ async function resolveMemoryStatusSnapshot(params: {
   });
 }
 
-async function readStatusSourceConfig(): Promise<OpenClawConfig> {
+async function readStatusSourceConfig(): Promise<QuantumClawConfig> {
   if (!shouldSkipMissingConfigFastPath() && !existsSync(resolveConfigPath(process.env))) {
     return {};
   }
@@ -127,9 +127,9 @@ async function readStatusSourceConfig(): Promise<OpenClawConfig> {
 }
 
 async function resolveStatusConfig(params: {
-  sourceConfig: OpenClawConfig;
+  sourceConfig: QuantumClawConfig;
   commandName: "status --json";
-}): Promise<{ resolvedConfig: OpenClawConfig; diagnostics: string[] }> {
+}): Promise<{ resolvedConfig: QuantumClawConfig; diagnostics: string[] }> {
   if (!shouldSkipMissingConfigFastPath() && !existsSync(resolveConfigPath(process.env))) {
     return { resolvedConfig: params.sourceConfig, diagnostics: [] };
   }

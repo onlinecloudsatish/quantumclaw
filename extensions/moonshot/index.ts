@@ -1,10 +1,10 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
-import { buildSingleProviderApiKeyCatalog } from "openclaw/plugin-sdk/provider-catalog";
+import { definePluginEntry } from "quantumclaw/plugin-sdk/plugin-entry";
+import { createProviderApiKeyAuthMethod } from "quantumclaw/plugin-sdk/provider-auth";
+import { buildSingleProviderApiKeyCatalog } from "quantumclaw/plugin-sdk/provider-catalog";
 import {
   createMoonshotThinkingWrapper,
   resolveMoonshotThinkingType,
-} from "openclaw/plugin-sdk/provider-stream";
+} from "quantumclaw/plugin-sdk/provider-stream";
 import { moonshotMediaUnderstandingProvider } from "./media-understanding-provider.js";
 import {
   applyMoonshotConfig,

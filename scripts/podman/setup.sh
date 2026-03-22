@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
-# One-time host setup for rootless OpenClaw in Podman: creates the openclaw
+# One-time host setup for rootless QuantumClaw in Podman: creates the quantumclaw
 # user, builds the image, loads it into that user's Podman store, and installs
 # the launch script. Run from repo root with sudo capability.
 #
 # Usage: ./scripts/podman/setup.sh [--quadlet|--container]
 #   --quadlet   Install systemd Quadlet so the container runs as a user service
 #   --container Only install user + image + launch script; you start the container manually (default)
-#   Or set OPENCLAW_PODMAN_QUADLET=1 (or 0) to choose without a flag.
+#   Or set QUANTUMCLAW_PODMAN_QUADLET=1 (or 0) to choose without a flag.
 #
 # After this, start the gateway manually:
-#   ./scripts/run-openclaw-podman.sh launch
-#   ./scripts/run-openclaw-podman.sh launch setup   # onboarding wizard
-# Or as the openclaw user: sudo -u openclaw /home/openclaw/run-openclaw-podman.sh
-# If you used --quadlet, you can also: sudo systemctl --machine openclaw@ --user start openclaw.service
+#   ./scripts/run-quantumclaw-podman.sh launch
+#   ./scripts/run-quantumclaw-podman.sh launch setup   # onboarding wizard
+# Or as the quantumclaw user: sudo -u quantumclaw /home/quantumclaw/run-quantumclaw-podman.sh
+# If you used --quadlet, you can also: sudo systemctl --machine quantumclaw@ --user start quantumclaw.service
 set -euo pipefail
 
-OPENCLAW_USER="${OPENCLAW_PODMAN_USER:-openclaw}"
-REPO_PATH="${OPENCLAW_REPO_PATH:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
-RUN_SCRIPT_SRC="$REPO_PATH/scripts/run-openclaw-podman.sh"
-QUADLET_TEMPLATE="$REPO_PATH/scripts/podman/openclaw.container.in"
+QUANTUMCLAW_USER="${QUANTUMCLAW_PODMAN_USER:-quantumclaw}"
+REPO_PATH="${QUANTUMCLAW_REPO_PATH:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
+RUN_SCRIPT_SRC="$REPO_PATH/scripts/run-quantumclaw-podman.sh"
+QUADLET_TEMPLATE="$REPO_PATH/scripts/podman/quantumclaw.container.in"
 
 require_cmd() {
   if ! command -v "$1" >/dev/null 2>&1; then
@@ -97,10 +97,10 @@ run_as_user() {
   fi
 }
 
-run_as_openclaw() {
-  # Avoid root writes into $OPENCLAW_HOME (symlink/hardlink/TOCTOU footguns).
+run_as_quantumclaw() {
+  # Avoid root writes into $QUANTUMCLAW_HOME (symlink/hardlink/TOCTOU footguns).
   # Anything under the target user's home should be created/modified as that user.
-  run_as_user "$OPENCLAW_USER" env HOME="$OPENCLAW_HOME" "$@"
+  run_as_user "$QUANTUMCLAW_USER" env HOME="$QUANTUMCLAW_HOME" "$@"
 }
 
 escape_sed_replacement_pipe_delim() {
@@ -108,7 +108,7 @@ escape_sed_replacement_pipe_delim() {
   printf '%s' "$1" | sed -e 's/[\\&|]/\\&/g'
 }
 
-# Quadlet: opt-in via --quadlet or OPENCLAW_PODMAN_QUADLET=1
+# Quadlet: opt-in via --quadlet or QUANTUMCLAW_PODMAN_QUADLET=1
 INSTALL_QUADLET=false
 for arg in "$@"; do
   case "$arg" in
@@ -116,8 +116,8 @@ for arg in "$@"; do
     --container) INSTALL_QUADLET=false ;;
   esac
 done
-if [[ -n "${OPENCLAW_PODMAN_QUADLET:-}" ]]; then
-  case "${OPENCLAW_PODMAN_QUADLET,,}" in
+if [[ -n "${QUANTUMCLAW_PODMAN_QUADLET:-}" ]]; then
+  case "${QUANTUMCLAW_PODMAN_QUADLET,,}" in
     1|yes|true)  INSTALL_QUADLET=true ;;
     0|no|false) INSTALL_QUADLET=false ;;
   esac
@@ -128,7 +128,7 @@ if ! is_root; then
   require_cmd sudo
 fi
 if [[ ! -f "$REPO_PATH/Dockerfile" ]]; then
-  echo "Dockerfile not found at $REPO_PATH. Set OPENCLAW_REPO_PATH to the repo root." >&2
+  echo "Dockerfile not found at $REPO_PATH. Set QUANTUMCLAW_REPO_PATH to the repo root." >&2
   exit 1
 fi
 if [[ ! -f "$RUN_SCRIPT_SRC" ]]; then
@@ -153,7 +153,7 @@ PY
     od -An -N32 -tx1 /dev/urandom | tr -d " \n"
     return 0
   fi
-  echo "Missing dependency: need openssl or python3 (or od) to generate OPENCLAW_GATEWAY_TOKEN." >&2
+  echo "Missing dependency: need openssl or python3 (or od) to generate QUANTUMCLAW_GATEWAY_TOKEN." >&2
   exit 1
 }
 
@@ -190,45 +190,45 @@ resolve_nologin_shell() {
   printf '%s' "/usr/sbin/nologin"
 }
 
-# Create openclaw user (non-login, with home) if missing
-if ! user_exists "$OPENCLAW_USER"; then
+# Create quantumclaw user (non-login, with home) if missing
+if ! user_exists "$QUANTUMCLAW_USER"; then
   NOLOGIN_SHELL="$(resolve_nologin_shell)"
-  echo "Creating user $OPENCLAW_USER ($NOLOGIN_SHELL, with home)..."
+  echo "Creating user $QUANTUMCLAW_USER ($NOLOGIN_SHELL, with home)..."
   if command -v useradd >/dev/null 2>&1; then
-    run_root useradd -m -s "$NOLOGIN_SHELL" "$OPENCLAW_USER"
+    run_root useradd -m -s "$NOLOGIN_SHELL" "$QUANTUMCLAW_USER"
   elif command -v adduser >/dev/null 2>&1; then
     # Debian/Ubuntu: adduser supports --disabled-password/--gecos. Busybox adduser differs.
-    run_root adduser --disabled-password --gecos "" --shell "$NOLOGIN_SHELL" "$OPENCLAW_USER"
+    run_root adduser --disabled-password --gecos "" --shell "$NOLOGIN_SHELL" "$QUANTUMCLAW_USER"
   else
-    echo "Neither useradd nor adduser found, cannot create user $OPENCLAW_USER." >&2
+    echo "Neither useradd nor adduser found, cannot create user $QUANTUMCLAW_USER." >&2
     exit 1
   fi
 else
-  echo "User $OPENCLAW_USER already exists."
+  echo "User $QUANTUMCLAW_USER already exists."
 fi
 
-OPENCLAW_HOME="$(resolve_user_home "$OPENCLAW_USER")"
-OPENCLAW_UID="$(id -u "$OPENCLAW_USER" 2>/dev/null || true)"
-OPENCLAW_CONFIG="$OPENCLAW_HOME/.openclaw"
-LAUNCH_SCRIPT_DST="$OPENCLAW_HOME/run-openclaw-podman.sh"
+QUANTUMCLAW_HOME="$(resolve_user_home "$QUANTUMCLAW_USER")"
+QUANTUMCLAW_UID="$(id -u "$QUANTUMCLAW_USER" 2>/dev/null || true)"
+QUANTUMCLAW_CONFIG="$QUANTUMCLAW_HOME/.quantumclaw"
+LAUNCH_SCRIPT_DST="$QUANTUMCLAW_HOME/run-quantumclaw-podman.sh"
 
 # Prefer systemd user services (Quadlet) for production. Enable lingering early so rootless Podman can run
 # without an interactive login.
 if command -v loginctl &>/dev/null; then
-  run_root loginctl enable-linger "$OPENCLAW_USER" 2>/dev/null || true
+  run_root loginctl enable-linger "$QUANTUMCLAW_USER" 2>/dev/null || true
 fi
-if [[ -n "${OPENCLAW_UID:-}" && -d /run/user ]] && command -v systemctl &>/dev/null; then
-  if [[ ! -d "/run/user/$OPENCLAW_UID" ]]; then
-    run_root install -d -m 700 -o "$OPENCLAW_UID" -g "$OPENCLAW_UID" "/run/user/$OPENCLAW_UID" || true
+if [[ -n "${QUANTUMCLAW_UID:-}" && -d /run/user ]] && command -v systemctl &>/dev/null; then
+  if [[ ! -d "/run/user/$QUANTUMCLAW_UID" ]]; then
+    run_root install -d -m 700 -o "$QUANTUMCLAW_UID" -g "$QUANTUMCLAW_UID" "/run/user/$QUANTUMCLAW_UID" || true
   fi
-  run_root mkdir -p "/run/user/$OPENCLAW_UID/containers" || true
-  run_root chown "$OPENCLAW_UID:$OPENCLAW_UID" "/run/user/$OPENCLAW_UID/containers" || true
-  run_root chmod 700 "/run/user/$OPENCLAW_UID/containers" || true
+  run_root mkdir -p "/run/user/$QUANTUMCLAW_UID/containers" || true
+  run_root chown "$QUANTUMCLAW_UID:$QUANTUMCLAW_UID" "/run/user/$QUANTUMCLAW_UID/containers" || true
+  run_root chmod 700 "/run/user/$QUANTUMCLAW_UID/containers" || true
 fi
 
-mkdir_user_dirs_as_openclaw() {
-  run_root install -d -m 700 -o "$OPENCLAW_UID" -g "$OPENCLAW_UID" "$OPENCLAW_HOME" "$OPENCLAW_CONFIG"
-  run_root install -d -m 700 -o "$OPENCLAW_UID" -g "$OPENCLAW_UID" "$OPENCLAW_CONFIG/workspace"
+mkdir_user_dirs_as_quantumclaw() {
+  run_root install -d -m 700 -o "$QUANTUMCLAW_UID" -g "$QUANTUMCLAW_UID" "$QUANTUMCLAW_HOME" "$QUANTUMCLAW_CONFIG"
+  run_root install -d -m 700 -o "$QUANTUMCLAW_UID" -g "$QUANTUMCLAW_UID" "$QUANTUMCLAW_CONFIG/workspace"
 }
 
 ensure_subid_entry() {
@@ -236,71 +236,71 @@ ensure_subid_entry() {
   if [[ ! -f "$file" ]]; then
     return 1
   fi
-  grep -q "^${OPENCLAW_USER}:" "$file" 2>/dev/null
+  grep -q "^${QUANTUMCLAW_USER}:" "$file" 2>/dev/null
 }
 
 if ! ensure_subid_entry /etc/subuid || ! ensure_subid_entry /etc/subgid; then
-  echo "WARNING: ${OPENCLAW_USER} may not have subuid/subgid ranges configured." >&2
-  echo "If rootless Podman fails, add 'openclaw:100000:65536' to both /etc/subuid and /etc/subgid." >&2
+  echo "WARNING: ${QUANTUMCLAW_USER} may not have subuid/subgid ranges configured." >&2
+  echo "If rootless Podman fails, add 'quantumclaw:100000:65536' to both /etc/subuid and /etc/subgid." >&2
 fi
 
-mkdir_user_dirs_as_openclaw
+mkdir_user_dirs_as_quantumclaw
 
 IMAGE_TMP_BASE="$(resolve_image_tmp_dir)"
 echo "Using temp base for image export: $IMAGE_TMP_BASE"
-IMAGE_TAR_DIR="$(mktemp -d "${IMAGE_TMP_BASE%/}/openclaw-podman-image.XXXXXX")"
+IMAGE_TAR_DIR="$(mktemp -d "${IMAGE_TMP_BASE%/}/quantumclaw-podman-image.XXXXXX")"
 chmod 700 "$IMAGE_TAR_DIR"
-IMAGE_TAR="$IMAGE_TAR_DIR/openclaw-image.tar"
+IMAGE_TAR="$IMAGE_TAR_DIR/quantumclaw-image.tar"
 cleanup_image_tar() {
   rm -rf "$IMAGE_TAR_DIR"
 }
 trap cleanup_image_tar EXIT
 
 BUILD_ARGS=()
-if [[ -n "${OPENCLAW_DOCKER_APT_PACKAGES:-}" ]]; then
-  BUILD_ARGS+=(--build-arg "OPENCLAW_DOCKER_APT_PACKAGES=${OPENCLAW_DOCKER_APT_PACKAGES}")
+if [[ -n "${QUANTUMCLAW_DOCKER_APT_PACKAGES:-}" ]]; then
+  BUILD_ARGS+=(--build-arg "QUANTUMCLAW_DOCKER_APT_PACKAGES=${QUANTUMCLAW_DOCKER_APT_PACKAGES}")
 fi
-if [[ -n "${OPENCLAW_EXTENSIONS:-}" ]]; then
-  BUILD_ARGS+=(--build-arg "OPENCLAW_EXTENSIONS=${OPENCLAW_EXTENSIONS}")
+if [[ -n "${QUANTUMCLAW_EXTENSIONS:-}" ]]; then
+  BUILD_ARGS+=(--build-arg "QUANTUMCLAW_EXTENSIONS=${QUANTUMCLAW_EXTENSIONS}")
 fi
 
-echo "Building image openclaw:local..."
-podman build -t openclaw:local -f "$REPO_PATH/Dockerfile" "${BUILD_ARGS[@]}" "$REPO_PATH"
+echo "Building image quantumclaw:local..."
+podman build -t quantumclaw:local -f "$REPO_PATH/Dockerfile" "${BUILD_ARGS[@]}" "$REPO_PATH"
 echo "Saving image to $IMAGE_TAR ..."
-podman save -o "$IMAGE_TAR" openclaw:local
+podman save -o "$IMAGE_TAR" quantumclaw:local
 
-echo "Loading image into $OPENCLAW_USER Podman store..."
-run_as_openclaw podman load -i "$IMAGE_TAR"
+echo "Loading image into $QUANTUMCLAW_USER Podman store..."
+run_as_quantumclaw podman load -i "$IMAGE_TAR"
 
 echo "Installing launch script to $LAUNCH_SCRIPT_DST ..."
-run_root install -m 0755 -o "$OPENCLAW_UID" -g "$OPENCLAW_UID" "$RUN_SCRIPT_SRC" "$LAUNCH_SCRIPT_DST"
+run_root install -m 0755 -o "$QUANTUMCLAW_UID" -g "$QUANTUMCLAW_UID" "$RUN_SCRIPT_SRC" "$LAUNCH_SCRIPT_DST"
 
-if [[ ! -f "$OPENCLAW_CONFIG/.env" ]]; then
+if [[ ! -f "$QUANTUMCLAW_CONFIG/.env" ]]; then
   TOKEN="$(generate_token_hex_32)"
-  run_as_openclaw sh -lc "umask 077 && printf '%s\n' 'OPENCLAW_GATEWAY_TOKEN=$TOKEN' > '$OPENCLAW_CONFIG/.env'"
-  echo "Generated OPENCLAW_GATEWAY_TOKEN and wrote it to $OPENCLAW_CONFIG/.env"
+  run_as_quantumclaw sh -lc "umask 077 && printf '%s\n' 'QUANTUMCLAW_GATEWAY_TOKEN=$TOKEN' > '$QUANTUMCLAW_CONFIG/.env'"
+  echo "Generated QUANTUMCLAW_GATEWAY_TOKEN and wrote it to $QUANTUMCLAW_CONFIG/.env"
 fi
 
-if [[ ! -f "$OPENCLAW_CONFIG/openclaw.json" ]]; then
-  run_as_openclaw sh -lc "umask 077 && cat > '$OPENCLAW_CONFIG/openclaw.json' <<'JSON'
+if [[ ! -f "$QUANTUMCLAW_CONFIG/quantumclaw.json" ]]; then
+  run_as_quantumclaw sh -lc "umask 077 && cat > '$QUANTUMCLAW_CONFIG/quantumclaw.json' <<'JSON'
 { \"gateway\": { \"mode\": \"local\" } }
 JSON"
-  echo "Wrote minimal config to $OPENCLAW_CONFIG/openclaw.json"
+  echo "Wrote minimal config to $QUANTUMCLAW_CONFIG/quantumclaw.json"
 fi
 
 if [[ "$INSTALL_QUADLET" == true ]]; then
-  QUADLET_DIR="$OPENCLAW_HOME/.config/containers/systemd"
-  QUADLET_DST="$QUADLET_DIR/openclaw.container"
+  QUADLET_DIR="$QUANTUMCLAW_HOME/.config/containers/systemd"
+  QUADLET_DST="$QUADLET_DIR/quantumclaw.container"
   echo "Installing Quadlet to $QUADLET_DST ..."
-  run_as_openclaw mkdir -p "$QUADLET_DIR"
-  OPENCLAW_HOME_ESCAPED="$(escape_sed_replacement_pipe_delim "$OPENCLAW_HOME")"
-  sed "s|{{OPENCLAW_HOME}}|$OPENCLAW_HOME_ESCAPED|g" "$QUADLET_TEMPLATE" | \
-    run_as_openclaw sh -lc "cat > '$QUADLET_DST'"
-  run_as_openclaw chmod 0644 "$QUADLET_DST"
+  run_as_quantumclaw mkdir -p "$QUADLET_DIR"
+  QUANTUMCLAW_HOME_ESCAPED="$(escape_sed_replacement_pipe_delim "$QUANTUMCLAW_HOME")"
+  sed "s|{{QUANTUMCLAW_HOME}}|$QUANTUMCLAW_HOME_ESCAPED|g" "$QUADLET_TEMPLATE" | \
+    run_as_quantumclaw sh -lc "cat > '$QUADLET_DST'"
+  run_as_quantumclaw chmod 0644 "$QUADLET_DST"
 
   echo "Reloading and enabling user service..."
-  run_root systemctl --machine "${OPENCLAW_USER}@" --user daemon-reload
-  run_root systemctl --machine "${OPENCLAW_USER}@" --user enable --now openclaw.service
+  run_root systemctl --machine "${QUANTUMCLAW_USER}@" --user daemon-reload
+  run_root systemctl --machine "${QUANTUMCLAW_USER}@" --user enable --now quantumclaw.service
   echo "Quadlet installed and service started."
 else
   echo "Container + launch script installed."
@@ -308,5 +308,5 @@ fi
 
 echo
 echo "Next:"
-echo "  ./scripts/run-openclaw-podman.sh launch"
-echo "  ./scripts/run-openclaw-podman.sh launch setup"
+echo "  ./scripts/run-quantumclaw-podman.sh launch"
+echo "  ./scripts/run-quantumclaw-podman.sh launch setup"

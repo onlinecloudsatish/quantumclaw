@@ -1,9 +1,9 @@
 ---
-name: openclaw-test-heap-leaks
-description: Investigate `pnpm test` memory growth, Vitest worker OOMs, and suspicious RSS increases in OpenClaw using the `scripts/test-parallel.mjs` heap snapshot tooling. Use when Codex needs to reproduce test-lane memory growth, collect repeated `.heapsnapshot` files, compare snapshots from the same worker PID, distinguish transformed-module retention from real data leaks, and fix or reduce the impact by patching cleanup logic or isolating hotspot tests.
+name: quantumclaw-test-heap-leaks
+description: Investigate `pnpm test` memory growth, Vitest worker OOMs, and suspicious RSS increases in QuantumClaw using the `scripts/test-parallel.mjs` heap snapshot tooling. Use when Codex needs to reproduce test-lane memory growth, collect repeated `.heapsnapshot` files, compare snapshots from the same worker PID, distinguish transformed-module retention from real data leaks, and fix or reduce the impact by patching cleanup logic or isolating hotspot tests.
 ---
 
-# OpenClaw Test Heap Leaks
+# QuantumClaw Test Heap Leaks
 
 Use this skill for test-memory investigations. Do not guess from RSS alone when heap snapshots are available.
 
@@ -11,8 +11,8 @@ Use this skill for test-memory investigations. Do not guess from RSS alone when 
 
 1. Reproduce the failing shape first.
    - Match the real entrypoint if possible. For Linux CI-style unit failures, start with:
-   - `pnpm canvas:a2ui:bundle && OPENCLAW_TEST_MEMORY_TRACE=1 OPENCLAW_TEST_HEAPSNAPSHOT_INTERVAL_MS=60000 OPENCLAW_TEST_HEAPSNAPSHOT_DIR=.tmp/heapsnap OPENCLAW_TEST_WORKERS=2 OPENCLAW_TEST_MAX_OLD_SPACE_SIZE_MB=6144 pnpm test`
-   - Keep `OPENCLAW_TEST_MEMORY_TRACE=1` enabled so the wrapper prints per-file RSS summaries alongside the snapshots.
+   - `pnpm canvas:a2ui:bundle && QUANTUMCLAW_TEST_MEMORY_TRACE=1 QUANTUMCLAW_TEST_HEAPSNAPSHOT_INTERVAL_MS=60000 QUANTUMCLAW_TEST_HEAPSNAPSHOT_DIR=.tmp/heapsnap QUANTUMCLAW_TEST_WORKERS=2 QUANTUMCLAW_TEST_MAX_OLD_SPACE_SIZE_MB=6144 pnpm test`
+   - Keep `QUANTUMCLAW_TEST_MEMORY_TRACE=1` enabled so the wrapper prints per-file RSS summaries alongside the snapshots.
    - If the report is about a specific shard or worker budget, preserve that shape.
 
 2. Wait for repeated snapshots before concluding anything.
@@ -49,9 +49,9 @@ Use this skill for test-memory investigations. Do not guess from RSS alone when 
 ## Snapshot Comparison
 
 - Direct comparison:
-  - `node .agents/skills/openclaw-test-heap-leaks/scripts/heapsnapshot-delta.mjs before.heapsnapshot after.heapsnapshot`
+  - `node .agents/skills/quantumclaw-test-heap-leaks/scripts/heapsnapshot-delta.mjs before.heapsnapshot after.heapsnapshot`
 - Auto-select earliest/latest snapshots per PID within one lane:
-  - `node .agents/skills/openclaw-test-heap-leaks/scripts/heapsnapshot-delta.mjs --lane-dir .tmp/heapsnap/unit-fast`
+  - `node .agents/skills/quantumclaw-test-heap-leaks/scripts/heapsnapshot-delta.mjs --lane-dir .tmp/heapsnap/unit-fast`
 - Useful flags:
   - `--top 40`
   - `--min-kb 32`

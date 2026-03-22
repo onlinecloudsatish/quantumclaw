@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { QuantumClawConfig } from "../config/config.js";
 import {
   OPENAI_CODEX_DEFAULT_MODEL,
   OPENAI_DEFAULT_AUDIO_TRANSCRIPTION_MODEL,
@@ -21,14 +21,14 @@ const LEGACY_OPENCODE_ZEN_DEFAULT_MODELS = new Set([
   "opencode-zen/claude-opus-4-5",
 ]);
 
-export function applyGoogleGeminiModelDefault(cfg: OpenClawConfig): {
-  next: OpenClawConfig;
+export function applyGoogleGeminiModelDefault(cfg: QuantumClawConfig): {
+  next: QuantumClawConfig;
   changed: boolean;
 } {
   return applyAgentDefaultPrimaryModel({ cfg, model: GOOGLE_GEMINI_DEFAULT_MODEL });
 }
 
-export function applyOpenAIProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyOpenAIProviderConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   const next = ensureModelAllowlistEntry({
     cfg,
     modelRef: OPENAI_DEFAULT_MODEL,
@@ -51,7 +51,7 @@ export function applyOpenAIProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
   };
 }
 
-export function applyOpenAIConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyOpenAIConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   const next = applyOpenAIProviderConfig(cfg);
   return {
     ...next,
@@ -71,15 +71,15 @@ export function applyOpenAIConfig(cfg: OpenClawConfig): OpenClawConfig {
   };
 }
 
-export function applyOpencodeGoModelDefault(cfg: OpenClawConfig): {
-  next: OpenClawConfig;
+export function applyOpencodeGoModelDefault(cfg: QuantumClawConfig): {
+  next: QuantumClawConfig;
   changed: boolean;
 } {
   return applyAgentDefaultPrimaryModel({ cfg, model: OPENCODE_GO_DEFAULT_MODEL_REF });
 }
 
-export function applyOpencodeZenModelDefault(cfg: OpenClawConfig): {
-  next: OpenClawConfig;
+export function applyOpencodeZenModelDefault(cfg: QuantumClawConfig): {
+  next: QuantumClawConfig;
   changed: boolean;
 } {
   return applyAgentDefaultPrimaryModel({

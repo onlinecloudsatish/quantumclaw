@@ -45,19 +45,19 @@ afterEach(() => {
 });
 
 describe.runIf(process.platform !== "win32")("findGatewayPidsOnPortSync", () => {
-  it("parses lsof output and filters non-openclaw/current processes", () => {
+  it("parses lsof output and filters non-quantumclaw/current processes", () => {
     spawnSyncMock.mockReturnValue({
       error: undefined,
       status: 0,
       stdout: [
         `p${process.pid}`,
-        "copenclaw",
+        "cquantumclaw",
         "p4100",
-        "copenclaw-gateway",
+        "cquantumclaw-gateway",
         "p4200",
         "cnode",
         "p4300",
-        "cOpenClaw",
+        "cQuantumClaw",
       ].join("\n"),
     });
 
@@ -89,7 +89,7 @@ describe.runIf(process.platform !== "win32")("cleanStaleGatewayProcessesSync", (
       .mockReturnValueOnce({
         error: undefined,
         status: 0,
-        stdout: ["p6001", "copenclaw", "p6002", "copenclaw-gateway"].join("\n"),
+        stdout: ["p6001", "cquantumclaw", "p6002", "cquantumclaw-gateway"].join("\n"),
       })
       .mockReturnValue({
         error: undefined,
@@ -113,7 +113,7 @@ describe.runIf(process.platform !== "win32")("cleanStaleGatewayProcessesSync", (
       .mockReturnValueOnce({
         error: undefined,
         status: 0,
-        stdout: ["p7001", "copenclaw"].join("\n"),
+        stdout: ["p7001", "cquantumclaw"].join("\n"),
       })
       .mockReturnValue({
         error: undefined,

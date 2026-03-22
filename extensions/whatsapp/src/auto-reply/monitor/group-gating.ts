@@ -1,9 +1,9 @@
-import { resolveMentionGating } from "openclaw/plugin-sdk/channel-inbound";
-import { hasControlCommand } from "openclaw/plugin-sdk/command-auth";
-import type { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { recordPendingHistoryEntryIfEnabled } from "openclaw/plugin-sdk/reply-history";
-import { parseActivationCommand } from "openclaw/plugin-sdk/reply-runtime";
-import { normalizeE164 } from "openclaw/plugin-sdk/text-runtime";
+import { resolveMentionGating } from "quantumclaw/plugin-sdk/channel-inbound";
+import { hasControlCommand } from "quantumclaw/plugin-sdk/command-auth";
+import type { loadConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { recordPendingHistoryEntryIfEnabled } from "quantumclaw/plugin-sdk/reply-history";
+import { parseActivationCommand } from "quantumclaw/plugin-sdk/reply-runtime";
+import { normalizeE164 } from "quantumclaw/plugin-sdk/text-runtime";
 import type { MentionConfig } from "../mentions.js";
 import { buildMentionConfig, debugMention, resolveOwnerList } from "../mentions.js";
 import type { WebInboundMsg } from "../types.js";

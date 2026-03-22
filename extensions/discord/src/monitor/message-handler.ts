@@ -2,10 +2,10 @@ import type { Client } from "@buape/carbon";
 import {
   createChannelInboundDebouncer,
   shouldDebounceTextInbound,
-} from "openclaw/plugin-sdk/channel-inbound";
-import { resolveOpenProviderRuntimeGroupPolicy } from "openclaw/plugin-sdk/config-runtime";
-import { createDedupeCache } from "openclaw/plugin-sdk/infra-runtime";
-import { danger } from "openclaw/plugin-sdk/runtime-env";
+} from "quantumclaw/plugin-sdk/channel-inbound";
+import { resolveOpenProviderRuntimeGroupPolicy } from "quantumclaw/plugin-sdk/config-runtime";
+import { createDedupeCache } from "quantumclaw/plugin-sdk/infra-runtime";
+import { danger } from "quantumclaw/plugin-sdk/runtime-env";
 import { buildDiscordInboundJob } from "./inbound-job.js";
 import { createDiscordInboundWorker } from "./inbound-worker.js";
 import type { DiscordMessageEvent, DiscordMessageHandler } from "./listeners.js";

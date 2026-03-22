@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/venice-provider",
+  "name": "@quantumclaw/venice-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Venice provider plugin",
+  "description": "QuantumClaw Venice provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

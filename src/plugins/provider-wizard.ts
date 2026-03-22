@@ -1,7 +1,7 @@
 import { DEFAULT_PROVIDER } from "../agents/defaults.js";
 import { parseModelRef } from "../agents/model-selection.js";
 import { normalizeProviderId } from "../agents/model-selection.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { QuantumClawConfig } from "../config/config.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
 import { resolvePluginProviders } from "./providers.js";
 import type {
@@ -17,7 +17,7 @@ type ProviderWizardCacheEntry = {
   providers: ProviderPlugin[];
 };
 const providerWizardCache = new WeakMap<
-  OpenClawConfig,
+  QuantumClawConfig,
   WeakMap<NodeJS.ProcessEnv, Map<string, ProviderWizardCacheEntry>>
 >();
 
@@ -25,17 +25,17 @@ const DEFAULT_DISCOVERY_CACHE_MS = 1000;
 const DEFAULT_MANIFEST_CACHE_MS = 1000;
 
 function shouldUseProviderWizardCache(env: NodeJS.ProcessEnv): boolean {
-  if (env.OPENCLAW_DISABLE_PLUGIN_DISCOVERY_CACHE?.trim()) {
+  if (env.QUANTUMCLAW_DISABLE_PLUGIN_DISCOVERY_CACHE?.trim()) {
     return false;
   }
-  if (env.OPENCLAW_DISABLE_PLUGIN_MANIFEST_CACHE?.trim()) {
+  if (env.QUANTUMCLAW_DISABLE_PLUGIN_MANIFEST_CACHE?.trim()) {
     return false;
   }
-  const discoveryCacheMs = env.OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS?.trim();
+  const discoveryCacheMs = env.QUANTUMCLAW_PLUGIN_DISCOVERY_CACHE_MS?.trim();
   if (discoveryCacheMs === "0") {
     return false;
   }
-  const manifestCacheMs = env.OPENCLAW_PLUGIN_MANIFEST_CACHE_MS?.trim();
+  const manifestCacheMs = env.QUANTUMCLAW_PLUGIN_MANIFEST_CACHE_MS?.trim();
   if (manifestCacheMs === "0") {
     return false;
   }
@@ -44,11 +44,11 @@ function shouldUseProviderWizardCache(env: NodeJS.ProcessEnv): boolean {
 
 function resolveProviderWizardCacheTtlMs(env: NodeJS.ProcessEnv): number {
   const discoveryCacheMs = resolveCacheMs(
-    env.OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS,
+    env.QUANTUMCLAW_PLUGIN_DISCOVERY_CACHE_MS,
     DEFAULT_DISCOVERY_CACHE_MS,
   );
   const manifestCacheMs = resolveCacheMs(
-    env.OPENCLAW_PLUGIN_MANIFEST_CACHE_MS,
+    env.QUANTUMCLAW_PLUGIN_MANIFEST_CACHE_MS,
     DEFAULT_MANIFEST_CACHE_MS,
   );
   return Math.min(discoveryCacheMs, manifestCacheMs);
@@ -70,7 +70,7 @@ function resolveCacheMs(rawValue: string | undefined, defaultMs: number): number
 }
 
 function buildProviderWizardCacheKey(params: {
-  config: OpenClawConfig;
+  config: QuantumClawConfig;
   workspaceDir?: string;
   env: NodeJS.ProcessEnv;
 }): string {
@@ -78,17 +78,17 @@ function buildProviderWizardCacheKey(params: {
     workspaceDir: params.workspaceDir ?? "",
     config: params.config,
     env: {
-      OPENCLAW_BUNDLED_PLUGINS_DIR: params.env.OPENCLAW_BUNDLED_PLUGINS_DIR ?? "",
-      OPENCLAW_DISABLE_PLUGIN_DISCOVERY_CACHE:
-        params.env.OPENCLAW_DISABLE_PLUGIN_DISCOVERY_CACHE ?? "",
-      OPENCLAW_DISABLE_PLUGIN_MANIFEST_CACHE:
-        params.env.OPENCLAW_DISABLE_PLUGIN_MANIFEST_CACHE ?? "",
-      OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: params.env.OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS ?? "",
-      OPENCLAW_PLUGIN_MANIFEST_CACHE_MS: params.env.OPENCLAW_PLUGIN_MANIFEST_CACHE_MS ?? "",
-      OPENCLAW_HOME: params.env.OPENCLAW_HOME ?? "",
-      OPENCLAW_STATE_DIR: params.env.OPENCLAW_STATE_DIR ?? "",
+      QUANTUMCLAW_BUNDLED_PLUGINS_DIR: params.env.QUANTUMCLAW_BUNDLED_PLUGINS_DIR ?? "",
+      QUANTUMCLAW_DISABLE_PLUGIN_DISCOVERY_CACHE:
+        params.env.QUANTUMCLAW_DISABLE_PLUGIN_DISCOVERY_CACHE ?? "",
+      QUANTUMCLAW_DISABLE_PLUGIN_MANIFEST_CACHE:
+        params.env.QUANTUMCLAW_DISABLE_PLUGIN_MANIFEST_CACHE ?? "",
+      QUANTUMCLAW_PLUGIN_DISCOVERY_CACHE_MS: params.env.QUANTUMCLAW_PLUGIN_DISCOVERY_CACHE_MS ?? "",
+      QUANTUMCLAW_PLUGIN_MANIFEST_CACHE_MS: params.env.QUANTUMCLAW_PLUGIN_MANIFEST_CACHE_MS ?? "",
+      QUANTUMCLAW_HOME: params.env.QUANTUMCLAW_HOME ?? "",
+      QUANTUMCLAW_STATE_DIR: params.env.QUANTUMCLAW_STATE_DIR ?? "",
       CLAWDBOT_STATE_DIR: params.env.CLAWDBOT_STATE_DIR ?? "",
-      OPENCLAW_CONFIG_PATH: params.env.OPENCLAW_CONFIG_PATH ?? "",
+      QUANTUMCLAW_CONFIG_PATH: params.env.QUANTUMCLAW_CONFIG_PATH ?? "",
       HOME: params.env.HOME ?? "",
       USERPROFILE: params.env.USERPROFILE ?? "",
       VITEST: params.env.VITEST ?? "",
@@ -181,7 +181,7 @@ export function buildProviderPluginMethodChoice(providerId: string, methodId: st
 }
 
 function resolveProviderWizardProviders(params: {
-  config?: OpenClawConfig;
+  config?: QuantumClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): ProviderPlugin[] {
@@ -231,7 +231,7 @@ function resolveProviderWizardProviders(params: {
 }
 
 export function resolveProviderWizardOptions(params: {
-  config?: OpenClawConfig;
+  config?: QuantumClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): ProviderWizardOption[] {
@@ -300,7 +300,7 @@ function resolveModelPickerChoiceValue(
 }
 
 export function resolveProviderModelPickerEntries(params: {
-  config?: OpenClawConfig;
+  config?: QuantumClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): ProviderModelPickerEntry[] {
@@ -380,7 +380,7 @@ export function resolveProviderPluginChoice(params: {
 }
 
 export async function runProviderModelSelectedHook(params: {
-  config: OpenClawConfig;
+  config: QuantumClawConfig;
   model: string;
   prompter: WizardPrompter;
   agentDir?: string;

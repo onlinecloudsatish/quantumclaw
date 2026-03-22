@@ -1,24 +1,24 @@
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
+} from "quantumclaw/plugin-sdk/channel-config-helpers";
 import {
   createPairingPrefixStripper,
   createTextPairingAdapter,
-} from "openclaw/plugin-sdk/channel-pairing";
+} from "quantumclaw/plugin-sdk/channel-pairing";
 import {
   createAllowlistProviderOpenWarningCollector,
   projectWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
-import { createScopedAccountReplyToModeResolver } from "openclaw/plugin-sdk/conversation-runtime";
+} from "quantumclaw/plugin-sdk/channel-policy";
+import { createScopedAccountReplyToModeResolver } from "quantumclaw/plugin-sdk/conversation-runtime";
 import {
   createChannelDirectoryAdapter,
   createRuntimeDirectoryLiveAdapter,
   listResolvedDirectoryEntriesFromSources,
-} from "openclaw/plugin-sdk/directory-runtime";
-import { buildTrafficStatusSummary } from "openclaw/plugin-sdk/extension-shared";
-import { createLazyRuntimeNamedExport } from "openclaw/plugin-sdk/lazy-runtime";
-import { createRuntimeOutboundDelegates } from "openclaw/plugin-sdk/outbound-runtime";
+} from "quantumclaw/plugin-sdk/directory-runtime";
+import { buildTrafficStatusSummary } from "quantumclaw/plugin-sdk/extension-shared";
+import { createLazyRuntimeNamedExport } from "quantumclaw/plugin-sdk/lazy-runtime";
+import { createRuntimeOutboundDelegates } from "quantumclaw/plugin-sdk/outbound-runtime";
 import { matrixMessageActions } from "./actions.js";
 import { MatrixConfigSchema } from "./config-schema.js";
 import {

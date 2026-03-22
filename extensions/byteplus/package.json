@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/byteplus-provider",
+  "name": "@quantumclaw/byteplus-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw BytePlus provider plugin",
+  "description": "QuantumClaw BytePlus provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

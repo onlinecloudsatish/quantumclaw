@@ -35,39 +35,39 @@ describe("gateway e2e", () => {
     async () => {
       const envSnapshot = captureEnv([
         "HOME",
-        "OPENCLAW_CONFIG_PATH",
-        "OPENCLAW_GATEWAY_TOKEN",
-        "OPENCLAW_SKIP_CHANNELS",
-        "OPENCLAW_SKIP_GMAIL_WATCHER",
-        "OPENCLAW_SKIP_CRON",
-        "OPENCLAW_SKIP_CANVAS_HOST",
-        "OPENCLAW_SKIP_BROWSER_CONTROL_SERVER",
+        "QUANTUMCLAW_CONFIG_PATH",
+        "QUANTUMCLAW_GATEWAY_TOKEN",
+        "QUANTUMCLAW_SKIP_CHANNELS",
+        "QUANTUMCLAW_SKIP_GMAIL_WATCHER",
+        "QUANTUMCLAW_SKIP_CRON",
+        "QUANTUMCLAW_SKIP_CANVAS_HOST",
+        "QUANTUMCLAW_SKIP_BROWSER_CONTROL_SERVER",
       ]);
 
       const { baseUrl: openaiBaseUrl, restore } = installOpenAiResponsesMock();
 
-      const tempHome = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-gw-mock-home-"));
+      const tempHome = await fs.mkdtemp(path.join(os.tmpdir(), "quantumclaw-gw-mock-home-"));
       process.env.HOME = tempHome;
-      process.env.OPENCLAW_SKIP_CHANNELS = "1";
-      process.env.OPENCLAW_SKIP_GMAIL_WATCHER = "1";
-      process.env.OPENCLAW_SKIP_CRON = "1";
-      process.env.OPENCLAW_SKIP_CANVAS_HOST = "1";
-      process.env.OPENCLAW_SKIP_BROWSER_CONTROL_SERVER = "1";
+      process.env.QUANTUMCLAW_SKIP_CHANNELS = "1";
+      process.env.QUANTUMCLAW_SKIP_GMAIL_WATCHER = "1";
+      process.env.QUANTUMCLAW_SKIP_CRON = "1";
+      process.env.QUANTUMCLAW_SKIP_CANVAS_HOST = "1";
+      process.env.QUANTUMCLAW_SKIP_BROWSER_CONTROL_SERVER = "1";
 
       const token = nextGatewayId("test-token");
-      process.env.OPENCLAW_GATEWAY_TOKEN = token;
+      process.env.QUANTUMCLAW_GATEWAY_TOKEN = token;
 
-      const workspaceDir = path.join(tempHome, "openclaw");
+      const workspaceDir = path.join(tempHome, "quantumclaw");
       await fs.mkdir(workspaceDir, { recursive: true });
 
       const nonceA = nextGatewayId("nonce-a");
       const nonceB = nextGatewayId("nonce-b");
-      const toolProbePath = path.join(workspaceDir, `.openclaw-tool-probe.${nonceA}.txt`);
+      const toolProbePath = path.join(workspaceDir, `.quantumclaw-tool-probe.${nonceA}.txt`);
       await fs.writeFile(toolProbePath, `nonceA=${nonceA}\nnonceB=${nonceB}\n`);
 
-      const configDir = path.join(tempHome, ".openclaw");
+      const configDir = path.join(tempHome, ".quantumclaw");
       await fs.mkdir(configDir, { recursive: true });
-      const configPath = path.join(configDir, "openclaw.json");
+      const configPath = path.join(configDir, "quantumclaw.json");
       const mockProvider = buildMockOpenAiResponsesProvider(openaiBaseUrl);
 
       const cfg = {
@@ -133,27 +133,27 @@ describe("gateway e2e", () => {
     async () => {
       const envSnapshot = captureEnv([
         "HOME",
-        "OPENCLAW_STATE_DIR",
-        "OPENCLAW_CONFIG_PATH",
-        "OPENCLAW_GATEWAY_TOKEN",
-        "OPENCLAW_SKIP_CHANNELS",
-        "OPENCLAW_SKIP_GMAIL_WATCHER",
-        "OPENCLAW_SKIP_CRON",
-        "OPENCLAW_SKIP_CANVAS_HOST",
-        "OPENCLAW_SKIP_BROWSER_CONTROL_SERVER",
+        "QUANTUMCLAW_STATE_DIR",
+        "QUANTUMCLAW_CONFIG_PATH",
+        "QUANTUMCLAW_GATEWAY_TOKEN",
+        "QUANTUMCLAW_SKIP_CHANNELS",
+        "QUANTUMCLAW_SKIP_GMAIL_WATCHER",
+        "QUANTUMCLAW_SKIP_CRON",
+        "QUANTUMCLAW_SKIP_CANVAS_HOST",
+        "QUANTUMCLAW_SKIP_BROWSER_CONTROL_SERVER",
       ]);
 
-      process.env.OPENCLAW_SKIP_CHANNELS = "1";
-      process.env.OPENCLAW_SKIP_GMAIL_WATCHER = "1";
-      process.env.OPENCLAW_SKIP_CRON = "1";
-      process.env.OPENCLAW_SKIP_CANVAS_HOST = "1";
-      process.env.OPENCLAW_SKIP_BROWSER_CONTROL_SERVER = "1";
-      delete process.env.OPENCLAW_GATEWAY_TOKEN;
+      process.env.QUANTUMCLAW_SKIP_CHANNELS = "1";
+      process.env.QUANTUMCLAW_SKIP_GMAIL_WATCHER = "1";
+      process.env.QUANTUMCLAW_SKIP_CRON = "1";
+      process.env.QUANTUMCLAW_SKIP_CANVAS_HOST = "1";
+      process.env.QUANTUMCLAW_SKIP_BROWSER_CONTROL_SERVER = "1";
+      delete process.env.QUANTUMCLAW_GATEWAY_TOKEN;
 
-      const tempHome = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-wizard-home-"));
+      const tempHome = await fs.mkdtemp(path.join(os.tmpdir(), "quantumclaw-wizard-home-"));
       process.env.HOME = tempHome;
-      delete process.env.OPENCLAW_STATE_DIR;
-      delete process.env.OPENCLAW_CONFIG_PATH;
+      delete process.env.QUANTUMCLAW_STATE_DIR;
+      delete process.env.QUANTUMCLAW_CONFIG_PATH;
 
       const wizardToken = nextGatewayId("wiz-token");
       const port = await getFreeGatewayPort();

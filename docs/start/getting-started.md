@@ -1,5 +1,5 @@
 ---
-summary: "Get OpenClaw installed and run your first chat in minutes."
+summary: "Get QuantumClaw installed and run your first chat in minutes."
 read_when:
   - First time setup from zero
   - You want the fastest path to a working chat
@@ -8,7 +8,7 @@ title: "Getting Started"
 
 # Getting Started
 
-Install OpenClaw, run onboarding, and chat with your AI assistant — all in
+Install QuantumClaw, run onboarding, and chat with your AI assistant — all in
 about 5 minutes. By the end you will have a running Gateway, configured auth,
 and a working chat session.
 
@@ -27,11 +27,11 @@ Need to install Node? See [Node setup](/install/node).
 ## Quick setup
 
 <Steps>
-  <Step title="Install OpenClaw">
+  <Step title="Install QuantumClaw">
     <Tabs>
       <Tab title="macOS / Linux">
         ```bash
-        curl -fsSL https://openclaw.ai/install.sh | bash
+        curl -fsSL https://quantumclaw.ai/install.sh | bash
         ```
         <img
   src="/assets/install-script.svg"
@@ -41,7 +41,7 @@ Need to install Node? See [Node setup](/install/node).
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        iwr -useb https://openclaw.ai/install.ps1 | iex
+        iwr -useb https://quantumclaw.ai/install.ps1 | iex
         ```
       </Tab>
     </Tabs>
@@ -53,7 +53,7 @@ Need to install Node? See [Node setup](/install/node).
   </Step>
   <Step title="Run onboarding">
     ```bash
-    openclaw onboard --install-daemon
+    quantumclaw onboard --install-daemon
     ```
 
     The wizard walks you through choosing a model provider, setting an API key,
@@ -64,7 +64,7 @@ Need to install Node? See [Node setup](/install/node).
   </Step>
   <Step title="Verify the Gateway is running">
     ```bash
-    openclaw gateway status
+    quantumclaw gateway status
     ```
 
     You should see the Gateway listening on port 18789.
@@ -72,7 +72,7 @@ Need to install Node? See [Node setup](/install/node).
   </Step>
   <Step title="Open the dashboard">
     ```bash
-    openclaw dashboard
+    quantumclaw dashboard
     ```
 
     This opens the Control UI in your browser. If it loads, everything is working.
@@ -106,11 +106,11 @@ Need to install Node? See [Node setup](/install/node).
 </Columns>
 
 <Accordion title="Advanced: environment variables">
-  If you run OpenClaw as a service account or want custom paths:
+  If you run QuantumClaw as a service account or want custom paths:
 
-- `OPENCLAW_HOME` — home directory for internal path resolution
-- `OPENCLAW_STATE_DIR` — override the state directory
-- `OPENCLAW_CONFIG_PATH` — override the config file path
+- `QUANTUMCLAW_HOME` — home directory for internal path resolution
+- `QUANTUMCLAW_STATE_DIR` — override the state directory
+- `QUANTUMCLAW_CONFIG_PATH` — override the config file path
 
 Full reference: [Environment variables](/help/environment).
 </Accordion>

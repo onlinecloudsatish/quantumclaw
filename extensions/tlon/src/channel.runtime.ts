@@ -1,9 +1,9 @@
 import crypto from "node:crypto";
-import type { ChannelAccountSnapshot } from "openclaw/plugin-sdk/channel-contract";
-import type { ChannelOutboundAdapter } from "openclaw/plugin-sdk/channel-send-result";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import type { ChannelPlugin } from "openclaw/plugin-sdk/core";
-import { createLoggerBackedRuntime } from "openclaw/plugin-sdk/runtime";
+import type { ChannelAccountSnapshot } from "quantumclaw/plugin-sdk/channel-contract";
+import type { ChannelOutboundAdapter } from "quantumclaw/plugin-sdk/channel-send-result";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import type { ChannelPlugin } from "quantumclaw/plugin-sdk/core";
+import { createLoggerBackedRuntime } from "quantumclaw/plugin-sdk/runtime";
 import { monitorTlonProvider } from "./monitor/index.js";
 import { tlonSetupWizard } from "./setup-surface.js";
 import {
@@ -90,7 +90,7 @@ async function createHttpPokeApi(params: {
 }
 
 function resolveOutboundContext(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   accountId?: string | null;
   to: string;
 }) {

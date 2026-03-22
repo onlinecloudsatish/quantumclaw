@@ -1,18 +1,18 @@
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { GatewayClient } from "openclaw/plugin-sdk/gateway-runtime";
-import { createOperatorApprovalsGatewayClient } from "openclaw/plugin-sdk/gateway-runtime";
-import type { EventFrame } from "openclaw/plugin-sdk/gateway-runtime";
-import { resolveExecApprovalCommandDisplay } from "openclaw/plugin-sdk/infra-runtime";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { GatewayClient } from "quantumclaw/plugin-sdk/gateway-runtime";
+import { createOperatorApprovalsGatewayClient } from "quantumclaw/plugin-sdk/gateway-runtime";
+import type { EventFrame } from "quantumclaw/plugin-sdk/gateway-runtime";
+import { resolveExecApprovalCommandDisplay } from "quantumclaw/plugin-sdk/infra-runtime";
 import {
   buildExecApprovalPendingReplyPayload,
   type ExecApprovalPendingReplyParams,
-} from "openclaw/plugin-sdk/infra-runtime";
-import { resolveExecApprovalSessionTarget } from "openclaw/plugin-sdk/infra-runtime";
-import type { ExecApprovalRequest, ExecApprovalResolved } from "openclaw/plugin-sdk/infra-runtime";
-import { normalizeAccountId, parseAgentSessionKey } from "openclaw/plugin-sdk/routing";
-import { createSubsystemLogger } from "openclaw/plugin-sdk/runtime-env";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { compileSafeRegex, testRegexWithBoundedInput } from "openclaw/plugin-sdk/security-runtime";
+} from "quantumclaw/plugin-sdk/infra-runtime";
+import { resolveExecApprovalSessionTarget } from "quantumclaw/plugin-sdk/infra-runtime";
+import type { ExecApprovalRequest, ExecApprovalResolved } from "quantumclaw/plugin-sdk/infra-runtime";
+import { normalizeAccountId, parseAgentSessionKey } from "quantumclaw/plugin-sdk/routing";
+import { createSubsystemLogger } from "quantumclaw/plugin-sdk/runtime-env";
+import type { RuntimeEnv } from "quantumclaw/plugin-sdk/runtime-env";
+import { compileSafeRegex, testRegexWithBoundedInput } from "quantumclaw/plugin-sdk/security-runtime";
 import { buildTelegramExecApprovalButtons } from "./approval-buttons.js";
 import {
   getTelegramExecApprovalApprovers,
@@ -41,7 +41,7 @@ type TelegramApprovalTarget = {
 export type TelegramExecApprovalHandlerOpts = {
   token: string;
   accountId: string;
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   gatewayUrl?: string;
   runtime?: RuntimeEnv;
 };
@@ -54,7 +54,7 @@ export type TelegramExecApprovalHandlerDeps = {
 };
 
 function matchesFilters(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   accountId: string;
   request: ExecApprovalRequest;
 }): boolean {
@@ -99,7 +99,7 @@ function matchesFilters(params: {
   return true;
 }
 
-function isHandlerConfigured(params: { cfg: OpenClawConfig; accountId: string }): boolean {
+function isHandlerConfigured(params: { cfg: QuantumClawConfig; accountId: string }): boolean {
   const config = resolveTelegramExecApprovalConfig({
     cfg: params.cfg,
     accountId: params.accountId,
@@ -116,7 +116,7 @@ function isHandlerConfigured(params: { cfg: OpenClawConfig; accountId: string })
 }
 
 function resolveRequestSessionTarget(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   request: ExecApprovalRequest;
 }): { to: string; accountId?: string; threadId?: number; channel?: string } | null {
   return resolveExecApprovalSessionTarget({
@@ -130,7 +130,7 @@ function resolveRequestSessionTarget(params: {
 }
 
 function resolveTelegramSourceTarget(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   accountId: string;
   request: ExecApprovalRequest;
 }): TelegramApprovalTarget | null {

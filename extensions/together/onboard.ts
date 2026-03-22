@@ -2,15 +2,15 @@ import {
   buildTogetherModelDefinition,
   TOGETHER_BASE_URL,
   TOGETHER_MODEL_CATALOG,
-} from "openclaw/plugin-sdk/provider-models";
+} from "quantumclaw/plugin-sdk/provider-models";
 import {
   applyProviderConfigWithModelCatalogPreset,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type QuantumClawConfig,
+} from "quantumclaw/plugin-sdk/provider-onboard";
 
 export const TOGETHER_DEFAULT_MODEL_REF = "together/moonshotai/Kimi-K2.5";
 
-function applyTogetherPreset(cfg: OpenClawConfig, primaryModelRef?: string): OpenClawConfig {
+function applyTogetherPreset(cfg: QuantumClawConfig, primaryModelRef?: string): QuantumClawConfig {
   return applyProviderConfigWithModelCatalogPreset(cfg, {
     providerId: "together",
     api: "openai-completions",
@@ -21,10 +21,10 @@ function applyTogetherPreset(cfg: OpenClawConfig, primaryModelRef?: string): Ope
   });
 }
 
-export function applyTogetherProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyTogetherProviderConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applyTogetherPreset(cfg);
 }
 
-export function applyTogetherConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyTogetherConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applyTogetherPreset(cfg, TOGETHER_DEFAULT_MODEL_REF);
 }

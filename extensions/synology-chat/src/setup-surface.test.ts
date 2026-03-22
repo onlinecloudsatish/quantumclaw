@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { QuantumClawConfig } from "../../../src/config/config.js";
 import {
   createPluginSetupWizardConfigure,
   createTestWizardPrompter,
@@ -29,7 +29,7 @@ describe("synology-chat setup wizard", () => {
 
     const result = await runSetupWizardConfigure({
       configure: synologyChatConfigure,
-      cfg: {} as OpenClawConfig,
+      cfg: {} as QuantumClawConfig,
       prompter,
       options: {},
     });
@@ -63,7 +63,7 @@ describe("synology-chat setup wizard", () => {
 
     const result = await runSetupWizardConfigure({
       configure: synologyChatConfigure,
-      cfg: {} as OpenClawConfig,
+      cfg: {} as QuantumClawConfig,
       prompter,
       options: {},
       forceAllowFrom: true,

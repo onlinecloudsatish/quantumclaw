@@ -1,8 +1,8 @@
 import { RequestClient } from "@buape/carbon";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import type { RetryConfig } from "openclaw/plugin-sdk/infra-runtime";
-import type { RetryRunner } from "openclaw/plugin-sdk/infra-runtime";
-import { normalizeAccountId } from "openclaw/plugin-sdk/routing";
+import { loadConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import type { RetryConfig } from "quantumclaw/plugin-sdk/infra-runtime";
+import type { RetryRunner } from "quantumclaw/plugin-sdk/infra-runtime";
+import { normalizeAccountId } from "quantumclaw/plugin-sdk/routing";
 import {
   mergeDiscordAccountConfig,
   resolveDiscordAccount,

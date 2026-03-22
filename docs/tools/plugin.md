@@ -1,5 +1,5 @@
 ---
-summary: "Install, configure, and manage OpenClaw plugins"
+summary: "Install, configure, and manage QuantumClaw plugins"
 read_when:
   - Installing or configuring plugins
   - Understanding plugin discovery and load rules
@@ -10,34 +10,34 @@ sidebarTitle: "Install and Configure"
 
 # Plugins
 
-Plugins extend OpenClaw with new capabilities: channels, model providers, tools,
+Plugins extend QuantumClaw with new capabilities: channels, model providers, tools,
 skills, speech, image generation, and more. Some plugins are **core** (shipped
-with OpenClaw), others are **external** (published on npm by the community).
+with QuantumClaw), others are **external** (published on npm by the community).
 
 ## Quick start
 
 <Steps>
   <Step title="See what is loaded">
     ```bash
-    openclaw plugins list
+    quantumclaw plugins list
     ```
   </Step>
 
   <Step title="Install a plugin">
     ```bash
     # From npm
-    openclaw plugins install @openclaw/voice-call
+    quantumclaw plugins install @quantumclaw/voice-call
 
     # From a local directory or archive
-    openclaw plugins install ./my-plugin
-    openclaw plugins install ./my-plugin.tgz
+    quantumclaw plugins install ./my-plugin
+    quantumclaw plugins install ./my-plugin.tgz
     ```
 
   </Step>
 
   <Step title="Restart the Gateway">
     ```bash
-    openclaw gateway restart
+    quantumclaw gateway restart
     ```
 
     Then configure under `plugins.entries.\<id\>.config` in your config file.
@@ -47,14 +47,14 @@ with OpenClaw), others are **external** (published on npm by the community).
 
 ## Plugin types
 
-OpenClaw recognizes two plugin formats:
+QuantumClaw recognizes two plugin formats:
 
 | Format     | How it works                                                       | Examples                                               |
 | ---------- | ------------------------------------------------------------------ | ------------------------------------------------------ |
-| **Native** | `openclaw.plugin.json` + runtime module; executes in-process       | Official plugins, community npm packages               |
-| **Bundle** | Codex/Claude/Cursor-compatible layout; mapped to OpenClaw features | `.codex-plugin/`, `.claude-plugin/`, `.cursor-plugin/` |
+| **Native** | `quantumclaw.plugin.json` + runtime module; executes in-process       | Official plugins, community npm packages               |
+| **Bundle** | Codex/Claude/Cursor-compatible layout; mapped to QuantumClaw features | `.codex-plugin/`, `.claude-plugin/`, `.cursor-plugin/` |
 
-Both show up under `openclaw plugins list`. See [Plugin Bundles](/plugins/bundles) for bundle details.
+Both show up under `quantumclaw plugins list`. See [Plugin Bundles](/plugins/bundles) for bundle details.
 
 If you are writing a native plugin, start with [Building Plugins](/plugins/building-plugins)
 and the [Plugin SDK Overview](/plugins/sdk-overview).
@@ -65,14 +65,14 @@ and the [Plugin SDK Overview](/plugins/sdk-overview).
 
 | Plugin          | Package                | Docs                                 |
 | --------------- | ---------------------- | ------------------------------------ |
-| Matrix          | `@openclaw/matrix`     | [Matrix](/channels/matrix)           |
-| Microsoft Teams | `@openclaw/msteams`    | [Microsoft Teams](/channels/msteams) |
-| Nostr           | `@openclaw/nostr`      | [Nostr](/channels/nostr)             |
-| Voice Call      | `@openclaw/voice-call` | [Voice Call](/plugins/voice-call)    |
-| Zalo            | `@openclaw/zalo`       | [Zalo](/channels/zalo)               |
-| Zalo Personal   | `@openclaw/zalouser`   | [Zalo Personal](/plugins/zalouser)   |
+| Matrix          | `@quantumclaw/matrix`     | [Matrix](/channels/matrix)           |
+| Microsoft Teams | `@quantumclaw/msteams`    | [Microsoft Teams](/channels/msteams) |
+| Nostr           | `@quantumclaw/nostr`      | [Nostr](/channels/nostr)             |
+| Voice Call      | `@quantumclaw/voice-call` | [Voice Call](/plugins/voice-call)    |
+| Zalo            | `@quantumclaw/zalo`       | [Zalo](/channels/zalo)               |
+| Zalo Personal   | `@quantumclaw/zalouser`   | [Zalo Personal](/plugins/zalouser)   |
 
-### Core (shipped with OpenClaw)
+### Core (shipped with QuantumClaw)
 
 <AccordionGroup>
   <Accordion title="Model providers (enabled by default)">
@@ -134,7 +134,7 @@ Config changes **require a gateway restart**.
 
 ## Discovery and precedence
 
-OpenClaw scans for plugins in this order (first match wins):
+QuantumClaw scans for plugins in this order (first match wins):
 
 <Steps>
   <Step title="Config paths">
@@ -142,15 +142,15 @@ OpenClaw scans for plugins in this order (first match wins):
   </Step>
 
   <Step title="Workspace extensions">
-    `\<workspace\>/.openclaw/extensions/*.ts` and `\<workspace\>/.openclaw/extensions/*/index.ts`.
+    `\<workspace\>/.quantumclaw/extensions/*.ts` and `\<workspace\>/.quantumclaw/extensions/*/index.ts`.
   </Step>
 
   <Step title="Global extensions">
-    `~/.openclaw/extensions/*.ts` and `~/.openclaw/extensions/*/index.ts`.
+    `~/.quantumclaw/extensions/*.ts` and `~/.quantumclaw/extensions/*/index.ts`.
   </Step>
 
   <Step title="Bundled plugins">
-    Shipped with OpenClaw. Many are enabled by default (model providers, speech).
+    Shipped with QuantumClaw. Many are enabled by default (model providers, speech).
     Others require explicit enablement.
   </Step>
 </Steps>
@@ -187,24 +187,24 @@ Some categories are exclusive (only one active at a time):
 ## CLI reference
 
 ```bash
-openclaw plugins list                    # compact inventory
-openclaw plugins inspect <id>            # deep detail
-openclaw plugins inspect <id> --json     # machine-readable
-openclaw plugins status                  # operational summary
-openclaw plugins doctor                  # diagnostics
+quantumclaw plugins list                    # compact inventory
+quantumclaw plugins inspect <id>            # deep detail
+quantumclaw plugins inspect <id> --json     # machine-readable
+quantumclaw plugins status                  # operational summary
+quantumclaw plugins doctor                  # diagnostics
 
-openclaw plugins install <package>        # install (ClawHub first, then npm)
-openclaw plugins install clawhub:<pkg>   # install from ClawHub only
-openclaw plugins install <path>          # install from local path
-openclaw plugins install -l <path>       # link (no copy) for dev
-openclaw plugins update <id>             # update one plugin
-openclaw plugins update --all            # update all
+quantumclaw plugins install <package>        # install (ClawHub first, then npm)
+quantumclaw plugins install clawhub:<pkg>   # install from ClawHub only
+quantumclaw plugins install <path>          # install from local path
+quantumclaw plugins install -l <path>       # link (no copy) for dev
+quantumclaw plugins update <id>             # update one plugin
+quantumclaw plugins update --all            # update all
 
-openclaw plugins enable <id>
-openclaw plugins disable <id>
+quantumclaw plugins enable <id>
+quantumclaw plugins disable <id>
 ```
 
-See [`openclaw plugins` CLI reference](/cli/plugins) for full details.
+See [`quantumclaw plugins` CLI reference](/cli/plugins) for full details.
 
 ## Plugin API overview
 

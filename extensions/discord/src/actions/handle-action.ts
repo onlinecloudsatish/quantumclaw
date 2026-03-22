@@ -3,11 +3,11 @@ import {
   readNumberParam,
   readStringArrayParam,
   readStringParam,
-} from "openclaw/plugin-sdk/agent-runtime";
-import { readBooleanParam } from "openclaw/plugin-sdk/boolean-param";
-import { resolveReactionMessageId } from "openclaw/plugin-sdk/channel-actions";
-import type { ChannelMessageActionContext } from "openclaw/plugin-sdk/channel-contract";
-import { normalizeInteractiveReply } from "openclaw/plugin-sdk/interactive-runtime";
+} from "quantumclaw/plugin-sdk/agent-runtime";
+import { readBooleanParam } from "quantumclaw/plugin-sdk/boolean-param";
+import { resolveReactionMessageId } from "quantumclaw/plugin-sdk/channel-actions";
+import type { ChannelMessageActionContext } from "quantumclaw/plugin-sdk/channel-contract";
+import { normalizeInteractiveReply } from "quantumclaw/plugin-sdk/interactive-runtime";
 import { buildDiscordInteractiveComponents } from "../shared-interactive.js";
 import { resolveDiscordChannelId } from "../targets.js";
 import { tryHandleDiscordMessageActionGuildAdmin } from "./handle-action.guild-admin.js";

@@ -1,6 +1,6 @@
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import type { SlackChannelConfig } from "openclaw/plugin-sdk/config-runtime";
-import { normalizeAccountId } from "openclaw/plugin-sdk/routing";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import type { SlackChannelConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { normalizeAccountId } from "quantumclaw/plugin-sdk/routing";
 
 type SlackChannels = Record<string, SlackChannelConfig>;
 
@@ -13,7 +13,7 @@ export type SlackChannelMigrationResult = {
 };
 
 function resolveAccountChannels(
-  cfg: OpenClawConfig,
+  cfg: QuantumClawConfig,
   accountId?: string | null,
 ): { channels?: SlackChannels } {
   if (!accountId) {
@@ -57,7 +57,7 @@ export function migrateSlackChannelsInPlace(
 }
 
 export function migrateSlackChannelConfig(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   accountId?: string | null;
   oldChannelId: string;
   newChannelId: string;

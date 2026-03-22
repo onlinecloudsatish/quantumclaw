@@ -3,7 +3,7 @@ import type { PluginRuntime } from "../../../src/plugins/runtime/types.js";
 import { createStartAccountContext } from "../../../test/helpers/extensions/start-account-context.js";
 import type { ResolvedDiscordAccount } from "./accounts.js";
 import { discordPlugin } from "./channel.js";
-import type { OpenClawConfig } from "./runtime-api.js";
+import type { QuantumClawConfig } from "./runtime-api.js";
 import { setDiscordRuntime } from "./runtime.js";
 
 const probeDiscordMock = vi.hoisted(() => vi.fn());
@@ -34,7 +34,7 @@ vi.mock("./audit.js", async (importOriginal) => {
   };
 });
 
-function createCfg(): OpenClawConfig {
+function createCfg(): QuantumClawConfig {
   return {
     channels: {
       discord: {
@@ -42,14 +42,14 @@ function createCfg(): OpenClawConfig {
         token: "discord-token",
       },
     },
-  } as OpenClawConfig;
+  } as QuantumClawConfig;
 }
 
-function resolveAccount(cfg: OpenClawConfig): ResolvedDiscordAccount {
+function resolveAccount(cfg: QuantumClawConfig): ResolvedDiscordAccount {
   return discordPlugin.config.resolveAccount(cfg, "default") as ResolvedDiscordAccount;
 }
 
-function startDiscordAccount(cfg: OpenClawConfig) {
+function startDiscordAccount(cfg: QuantumClawConfig) {
   return discordPlugin.gateway!.startAccount!(
     createStartAccountContext({
       account: resolveAccount(cfg),
@@ -83,7 +83,7 @@ describe("discordPlugin outbound", () => {
     });
 
     const result = await discordPlugin.outbound!.sendMedia!({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as QuantumClawConfig,
       to: "channel:123",
       text: "hi",
       mediaUrl: "/tmp/image.png",
@@ -193,7 +193,7 @@ describe("discordPlugin security", () => {
           dm: { policy: "allowlist", allowFrom: ["  discord:<@!123456789>  "] },
         },
       },
-    } as OpenClawConfig;
+    } as QuantumClawConfig;
 
     const result = resolveDmPolicy({
       cfg,
@@ -230,7 +230,7 @@ describe("discordPlugin groups", () => {
           },
         },
       },
-    } as OpenClawConfig;
+    } as QuantumClawConfig;
 
     expect(
       discordPlugin.groups?.resolveRequireMention?.({

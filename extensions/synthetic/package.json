@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/synthetic-provider",
+  "name": "@quantumclaw/synthetic-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Synthetic provider plugin",
+  "description": "QuantumClaw Synthetic provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

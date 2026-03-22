@@ -3,10 +3,10 @@
 
 import path from "node:path";
 import { loadConfig } from "../config/config.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { QuantumClawConfig } from "../config/config.js";
 import { computeBackoff, type BackoffPolicy } from "../infra/backoff.js";
 import { consumeRootOptionToken, FLAG_TERMINATOR } from "../infra/cli-root-options.js";
-import { resolveOpenClawAgentDir } from "./agent-paths.js";
+import { resolveQuantumClawAgentDir } from "./agent-paths.js";
 import { lookupCachedContextTokens, MODEL_CONTEXT_TOKEN_CACHE } from "./context-cache.js";
 import { normalizeProviderId } from "./model-selection.js";
 
@@ -80,7 +80,7 @@ export function applyConfiguredContextWindows(params: {
 }
 
 let loadPromise: Promise<void> | null = null;
-let configuredConfig: OpenClawConfig | undefined;
+let configuredConfig: QuantumClawConfig | undefined;
 let configLoadFailures = 0;
 let nextConfigLoadAttemptAtMs = 0;
 let modelsConfigRuntimePromise: Promise<typeof import("./models-config.runtime.js")> | undefined;
@@ -90,14 +90,14 @@ function loadModelsConfigRuntime() {
   return modelsConfigRuntimePromise;
 }
 
-function isLikelyOpenClawCliProcess(argv: string[] = process.argv): boolean {
+function isLikelyQuantumClawCliProcess(argv: string[] = process.argv): boolean {
   const entryBasename = path
     .basename(argv[1] ?? "")
     .trim()
     .toLowerCase();
   return (
-    entryBasename === "openclaw" ||
-    entryBasename === "openclaw.mjs" ||
+    entryBasename === "quantumclaw" ||
+    entryBasename === "quantumclaw.mjs" ||
     entryBasename === "entry.js" ||
     entryBasename === "entry.mjs"
   );
@@ -145,21 +145,21 @@ const SKIP_EAGER_WARMUP_PRIMARY_COMMANDS = new Set([
 ]);
 
 function shouldEagerWarmContextWindowCache(argv: string[] = process.argv): boolean {
-  // Keep this gate tied to the real OpenClaw CLI entrypoints.
+  // Keep this gate tied to the real QuantumClaw CLI entrypoints.
   //
   // This module can also land inside shared dist chunks that are imported from
   // plugin-sdk/library surfaces during smoke tests and plugin loading. If we do
   // eager warmup for those generic Node script imports, merely importing the
-  // built plugin-sdk can call ensureOpenClawModelsJson(), which cascades into
+  // built plugin-sdk can call ensureQuantumClawModelsJson(), which cascades into
   // plugin discovery and breaks dist/source singleton assumptions.
-  if (!isLikelyOpenClawCliProcess(argv)) {
+  if (!isLikelyQuantumClawCliProcess(argv)) {
     return false;
   }
   const [primary] = getCommandPathFromArgv(argv);
   return Boolean(primary) && !SKIP_EAGER_WARMUP_PRIMARY_COMMANDS.has(primary);
 }
 
-function primeConfiguredContextWindows(): OpenClawConfig | undefined {
+function primeConfiguredContextWindows(): QuantumClawConfig | undefined {
   if (configuredConfig) {
     return configuredConfig;
   }
@@ -197,7 +197,7 @@ function ensureContextWindowCacheLoaded(): Promise<void> {
 
   loadPromise = (async () => {
     try {
-      await (await loadModelsConfigRuntime()).ensureOpenClawModelsJson(cfg);
+      await (await loadModelsConfigRuntime()).ensureQuantumClawModelsJson(cfg);
     } catch {
       // Continue with best-effort discovery/overrides.
     }
@@ -205,7 +205,7 @@ function ensureContextWindowCacheLoaded(): Promise<void> {
     try {
       const { discoverAuthStorage, discoverModels } =
         await import("./pi-model-discovery-runtime.js");
-      const agentDir = resolveOpenClawAgentDir();
+      const agentDir = resolveQuantumClawAgentDir();
       const authStorage = discoverAuthStorage(agentDir);
       const modelRegistry = discoverModels(authStorage, agentDir) as unknown as ModelRegistryLike;
       const models =
@@ -251,7 +251,7 @@ if (shouldEagerWarmContextWindowCache()) {
 }
 
 function resolveConfiguredModelParams(
-  cfg: OpenClawConfig | undefined,
+  cfg: QuantumClawConfig | undefined,
   provider: string,
   model: string,
 ): Record<string, unknown> | undefined {
@@ -301,7 +301,7 @@ function resolveProviderModelRef(params: {
 // keys overlap with raw slash-containing model IDs (e.g. OpenRouter's
 // "google/gemini-2.5-pro" stored as a raw catalog entry).
 function resolveConfiguredProviderContextWindow(
-  cfg: OpenClawConfig | undefined,
+  cfg: QuantumClawConfig | undefined,
   provider: string,
   model: string,
 ): number | undefined {
@@ -359,7 +359,7 @@ function isAnthropic1MModel(provider: string, model: string): boolean {
 }
 
 export function resolveContextTokensForModel(params: {
-  cfg?: OpenClawConfig;
+  cfg?: QuantumClawConfig;
   provider?: string;
   model?: string;
   contextTokensOverride?: number;

@@ -1,12 +1,12 @@
 {
-  "name": "@openclaw/irc",
+  "name": "@quantumclaw/irc",
   "version": "2026.3.22",
-  "description": "OpenClaw IRC channel plugin",
+  "description": "QuantumClaw IRC channel plugin",
   "type": "module",
   "dependencies": {
     "zod": "^4.3.6"
   },
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ],

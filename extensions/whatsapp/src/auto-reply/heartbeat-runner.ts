@@ -1,28 +1,28 @@
-import { appendCronStyleCurrentTimeLine } from "openclaw/plugin-sdk/agent-runtime";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
+import { appendCronStyleCurrentTimeLine } from "quantumclaw/plugin-sdk/agent-runtime";
+import { loadConfig } from "quantumclaw/plugin-sdk/config-runtime";
 import {
   loadSessionStore,
   resolveSessionKey,
   resolveStorePath,
   updateSessionStore,
-} from "openclaw/plugin-sdk/config-runtime";
-import { emitHeartbeatEvent, resolveIndicatorType } from "openclaw/plugin-sdk/infra-runtime";
-import { resolveHeartbeatVisibility } from "openclaw/plugin-sdk/infra-runtime";
+} from "quantumclaw/plugin-sdk/config-runtime";
+import { emitHeartbeatEvent, resolveIndicatorType } from "quantumclaw/plugin-sdk/infra-runtime";
+import { resolveHeartbeatVisibility } from "quantumclaw/plugin-sdk/infra-runtime";
 import {
   hasOutboundReplyContent,
   resolveSendableOutboundReplyParts,
-} from "openclaw/plugin-sdk/reply-payload";
-import { resolveHeartbeatReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
+} from "quantumclaw/plugin-sdk/reply-payload";
+import { resolveHeartbeatReplyPayload } from "quantumclaw/plugin-sdk/reply-runtime";
 import {
   DEFAULT_HEARTBEAT_ACK_MAX_CHARS,
   resolveHeartbeatPrompt,
   stripHeartbeatToken,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { getReplyFromConfig } from "openclaw/plugin-sdk/reply-runtime";
-import { HEARTBEAT_TOKEN } from "openclaw/plugin-sdk/reply-runtime";
-import { normalizeMainKey } from "openclaw/plugin-sdk/routing";
-import { getChildLogger } from "openclaw/plugin-sdk/runtime-env";
-import { redactIdentifier } from "openclaw/plugin-sdk/text-runtime";
+} from "quantumclaw/plugin-sdk/reply-runtime";
+import { getReplyFromConfig } from "quantumclaw/plugin-sdk/reply-runtime";
+import { HEARTBEAT_TOKEN } from "quantumclaw/plugin-sdk/reply-runtime";
+import { normalizeMainKey } from "quantumclaw/plugin-sdk/routing";
+import { getChildLogger } from "quantumclaw/plugin-sdk/runtime-env";
+import { redactIdentifier } from "quantumclaw/plugin-sdk/text-runtime";
 import { newConnectionId } from "../reconnect.js";
 import { resolveWhatsAppHeartbeatRecipients } from "../runtime-api.js";
 import { sendMessageWhatsApp } from "../send.js";

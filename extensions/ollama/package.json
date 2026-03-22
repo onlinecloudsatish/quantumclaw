@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/ollama-provider",
+  "name": "@quantumclaw/ollama-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Ollama provider plugin",
+  "description": "QuantumClaw Ollama provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

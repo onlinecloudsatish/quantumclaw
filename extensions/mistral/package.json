@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/mistral-provider",
+  "name": "@quantumclaw/mistral-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Mistral provider plugin",
+  "description": "QuantumClaw Mistral provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

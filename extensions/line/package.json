@@ -1,21 +1,21 @@
 {
-  "name": "@openclaw/line",
+  "name": "@quantumclaw/line",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw LINE channel plugin",
+  "description": "QuantumClaw LINE channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "quantumclaw": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.3.22"
+    "quantumclaw": ">=2026.3.22"
   },
   "peerDependenciesMeta": {
-    "openclaw": {
+    "quantumclaw": {
       "optional": true
     }
   },
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -31,7 +31,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@openclaw/line",
+      "npmSpec": "@quantumclaw/line",
       "localPath": "extensions/line",
       "defaultChoice": "npm",
       "minHostVersion": ">=2026.3.22"

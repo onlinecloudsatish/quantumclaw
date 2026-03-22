@@ -4,9 +4,9 @@ import {
   getContentType,
   normalizeMessageContent,
 } from "@whiskeysockets/baileys";
-import { formatLocationText, type NormalizedLocation } from "openclaw/plugin-sdk/channel-inbound";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { jidToE164 } from "openclaw/plugin-sdk/text-runtime";
+import { formatLocationText, type NormalizedLocation } from "quantumclaw/plugin-sdk/channel-inbound";
+import { logVerbose } from "quantumclaw/plugin-sdk/runtime-env";
+import { jidToE164 } from "quantumclaw/plugin-sdk/text-runtime";
 import { parseVcard } from "../vcard.js";
 
 function unwrapMessage(message: proto.IMessage | undefined): proto.IMessage | undefined {

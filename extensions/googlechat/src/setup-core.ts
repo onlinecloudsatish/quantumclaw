@@ -1,4 +1,4 @@
-import { createPatchedAccountSetupAdapter, DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/setup";
+import { createPatchedAccountSetupAdapter, DEFAULT_ACCOUNT_ID } from "quantumclaw/plugin-sdk/setup";
 
 const channel = "googlechat" as const;
 

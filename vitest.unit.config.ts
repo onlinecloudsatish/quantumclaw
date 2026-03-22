@@ -20,21 +20,21 @@ function loadPatternListFile(filePath: string, label: string): string[] {
 export function loadIncludePatternsFromEnv(
   env: Record<string, string | undefined> = process.env,
 ): string[] | null {
-  const includeFile = env.OPENCLAW_VITEST_INCLUDE_FILE?.trim();
+  const includeFile = env.QUANTUMCLAW_VITEST_INCLUDE_FILE?.trim();
   if (!includeFile) {
     return null;
   }
-  return loadPatternListFile(includeFile, "OPENCLAW_VITEST_INCLUDE_FILE");
+  return loadPatternListFile(includeFile, "QUANTUMCLAW_VITEST_INCLUDE_FILE");
 }
 
 export function loadExtraExcludePatternsFromEnv(
   env: Record<string, string | undefined> = process.env,
 ): string[] {
-  const extraExcludeFile = env.OPENCLAW_VITEST_EXTRA_EXCLUDE_FILE?.trim();
+  const extraExcludeFile = env.QUANTUMCLAW_VITEST_EXTRA_EXCLUDE_FILE?.trim();
   if (!extraExcludeFile) {
     return [];
   }
-  return loadPatternListFile(extraExcludeFile, "OPENCLAW_VITEST_EXTRA_EXCLUDE_FILE");
+  return loadPatternListFile(extraExcludeFile, "QUANTUMCLAW_VITEST_EXTRA_EXCLUDE_FILE");
 }
 
 export default defineConfig({

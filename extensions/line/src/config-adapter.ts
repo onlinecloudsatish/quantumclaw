@@ -1,9 +1,9 @@
-import { createScopedChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
+import { createScopedChannelConfigAdapter } from "quantumclaw/plugin-sdk/channel-config-helpers";
 import {
   listLineAccountIds,
   resolveDefaultLineAccountId,
   resolveLineAccount,
-  type OpenClawConfig,
+  type QuantumClawConfig,
   type ResolvedLineAccount,
 } from "../runtime-api.js";
 
@@ -14,7 +14,7 @@ export function normalizeLineAllowFrom(entry: string): string {
 export const lineConfigAdapter = createScopedChannelConfigAdapter<
   ResolvedLineAccount,
   ResolvedLineAccount,
-  OpenClawConfig
+  QuantumClawConfig
 >({
   sectionKey: "line",
   listAccountIds: listLineAccountIds,

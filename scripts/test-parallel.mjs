@@ -32,7 +32,7 @@ const existingFiles = (entries) =>
 let tempArtifactDir = null;
 const ensureTempArtifactDir = () => {
   if (tempArtifactDir === null) {
-    tempArtifactDir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-test-parallel-"));
+    tempArtifactDir = fs.mkdtempSync(path.join(os.tmpdir(), "quantumclaw-test-parallel-"));
   }
   return tempArtifactDir;
 };
@@ -90,8 +90,8 @@ const isMacMiniProfile = testProfile === "macmini";
 // CPU load and fatal heap OOMs on memory-constrained dev machines and CI when
 // unit-fast stayed on vmForks. Keep forks as the default unless that evidence
 // is re-run and replaced:
-// PR: https://github.com/openclaw/openclaw/pull/51145
-// OOM evidence: https://github.com/openclaw/openclaw/pull/51145#issuecomment-4099663958
+// PR: https://github.com/quantumclaw/quantumclaw/pull/51145
+// OOM evidence: https://github.com/quantumclaw/quantumclaw/pull/51145#issuecomment-4099663958
 // Preserve OPENCLAW_TEST_VM_FORKS=1 as the explicit override/debug escape hatch.
 const supportsVmForks = Number.isFinite(nodeMajor) ? nodeMajor <= 24 : true;
 const useVmForks = process.env.OPENCLAW_TEST_VM_FORKS === "1" && supportsVmForks;
@@ -987,7 +987,7 @@ const heapSnapshotSignal = process.env.OPENCLAW_TEST_HEAPSNAPSHOT_SIGNAL?.trim()
 const heapSnapshotBaseDir = heapSnapshotEnabled
   ? path.resolve(
       process.env.OPENCLAW_TEST_HEAPSNAPSHOT_DIR?.trim() ||
-        path.join(os.tmpdir(), `openclaw-heapsnapshots-${Date.now()}`),
+        path.join(os.tmpdir(), `quantumclaw-heapsnapshots-${Date.now()}`),
     )
   : null;
 const ensureNodeOptionFlag = (nodeOptions, flagPrefix, nextValue) =>

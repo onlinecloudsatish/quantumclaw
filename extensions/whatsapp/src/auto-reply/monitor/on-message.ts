@@ -1,10 +1,10 @@
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import type { getReplyFromConfig } from "openclaw/plugin-sdk/reply-runtime";
-import type { MsgContext } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { buildGroupHistoryKey } from "openclaw/plugin-sdk/routing";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { normalizeE164 } from "openclaw/plugin-sdk/text-runtime";
+import { loadConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import type { getReplyFromConfig } from "quantumclaw/plugin-sdk/reply-runtime";
+import type { MsgContext } from "quantumclaw/plugin-sdk/reply-runtime";
+import { resolveAgentRoute } from "quantumclaw/plugin-sdk/routing";
+import { buildGroupHistoryKey } from "quantumclaw/plugin-sdk/routing";
+import { logVerbose } from "quantumclaw/plugin-sdk/runtime-env";
+import { normalizeE164 } from "quantumclaw/plugin-sdk/text-runtime";
 import type { MentionConfig } from "../mentions.js";
 import type { WebInboundMsg } from "../types.js";
 import { maybeBroadcastMessage } from "./broadcast.js";
@@ -26,7 +26,7 @@ export function createWebOnMessageHandler(params: {
   echoTracker: EchoTracker;
   backgroundTasks: Set<Promise<unknown>>;
   replyResolver: typeof getReplyFromConfig;
-  replyLogger: ReturnType<(typeof import("openclaw/plugin-sdk/runtime-env"))["getChildLogger"]>;
+  replyLogger: ReturnType<(typeof import("quantumclaw/plugin-sdk/runtime-env"))["getChildLogger"]>;
   baseMentionConfig: MentionConfig;
   account: { authDir?: string; accountId?: string };
 }) {

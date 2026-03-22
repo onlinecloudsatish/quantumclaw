@@ -1,4 +1,4 @@
-import type { OpenClawPluginApi } from "openclaw/plugin-sdk/plugin-runtime";
+import type { QuantumClawPluginApi } from "quantumclaw/plugin-sdk/plugin-runtime";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("./tavily-client.js", () => ({
@@ -8,10 +8,10 @@ vi.mock("./tavily-client.js", () => ({
 import { runTavilyExtract } from "./tavily-client.js";
 import { createTavilyExtractTool } from "./tavily-extract-tool.js";
 
-function fakeApi(): OpenClawPluginApi {
+function fakeApi(): QuantumClawPluginApi {
   return {
     config: {},
-  } as OpenClawPluginApi;
+  } as QuantumClawPluginApi;
 }
 
 describe("tavily_extract", () => {

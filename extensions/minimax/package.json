@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/minimax-provider",
+  "name": "@quantumclaw/minimax-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw MiniMax provider and OAuth plugin",
+  "description": "QuantumClaw MiniMax provider and OAuth plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

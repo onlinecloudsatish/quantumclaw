@@ -2,12 +2,12 @@
 // Keep this list additive and scoped to symbols used under extensions/diffs.
 
 export { definePluginEntry } from "./plugin-entry.js";
-export type { OpenClawConfig } from "../config/config.js";
-export { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+export type { QuantumClawConfig } from "../config/config.js";
+export { resolvePreferredQuantumClawTmpDir } from "../infra/tmp-quantumclaw-dir.js";
 export type {
   AnyAgentTool,
-  OpenClawPluginApi,
-  OpenClawPluginConfigSchema,
-  OpenClawPluginToolContext,
+  QuantumClawPluginApi,
+  QuantumClawPluginConfigSchema,
+  QuantumClawPluginToolContext,
   PluginLogger,
 } from "../plugins/types.js";

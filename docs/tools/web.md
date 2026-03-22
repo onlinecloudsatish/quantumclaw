@@ -9,7 +9,7 @@ title: "Web Tools"
 
 # Web tools
 
-OpenClaw ships two lightweight web tools:
+QuantumClaw ships two lightweight web tools:
 
 - `web_search` — Search the web using Brave Search API, Firecrawl Search, Gemini with Google Search grounding, Grok, Kimi, Perplexity Search API, or Tavily Search API.
 - `web_fetch` — HTTP fetch + readable extraction (HTML → markdown/text).
@@ -58,18 +58,18 @@ If no keys are found, it falls back to Brave (you'll get a missing-key error pro
 Runtime SecretRef behavior:
 
 - Web tool SecretRefs are resolved atomically at gateway startup/reload.
-- In auto-detect mode, OpenClaw resolves only the selected provider key. Non-selected provider SecretRefs stay inactive until selected.
+- In auto-detect mode, QuantumClaw resolves only the selected provider key. Non-selected provider SecretRefs stay inactive until selected.
 - If the selected provider SecretRef is unresolved and no provider env fallback exists, startup/reload fails fast.
 
 ## Setting up web search
 
-Use `openclaw configure --section web` to set up your API key and choose a provider.
+Use `quantumclaw configure --section web` to set up your API key and choose a provider.
 
 ### Brave Search
 
 1. Create a Brave Search API account at [brave.com/search/api](https://brave.com/search/api/)
 2. In the dashboard, choose the **Search** plan and generate an API key.
-3. Run `openclaw configure --section web` to store the key in config, or set `BRAVE_API_KEY` in your environment.
+3. Run `quantumclaw configure --section web` to store the key in config, or set `BRAVE_API_KEY` in your environment.
 
 Each Brave plan includes **\$5/month in free credit** (renewing). The Search
 plan costs \$5 per 1,000 requests, so the credit covers 1,000 queries/month. Set
@@ -81,7 +81,7 @@ pricing.
 
 1. Create a Perplexity account at [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api)
 2. Generate an API key in the dashboard
-3. Run `openclaw configure --section web` to store the key in config, or set `PERPLEXITY_API_KEY` in your environment.
+3. Run `quantumclaw configure --section web` to store the key in config, or set `PERPLEXITY_API_KEY` in your environment.
 
 For legacy Sonar/OpenRouter compatibility, set `OPENROUTER_API_KEY` instead, or configure `plugins.entries.perplexity.config.webSearch.apiKey` with an `sk-or-...` key. Setting `plugins.entries.perplexity.config.webSearch.baseUrl` or `model` also opts Perplexity back into the chat-completions compatibility path.
 
@@ -92,7 +92,7 @@ See [Perplexity Search API Docs](https://docs.perplexity.ai/guides/search-quicks
 
 ### Where to store the key
 
-**Via config:** run `openclaw configure --section web`. It stores the key under the provider-specific config path:
+**Via config:** run `quantumclaw configure --section web`. It stores the key under the provider-specific config path:
 
 - Brave: `plugins.entries.brave.config.webSearch.apiKey`
 - Firecrawl: `plugins.entries.firecrawl.config.webSearch.apiKey`
@@ -114,7 +114,7 @@ All of these fields also support SecretRef objects.
 - Perplexity: `PERPLEXITY_API_KEY` or `OPENROUTER_API_KEY`
 - Tavily: `TAVILY_API_KEY`
 
-For a gateway install, put these in `~/.openclaw/.env` (or your service environment). See [Env vars](/help/faq#how-does-openclaw-load-environment-variables).
+For a gateway install, put these in `~/.quantumclaw/.env` (or your service environment). See [Env vars](/help/faq#how-does-quantumclaw-load-environment-variables).
 
 ### Config examples
 
@@ -179,7 +179,7 @@ For a gateway install, put these in `~/.openclaw/.env` (or your service environm
 }
 ```
 
-When you choose Firecrawl in onboarding or `openclaw configure --section web`, OpenClaw enables the bundled Firecrawl plugin automatically so `web_search`, `firecrawl_search`, and `firecrawl_scrape` are all available.
+When you choose Firecrawl in onboarding or `quantumclaw configure --section web`, QuantumClaw enables the bundled Firecrawl plugin automatically so `web_search`, `firecrawl_search`, and `firecrawl_scrape` are all available.
 
 **Tavily Search:**
 
@@ -209,7 +209,7 @@ When you choose Firecrawl in onboarding or `openclaw configure --section web`, O
 }
 ```
 
-When you choose Tavily in onboarding or `openclaw configure --section web`, OpenClaw enables the bundled Tavily plugin automatically so `web_search`, `tavily_search`, and `tavily_extract` are all available.
+When you choose Tavily in onboarding or `quantumclaw configure --section web`, QuantumClaw enables the bundled Tavily plugin automatically so `web_search`, `tavily_search`, and `tavily_extract` are all available.
 
 **Brave LLM Context mode:**
 
@@ -336,7 +336,7 @@ which returns AI-synthesized answers backed by live Google Search results with c
 ```
 
 **Environment alternative:** set `GEMINI_API_KEY` in the Gateway environment.
-For a gateway install, put it in `~/.openclaw/.env`.
+For a gateway install, put it in `~/.quantumclaw/.env`.
 
 ### Notes
 

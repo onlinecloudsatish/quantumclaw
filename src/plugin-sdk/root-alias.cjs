@@ -70,7 +70,7 @@ function onDiagnosticEvent(listener) {
   }
   const diagnosticEvents = loadDiagnosticEventsModule();
   if (!diagnosticEvents || typeof diagnosticEvents.onDiagnosticEvent !== "function") {
-    throw new Error("openclaw/plugin-sdk root alias could not resolve onDiagnosticEvent");
+    throw new Error("quantumclaw/plugin-sdk root alias could not resolve onDiagnosticEvent");
   }
   return diagnosticEvents.onDiagnosticEvent(listener);
 }
@@ -105,13 +105,13 @@ function buildPluginSdkAliasMap(useDist) {
   const pluginSdkDir = path.join(packageRoot, useDist ? "dist" : "src", "plugin-sdk");
   const ext = useDist ? ".js" : ".ts";
   const aliasMap = {
-    "openclaw/plugin-sdk": __filename,
+    "quantumclaw/plugin-sdk": __filename,
   };
 
   for (const subpath of listPluginSdkExportedSubpaths()) {
     const candidate = path.join(pluginSdkDir, `${subpath}${ext}`);
     if (fs.existsSync(candidate)) {
-      aliasMap[`openclaw/plugin-sdk/${subpath}`] = candidate;
+      aliasMap[`quantumclaw/plugin-sdk/${subpath}`] = candidate;
     }
   }
 

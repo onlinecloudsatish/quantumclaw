@@ -1,7 +1,7 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth-api-key";
-import { buildSingleProviderApiKeyCatalog } from "openclaw/plugin-sdk/provider-catalog";
-import { applyXaiModelCompat } from "openclaw/plugin-sdk/provider-models";
+import { definePluginEntry } from "quantumclaw/plugin-sdk/plugin-entry";
+import { createProviderApiKeyAuthMethod } from "quantumclaw/plugin-sdk/provider-auth-api-key";
+import { buildSingleProviderApiKeyCatalog } from "quantumclaw/plugin-sdk/provider-catalog";
+import { applyXaiModelCompat } from "quantumclaw/plugin-sdk/provider-models";
 import { applyVeniceConfig, VENICE_DEFAULT_MODEL_REF } from "./onboard.js";
 import { buildVeniceProvider } from "./provider-catalog.js";
 

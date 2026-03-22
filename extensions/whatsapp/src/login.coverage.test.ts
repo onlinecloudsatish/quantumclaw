@@ -19,9 +19,9 @@ function resolveTestAuthDir() {
 
 const authDir = resolveTestAuthDir();
 
-vi.mock("openclaw/plugin-sdk/config-runtime", async () => {
-  const actual = await vi.importActual<typeof import("openclaw/plugin-sdk/config-runtime")>(
-    "openclaw/plugin-sdk/config-runtime",
+vi.mock("quantumclaw/plugin-sdk/config-runtime", async () => {
+  const actual = await vi.importActual<typeof import("quantumclaw/plugin-sdk/config-runtime")>(
+    "quantumclaw/plugin-sdk/config-runtime",
   );
   return {
     ...actual,

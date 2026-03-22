@@ -1,6 +1,6 @@
 import type { AgentToolResult } from "@mariozechner/pi-agent-core";
-import { readBooleanParam } from "openclaw/plugin-sdk/boolean-param";
-import { resolveReactionMessageId } from "openclaw/plugin-sdk/channel-actions";
+import { readBooleanParam } from "quantumclaw/plugin-sdk/boolean-param";
+import { resolveReactionMessageId } from "quantumclaw/plugin-sdk/channel-actions";
 import { resolveTelegramPollVisibility } from "../runtime-api.js";
 import {
   jsonResult,
@@ -10,7 +10,7 @@ import {
   readStringOrNumberParam,
   readStringParam,
   resolvePollMaxSelections,
-  type OpenClawConfig,
+  type QuantumClawConfig,
   type TelegramActionConfig,
 } from "../runtime-api.js";
 import { createTelegramActionGate, resolveTelegramPollActionGateState } from "./accounts.js";
@@ -179,7 +179,7 @@ function readTelegramSendContent(params: {
 
 export async function handleTelegramAction(
   params: Record<string, unknown>,
-  cfg: OpenClawConfig,
+  cfg: QuantumClawConfig,
   options?: {
     mediaLocalRoots?: readonly string[];
   },

@@ -2,7 +2,7 @@ import {
   DEFAULT_ACCOUNT_ID,
   mergeAccountConfig,
   normalizeAccountId,
-} from "openclaw/plugin-sdk/account-resolution";
+} from "quantumclaw/plugin-sdk/account-resolution";
 import type { ClawdbotConfig } from "../runtime-api.js";
 import { normalizeResolvedSecretInputString, normalizeSecretInputString } from "./secret-input.js";
 import type {

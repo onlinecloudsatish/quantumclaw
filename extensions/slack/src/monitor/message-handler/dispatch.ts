@@ -1,19 +1,19 @@
-import { resolveHumanDelayConfig } from "openclaw/plugin-sdk/agent-runtime";
+import { resolveHumanDelayConfig } from "quantumclaw/plugin-sdk/agent-runtime";
 import {
   logAckFailure,
   logTypingFailure,
   removeAckReactionAfterReply,
-} from "openclaw/plugin-sdk/channel-feedback";
-import { createChannelReplyPipeline } from "openclaw/plugin-sdk/channel-reply-pipeline";
-import { resolveStorePath, updateLastRoute } from "openclaw/plugin-sdk/config-runtime";
-import { resolveAgentOutboundIdentity } from "openclaw/plugin-sdk/outbound-runtime";
-import { clearHistoryEntriesIfEnabled } from "openclaw/plugin-sdk/reply-history";
-import { resolveSendableOutboundReplyParts } from "openclaw/plugin-sdk/reply-payload";
-import { dispatchInboundMessage } from "openclaw/plugin-sdk/reply-runtime";
-import { createReplyDispatcherWithTyping } from "openclaw/plugin-sdk/reply-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import { danger, logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { resolvePinnedMainDmOwnerFromAllowlist } from "openclaw/plugin-sdk/security-runtime";
+} from "quantumclaw/plugin-sdk/channel-feedback";
+import { createChannelReplyPipeline } from "quantumclaw/plugin-sdk/channel-reply-pipeline";
+import { resolveStorePath, updateLastRoute } from "quantumclaw/plugin-sdk/config-runtime";
+import { resolveAgentOutboundIdentity } from "quantumclaw/plugin-sdk/outbound-runtime";
+import { clearHistoryEntriesIfEnabled } from "quantumclaw/plugin-sdk/reply-history";
+import { resolveSendableOutboundReplyParts } from "quantumclaw/plugin-sdk/reply-payload";
+import { dispatchInboundMessage } from "quantumclaw/plugin-sdk/reply-runtime";
+import { createReplyDispatcherWithTyping } from "quantumclaw/plugin-sdk/reply-runtime";
+import type { ReplyPayload } from "quantumclaw/plugin-sdk/reply-runtime";
+import { danger, logVerbose, shouldLogVerbose } from "quantumclaw/plugin-sdk/runtime-env";
+import { resolvePinnedMainDmOwnerFromAllowlist } from "quantumclaw/plugin-sdk/security-runtime";
 import { editSlackMessage, reactSlackMessage, removeSlackReaction } from "../../actions.js";
 import { createSlackDraftStream } from "../../draft-stream.js";
 import { normalizeSlackOutboundText } from "../../format.js";

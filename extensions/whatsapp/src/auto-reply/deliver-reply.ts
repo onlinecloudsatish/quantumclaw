@@ -1,14 +1,14 @@
-import type { MarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
+import type { MarkdownTableMode } from "quantumclaw/plugin-sdk/config-runtime";
 import {
   resolveOutboundMediaUrls,
   sendMediaWithLeadingCaption,
-} from "openclaw/plugin-sdk/reply-payload";
-import { chunkMarkdownTextWithMode, type ChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { convertMarkdownTables } from "openclaw/plugin-sdk/text-runtime";
-import { markdownToWhatsApp } from "openclaw/plugin-sdk/text-runtime";
-import { sleep } from "openclaw/plugin-sdk/text-runtime";
+} from "quantumclaw/plugin-sdk/reply-payload";
+import { chunkMarkdownTextWithMode, type ChunkMode } from "quantumclaw/plugin-sdk/reply-runtime";
+import type { ReplyPayload } from "quantumclaw/plugin-sdk/reply-runtime";
+import { logVerbose, shouldLogVerbose } from "quantumclaw/plugin-sdk/runtime-env";
+import { convertMarkdownTables } from "quantumclaw/plugin-sdk/text-runtime";
+import { markdownToWhatsApp } from "quantumclaw/plugin-sdk/text-runtime";
+import { sleep } from "quantumclaw/plugin-sdk/text-runtime";
 import { loadWebMedia } from "../media.js";
 import { newConnectionId } from "../reconnect.js";
 import { formatError } from "../session.js";

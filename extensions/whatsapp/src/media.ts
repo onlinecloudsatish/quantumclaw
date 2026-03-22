@@ -1,20 +1,20 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { SafeOpenError, readLocalFileSafely } from "openclaw/plugin-sdk/infra-runtime";
-import type { SsrFPolicy } from "openclaw/plugin-sdk/infra-runtime";
-import { type MediaKind, maxBytesForKind } from "openclaw/plugin-sdk/media-runtime";
-import { fetchRemoteMedia } from "openclaw/plugin-sdk/media-runtime";
+import { SafeOpenError, readLocalFileSafely } from "quantumclaw/plugin-sdk/infra-runtime";
+import type { SsrFPolicy } from "quantumclaw/plugin-sdk/infra-runtime";
+import { type MediaKind, maxBytesForKind } from "quantumclaw/plugin-sdk/media-runtime";
+import { fetchRemoteMedia } from "quantumclaw/plugin-sdk/media-runtime";
 import {
   convertHeicToJpeg,
   hasAlphaChannel,
   optimizeImageToPng,
   resizeToJpeg,
-} from "openclaw/plugin-sdk/media-runtime";
-import { getDefaultMediaLocalRoots } from "openclaw/plugin-sdk/media-runtime";
-import { detectMime, extensionForMime, kindFromMime } from "openclaw/plugin-sdk/media-runtime";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { resolveUserPath } from "openclaw/plugin-sdk/text-runtime";
+} from "quantumclaw/plugin-sdk/media-runtime";
+import { getDefaultMediaLocalRoots } from "quantumclaw/plugin-sdk/media-runtime";
+import { detectMime, extensionForMime, kindFromMime } from "quantumclaw/plugin-sdk/media-runtime";
+import { logVerbose, shouldLogVerbose } from "quantumclaw/plugin-sdk/runtime-env";
+import { resolveUserPath } from "quantumclaw/plugin-sdk/text-runtime";
 
 export type WebMediaResult = {
   buffer: Buffer;
@@ -94,7 +94,7 @@ async function assertLocalMediaAllowed(
     resolved = path.resolve(mediaPath);
   }
 
-  // Hardening: the default allowlist includes the OpenClaw temp dir, and tests/CI may
+  // Hardening: the default allowlist includes the QuantumClaw temp dir, and tests/CI may
   // override the state dir into tmp. Avoid accidentally allowing per-agent
   // `workspace-*` state roots via the temp-root prefix match; require explicit
   // localRoots for those.

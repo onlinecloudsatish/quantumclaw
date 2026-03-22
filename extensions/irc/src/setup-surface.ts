@@ -1,14 +1,14 @@
-import type { DmPolicy } from "openclaw/plugin-sdk/config-runtime";
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/routing";
+import type { DmPolicy } from "quantumclaw/plugin-sdk/config-runtime";
+import { DEFAULT_ACCOUNT_ID } from "quantumclaw/plugin-sdk/routing";
 import {
   createAllowFromSection,
   promptParsedAllowFromForAccount,
   setSetupChannelEnabled,
-} from "openclaw/plugin-sdk/setup";
-import type { ChannelSetupDmPolicy } from "openclaw/plugin-sdk/setup";
-import type { ChannelSetupWizard } from "openclaw/plugin-sdk/setup";
-import { formatDocsLink } from "openclaw/plugin-sdk/setup";
-import type { WizardPrompter } from "openclaw/plugin-sdk/setup";
+} from "quantumclaw/plugin-sdk/setup";
+import type { ChannelSetupDmPolicy } from "quantumclaw/plugin-sdk/setup";
+import type { ChannelSetupWizard } from "quantumclaw/plugin-sdk/setup";
+import { formatDocsLink } from "quantumclaw/plugin-sdk/setup";
+import type { WizardPrompter } from "quantumclaw/plugin-sdk/setup";
 import { listIrcAccountIds, resolveDefaultIrcAccountId, resolveIrcAccount } from "./accounts.js";
 import {
   isChannelTarget,
@@ -309,7 +309,7 @@ export const ircSetupWizard: ChannelSetupWizard = {
       initialValue: ({ cfg, accountId, credentialValues }) =>
         resolveIrcAccount({ cfg: cfg as CoreConfig, accountId }).config.username ||
         credentialValues.token ||
-        "openclaw",
+        "quantumclaw",
       validate: ({ value }) => (String(value ?? "").trim() ? undefined : "Required"),
       normalizeValue: ({ value }) => String(value).trim(),
       applySet: async ({ cfg, accountId, value }) =>
@@ -325,7 +325,7 @@ export const ircSetupWizard: ChannelSetupWizard = {
         resolveIrcAccount({ cfg: cfg as CoreConfig, accountId }).config.realname || undefined,
       shouldPrompt: ({ credentialValues }) => credentialValues[USE_ENV_FLAG] !== "1",
       initialValue: ({ cfg, accountId }) =>
-        resolveIrcAccount({ cfg: cfg as CoreConfig, accountId }).config.realname || "OpenClaw",
+        resolveIrcAccount({ cfg: cfg as CoreConfig, accountId }).config.realname || "QuantumClaw",
       validate: ({ value }) => (String(value ?? "").trim() ? undefined : "Required"),
       normalizeValue: ({ value }) => String(value).trim(),
       applySet: async ({ cfg, accountId, value }) =>
@@ -337,7 +337,7 @@ export const ircSetupWizard: ChannelSetupWizard = {
     {
       inputKey: "groupChannels",
       message: "Auto-join IRC channels (optional, comma-separated)",
-      placeholder: "#openclaw, #ops",
+      placeholder: "#quantumclaw, #ops",
       required: false,
       applyEmptyValue: true,
       currentValue: ({ cfg, accountId }) =>
@@ -363,7 +363,7 @@ export const ircSetupWizard: ChannelSetupWizard = {
   ],
   groupAccess: {
     label: "IRC channels",
-    placeholder: "#openclaw, #ops, *",
+    placeholder: "#quantumclaw, #ops, *",
     currentPolicy: ({ cfg, accountId }) =>
       resolveIrcAccount({ cfg: cfg as CoreConfig, accountId }).config.groupPolicy ?? "allowlist",
     currentEntries: ({ cfg, accountId }) =>
@@ -436,7 +436,7 @@ export const ircSetupWizard: ChannelSetupWizard = {
     title: "IRC next steps",
     lines: [
       "Next: restart gateway and verify status.",
-      "Command: openclaw channels status --probe",
+      "Command: quantumclaw channels status --probe",
       `Docs: ${formatDocsLink("/channels/irc", "channels/irc")}`,
     ],
   },

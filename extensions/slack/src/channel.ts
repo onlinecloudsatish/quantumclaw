@@ -2,31 +2,31 @@ import {
   buildLegacyDmAccountAllowlistAdapter,
   createAccountScopedAllowlistNameResolver,
   createFlatAllowlistOverrideResolver,
-} from "openclaw/plugin-sdk/allowlist-config-edit";
-import { createScopedDmSecurityResolver } from "openclaw/plugin-sdk/channel-config-helpers";
+} from "quantumclaw/plugin-sdk/allowlist-config-edit";
+import { createScopedDmSecurityResolver } from "quantumclaw/plugin-sdk/channel-config-helpers";
 import {
   createPairingPrefixStripper,
   createTextPairingAdapter,
-} from "openclaw/plugin-sdk/channel-pairing";
-import { createOpenProviderConfiguredRouteWarningCollector } from "openclaw/plugin-sdk/channel-policy";
-import { createAttachedChannelResultAdapter } from "openclaw/plugin-sdk/channel-send-result";
-import { resolveTargetsWithOptionalToken } from "openclaw/plugin-sdk/channel-targets";
-import { createScopedAccountReplyToModeResolver } from "openclaw/plugin-sdk/conversation-runtime";
+} from "quantumclaw/plugin-sdk/channel-pairing";
+import { createOpenProviderConfiguredRouteWarningCollector } from "quantumclaw/plugin-sdk/channel-policy";
+import { createAttachedChannelResultAdapter } from "quantumclaw/plugin-sdk/channel-send-result";
+import { resolveTargetsWithOptionalToken } from "quantumclaw/plugin-sdk/channel-targets";
+import { createScopedAccountReplyToModeResolver } from "quantumclaw/plugin-sdk/conversation-runtime";
 import {
   createChannelDirectoryAdapter,
   createRuntimeDirectoryLiveAdapter,
-} from "openclaw/plugin-sdk/directory-runtime";
-import { buildPassiveProbedChannelStatusSummary } from "openclaw/plugin-sdk/extension-shared";
+} from "quantumclaw/plugin-sdk/directory-runtime";
+import { buildPassiveProbedChannelStatusSummary } from "quantumclaw/plugin-sdk/extension-shared";
 import {
   createRuntimeOutboundDelegates,
   resolveOutboundSendDep,
-} from "openclaw/plugin-sdk/outbound-runtime";
+} from "quantumclaw/plugin-sdk/outbound-runtime";
 import {
   buildOutboundBaseSessionKey,
   normalizeOutboundThreadId,
   resolveThreadSessionKeys,
   type RoutePeer,
-} from "openclaw/plugin-sdk/routing";
+} from "quantumclaw/plugin-sdk/routing";
 import {
   listEnabledSlackAccounts,
   resolveSlackAccount,
@@ -55,7 +55,7 @@ import {
   projectCredentialSnapshotFields,
   resolveConfiguredFromRequiredCredentialStatuses,
   type ChannelPlugin,
-  type OpenClawConfig,
+  type QuantumClawConfig,
 } from "./runtime-api.js";
 import { getSlackRuntime } from "./runtime.js";
 import { fetchSlackScopes } from "./scopes.js";
@@ -164,7 +164,7 @@ function parseSlackExplicitTarget(raw: string) {
 }
 
 function buildSlackBaseSessionKey(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   agentId: string;
   accountId?: string | null;
   peer: RoutePeer;
@@ -173,7 +173,7 @@ function buildSlackBaseSessionKey(params: {
 }
 
 async function resolveSlackChannelType(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   accountId?: string | null;
   channelId: string;
 }): Promise<"channel" | "group" | "dm" | "unknown"> {
@@ -236,7 +236,7 @@ async function resolveSlackChannelType(params: {
 }
 
 async function resolveSlackOutboundSessionRoute(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   agentId: string;
   accountId?: string | null;
   target: string;
@@ -498,7 +498,7 @@ export const slackPlugin: ChannelPlugin<ResolvedSlackAccount> = {
     invoke: async (action, cfg, toolContext) =>
       await getSlackRuntime().channel.slack.handleSlackAction(
         action,
-        cfg as OpenClawConfig,
+        cfg as QuantumClawConfig,
         toolContext as SlackActionContext | undefined,
       ),
   }),

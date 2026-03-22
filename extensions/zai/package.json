@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/zai-provider",
+  "name": "@quantumclaw/zai-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Z.AI provider plugin",
+  "description": "QuantumClaw Z.AI provider plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

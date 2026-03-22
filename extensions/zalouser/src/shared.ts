@@ -1,4 +1,4 @@
-import { createScopedChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
+import { createScopedChannelConfigAdapter } from "quantumclaw/plugin-sdk/channel-config-helpers";
 import type { ChannelPlugin } from "../runtime-api.js";
 import { buildChannelConfigSchema, formatAllowFromLowercase } from "../runtime-api.js";
 import {

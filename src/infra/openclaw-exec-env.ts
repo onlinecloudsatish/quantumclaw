@@ -1,16 +1,16 @@
-export const OPENCLAW_CLI_ENV_VAR = "OPENCLAW_CLI";
-export const OPENCLAW_CLI_ENV_VALUE = "1";
+export const QUANTUMCLAW_CLI_ENV_VAR = "QUANTUMCLAW_CLI";
+export const QUANTUMCLAW_CLI_ENV_VALUE = "1";
 
-export function markOpenClawExecEnv<T extends Record<string, string | undefined>>(env: T): T {
+export function markQuantumClawExecEnv<T extends Record<string, string | undefined>>(env: T): T {
   return {
     ...env,
-    [OPENCLAW_CLI_ENV_VAR]: OPENCLAW_CLI_ENV_VALUE,
+    [QUANTUMCLAW_CLI_ENV_VAR]: QUANTUMCLAW_CLI_ENV_VALUE,
   };
 }
 
-export function ensureOpenClawExecMarkerOnProcess(
+export function ensureQuantumClawExecMarkerOnProcess(
   env: NodeJS.ProcessEnv = process.env,
 ): NodeJS.ProcessEnv {
-  env[OPENCLAW_CLI_ENV_VAR] = OPENCLAW_CLI_ENV_VALUE;
+  env[QUANTUMCLAW_CLI_ENV_VAR] = QUANTUMCLAW_CLI_ENV_VALUE;
   return env;
 }

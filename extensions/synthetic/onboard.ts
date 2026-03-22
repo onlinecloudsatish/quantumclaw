@@ -3,15 +3,15 @@ import {
   SYNTHETIC_BASE_URL,
   SYNTHETIC_DEFAULT_MODEL_REF,
   SYNTHETIC_MODEL_CATALOG,
-} from "openclaw/plugin-sdk/provider-models";
+} from "quantumclaw/plugin-sdk/provider-models";
 import {
   applyProviderConfigWithModelCatalogPreset,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type QuantumClawConfig,
+} from "quantumclaw/plugin-sdk/provider-onboard";
 
 export { SYNTHETIC_DEFAULT_MODEL_REF };
 
-function applySyntheticPreset(cfg: OpenClawConfig, primaryModelRef?: string): OpenClawConfig {
+function applySyntheticPreset(cfg: QuantumClawConfig, primaryModelRef?: string): QuantumClawConfig {
   return applyProviderConfigWithModelCatalogPreset(cfg, {
     providerId: "synthetic",
     api: "anthropic-messages",
@@ -22,10 +22,10 @@ function applySyntheticPreset(cfg: OpenClawConfig, primaryModelRef?: string): Op
   });
 }
 
-export function applySyntheticProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applySyntheticProviderConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applySyntheticPreset(cfg);
 }
 
-export function applySyntheticConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applySyntheticConfig(cfg: QuantumClawConfig): QuantumClawConfig {
   return applySyntheticPreset(cfg, SYNTHETIC_DEFAULT_MODEL_REF);
 }

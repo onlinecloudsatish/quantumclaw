@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/perplexity-plugin",
+  "name": "@quantumclaw/perplexity-plugin",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Perplexity plugin",
+  "description": "QuantumClaw Perplexity plugin",
   "type": "module",
-  "openclaw": {
+  "quantumclaw": {
     "extensions": [
       "./index.ts"
     ]

@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: openclaw
+    name: quantumclaw
     runtime: docker
     plan: starter
     healthCheckPath: /health
@@ -9,13 +9,13 @@ services:
         value: "8080"
       - key: SETUP_PASSWORD
         sync: false
-      - key: OPENCLAW_STATE_DIR
-        value: /data/.openclaw
-      - key: OPENCLAW_WORKSPACE_DIR
+      - key: QUANTUMCLAW_STATE_DIR
+        value: /data/.quantumclaw
+      - key: QUANTUMCLAW_WORKSPACE_DIR
         value: /data/workspace
-      - key: OPENCLAW_GATEWAY_TOKEN
+      - key: QUANTUMCLAW_GATEWAY_TOKEN
         generateValue: true
     disk:
-      name: openclaw-data
+      name: quantumclaw-data
       mountPath: /data
       sizeGB: 1

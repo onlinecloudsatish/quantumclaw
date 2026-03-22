@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { QuantumClawConfig } from "../config/config.js";
 import { resolveGlobalSingleton } from "../shared/global-singleton.js";
 import { notifyListeners, registerListener } from "../shared/listeners.js";
 
@@ -176,7 +176,7 @@ type DiagnosticEventsGlobalState = {
   dispatchDepth: number;
 };
 
-const DIAGNOSTIC_EVENTS_STATE_KEY = Symbol.for("openclaw.diagnosticEvents.state");
+const DIAGNOSTIC_EVENTS_STATE_KEY = Symbol.for("quantumclaw.diagnosticEvents.state");
 
 const state = resolveGlobalSingleton<DiagnosticEventsGlobalState>(
   DIAGNOSTIC_EVENTS_STATE_KEY,
@@ -187,7 +187,7 @@ const state = resolveGlobalSingleton<DiagnosticEventsGlobalState>(
   }),
 );
 
-export function isDiagnosticsEnabled(config?: OpenClawConfig): boolean {
+export function isDiagnosticsEnabled(config?: QuantumClawConfig): boolean {
   return config?.diagnostics?.enabled === true;
 }
 

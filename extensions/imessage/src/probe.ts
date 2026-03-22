@@ -1,8 +1,8 @@
-import type { BaseProbeResult } from "openclaw/plugin-sdk/channel-contract";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { runCommandWithTimeout } from "openclaw/plugin-sdk/process-runtime";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { detectBinary } from "openclaw/plugin-sdk/setup";
+import type { BaseProbeResult } from "quantumclaw/plugin-sdk/channel-contract";
+import { loadConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import { runCommandWithTimeout } from "quantumclaw/plugin-sdk/process-runtime";
+import type { RuntimeEnv } from "quantumclaw/plugin-sdk/runtime-env";
+import { detectBinary } from "quantumclaw/plugin-sdk/setup";
 import { createIMessageRpcClient } from "./client.js";
 import { DEFAULT_IMESSAGE_PROBE_TIMEOUT_MS } from "./constants.js";
 

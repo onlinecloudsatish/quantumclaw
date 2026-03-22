@@ -6,7 +6,7 @@ import {
   clearPluginManifestRegistryCache,
   loadPluginManifestRegistry,
 } from "./manifest-registry.js";
-import type { OpenClawPackageManifest } from "./manifest.js";
+import type { QuantumClawPackageManifest } from "./manifest.js";
 import { cleanupTrackedTempDirs, makeTrackedTempDir } from "./test-helpers/fs-fixtures.js";
 
 const tempDirs: string[] = [];
@@ -24,11 +24,11 @@ function mkdirSafe(dir: string) {
 }
 
 function makeTempDir() {
-  return makeTrackedTempDir("openclaw-manifest-registry", tempDirs);
+  return makeTrackedTempDir("quantumclaw-manifest-registry", tempDirs);
 }
 
 function writeManifest(dir: string, manifest: Record<string, unknown>) {
-  fs.writeFileSync(path.join(dir, "openclaw.plugin.json"), JSON.stringify(manifest), "utf-8");
+  fs.writeFileSync(path.join(dir, "quantumclaw.plugin.json"), JSON.stringify(manifest), "utf-8");
 }
 
 function createPluginCandidate(params: {
@@ -36,9 +36,9 @@ function createPluginCandidate(params: {
   rootDir: string;
   sourceName?: string;
   origin: "bundled" | "global" | "workspace" | "config";
-  format?: "openclaw" | "bundle";
+  format?: "quantumclaw" | "bundle";
   bundleFormat?: "codex" | "claude" | "cursor";
-  packageManifest?: OpenClawPackageManifest;
+  packageManifest?: QuantumClawPackageManifest;
   packageDir?: string;
 }): PluginCandidate {
   return {
@@ -73,8 +73,8 @@ function prepareLinkedManifestFixture(params: { id: string; mode: "symlink" | "h
 } {
   const rootDir = makeTempDir();
   const outsideDir = makeTempDir();
-  const outsideManifest = path.join(outsideDir, "openclaw.plugin.json");
-  const linkedManifest = path.join(rootDir, "openclaw.plugin.json");
+  const outsideManifest = path.join(outsideDir, "quantumclaw.plugin.json");
+  const linkedManifest = path.join(rootDir, "quantumclaw.plugin.json");
   fs.writeFileSync(path.join(rootDir, "index.ts"), "export default function () {}", "utf-8");
   fs.writeFileSync(
     outsideManifest,
@@ -250,7 +250,7 @@ describe("loadPluginManifestRegistry", () => {
 
     const registry = loadPluginManifestRegistry({
       cache: false,
-      env: { OPENCLAW_VERSION: "2026.3.21" },
+      env: { QUANTUMCLAW_VERSION: "2026.3.21" },
       candidates: [
         createPluginCandidate({
           idHint: "synology-chat",
@@ -259,7 +259,7 @@ describe("loadPluginManifestRegistry", () => {
           origin: "global",
           packageManifest: {
             install: {
-              npmSpec: "@openclaw/synology-chat",
+              npmSpec: "@quantumclaw/synology-chat",
               minHostVersion: ">=2026.3.22",
             },
           },
@@ -270,7 +270,7 @@ describe("loadPluginManifestRegistry", () => {
     expect(registry.plugins).toEqual([]);
     expect(
       registry.diagnostics.some((diag) =>
-        diag.message.includes("plugin requires OpenClaw >=2026.3.22, but this host is 2026.3.21"),
+        diag.message.includes("plugin requires QuantumClaw >=2026.3.22, but this host is 2026.3.21"),
       ),
     ).toBe(true);
   });
@@ -289,7 +289,7 @@ describe("loadPluginManifestRegistry", () => {
           origin: "global",
           packageManifest: {
             install: {
-              npmSpec: "@openclaw/synology-chat",
+              npmSpec: "@quantumclaw/synology-chat",
               minHostVersion: "2026.3.22",
             },
           },
@@ -300,7 +300,7 @@ describe("loadPluginManifestRegistry", () => {
     expect(registry.plugins).toEqual([]);
     expect(
       registry.diagnostics.some((diag) =>
-        diag.message.includes("plugin manifest invalid | openclaw.install.minHostVersion must use"),
+        diag.message.includes("plugin manifest invalid | quantumclaw.install.minHostVersion must use"),
       ),
     ).toBe(true);
   });
@@ -311,7 +311,7 @@ describe("loadPluginManifestRegistry", () => {
 
     const registry = loadPluginManifestRegistry({
       cache: false,
-      env: { OPENCLAW_VERSION: "unknown" },
+      env: { QUANTUMCLAW_VERSION: "unknown" },
       candidates: [
         createPluginCandidate({
           idHint: "synology-chat",
@@ -320,7 +320,7 @@ describe("loadPluginManifestRegistry", () => {
           origin: "global",
           packageManifest: {
             install: {
-              npmSpec: "@openclaw/synology-chat",
+              npmSpec: "@quantumclaw/synology-chat",
               minHostVersion: ">=2026.3.22",
             },
           },
@@ -747,14 +747,14 @@ describe("loadPluginManifestRegistry", () => {
       cache: true,
       env: {
         ...process.env,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledA,
+        QUANTUMCLAW_BUNDLED_PLUGINS_DIR: bundledA,
       },
     });
     const second = loadPluginManifestRegistry({
       cache: true,
       env: {
         ...process.env,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledB,
+        QUANTUMCLAW_BUNDLED_PLUGINS_DIR: bundledB,
       },
     });
 
@@ -800,8 +800,8 @@ describe("loadPluginManifestRegistry", () => {
       env: {
         ...process.env,
         HOME: homeA,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_STATE_DIR: path.join(homeA, ".state"),
+        QUANTUMCLAW_HOME: undefined,
+        QUANTUMCLAW_STATE_DIR: path.join(homeA, ".state"),
       },
     });
     const second = loadPluginManifestRegistry({
@@ -810,8 +810,8 @@ describe("loadPluginManifestRegistry", () => {
       env: {
         ...process.env,
         HOME: homeB,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_STATE_DIR: path.join(homeB, ".state"),
+        QUANTUMCLAW_HOME: undefined,
+        QUANTUMCLAW_STATE_DIR: path.join(homeB, ".state"),
       },
     });
 
@@ -835,7 +835,7 @@ describe("loadPluginManifestRegistry", () => {
         origin: "global",
         packageManifest: {
           install: {
-            npmSpec: "@openclaw/synology-chat",
+            npmSpec: "@quantumclaw/synology-chat",
             minHostVersion: ">=2026.3.22",
           },
         },
@@ -847,7 +847,7 @@ describe("loadPluginManifestRegistry", () => {
       candidates,
       env: {
         ...process.env,
-        OPENCLAW_VERSION: "2026.3.21",
+        QUANTUMCLAW_VERSION: "2026.3.21",
       },
     });
     const newerHost = loadPluginManifestRegistry({
@@ -855,7 +855,7 @@ describe("loadPluginManifestRegistry", () => {
       candidates,
       env: {
         ...process.env,
-        OPENCLAW_VERSION: "2026.3.22",
+        QUANTUMCLAW_VERSION: "2026.3.22",
       },
     });
 

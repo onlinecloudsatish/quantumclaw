@@ -14,12 +14,12 @@ import type {
 } from "../channels/plugins/types.core.js";
 import type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
 import { getChatChannelMeta } from "../channels/registry.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { QuantumClawConfig } from "../config/config.js";
 import type { ReplyToMode } from "../config/types.base.js";
 import { buildOutboundBaseSessionKey } from "../infra/outbound/base-session-key.js";
 import { emptyPluginConfigSchema } from "../plugins/config-schema.js";
 import type { PluginRuntime } from "../plugins/runtime/types.js";
-import type { OpenClawPluginApi, OpenClawPluginConfigSchema } from "../plugins/types.js";
+import type { QuantumClawPluginApi, QuantumClawPluginConfigSchema } from "../plugins/types.js";
 import { createScopedDmSecurityResolver } from "./channel-config-helpers.js";
 import { createTextPairingAdapter } from "./channel-pairing.js";
 import { createAttachedChannelResultAdapter } from "./channel-send-result.js";
@@ -28,7 +28,7 @@ import { definePluginEntry } from "./plugin-entry.js";
 export type {
   AnyAgentTool,
   MediaUnderstandingProviderPlugin,
-  OpenClawPluginConfigSchema,
+  QuantumClawPluginConfigSchema,
   ProviderDiscoveryContext,
   ProviderCatalogContext,
   ProviderCatalogResult,
@@ -52,22 +52,22 @@ export type {
   SpeechProviderPlugin,
   ProviderThinkingPolicyContext,
   ProviderWrapStreamFnContext,
-  OpenClawPluginService,
-  OpenClawPluginServiceContext,
+  QuantumClawPluginService,
+  QuantumClawPluginServiceContext,
   ProviderAuthContext,
   ProviderAuthDoctorHintContext,
   ProviderAuthMethodNonInteractiveContext,
   ProviderAuthMethod,
   ProviderAuthResult,
-  OpenClawPluginToolContext,
-  OpenClawPluginToolFactory,
-  OpenClawPluginCommandDefinition,
-  OpenClawPluginDefinition,
+  QuantumClawPluginToolContext,
+  QuantumClawPluginToolFactory,
+  QuantumClawPluginCommandDefinition,
+  QuantumClawPluginDefinition,
   PluginCommandContext,
   PluginLogger,
   PluginInteractiveTelegramHandlerContext,
 } from "../plugins/types.js";
-export type { OpenClawConfig } from "../config/config.js";
+export type { QuantumClawConfig } from "../config/config.js";
 export { isSecretRef } from "../config/types.secrets.js";
 export type { GatewayRequestHandlerOptions } from "../gateway/server-methods/types.js";
 export type {
@@ -81,7 +81,7 @@ export type {
 } from "../infra/provider-usage.types.js";
 export type { ChannelMessageActionContext } from "../channels/plugins/types.js";
 export type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
-export type { OpenClawPluginApi } from "../plugins/types.js";
+export type { QuantumClawPluginApi } from "../plugins/types.js";
 export type { PluginRuntime } from "../plugins/runtime/types.js";
 
 export { emptyPluginConfigSchema } from "../plugins/config-schema.js";
@@ -159,7 +159,7 @@ export function stripTargetKindPrefix(raw: string): string {
  * message adapters.
  */
 export function buildChannelOutboundSessionRoute(params: {
-  cfg: OpenClawConfig;
+  cfg: QuantumClawConfig;
   agentId: string;
   channel: string;
   accountId?: string | null;
@@ -193,9 +193,9 @@ type DefineChannelPluginEntryOptions<TPlugin extends ChannelPlugin = ChannelPlug
   name: string;
   description: string;
   plugin: TPlugin;
-  configSchema?: OpenClawPluginConfigSchema | (() => OpenClawPluginConfigSchema);
+  configSchema?: QuantumClawPluginConfigSchema | (() => QuantumClawPluginConfigSchema);
   setRuntime?: (runtime: PluginRuntime) => void;
-  registerFull?: (api: OpenClawPluginApi) => void;
+  registerFull?: (api: QuantumClawPluginApi) => void;
 };
 
 type CreateChannelPluginBaseOptions<TResolvedAccount> = {
@@ -255,7 +255,7 @@ export function defineChannelPluginEntry<TPlugin extends ChannelPlugin>({
     name,
     description,
     configSchema,
-    register(api: OpenClawPluginApi) {
+    register(api: QuantumClawPluginApi) {
       setRuntime?.(api.runtime);
       api.registerChannel({ plugin });
       if (api.registrationMode !== "full") {
@@ -316,7 +316,7 @@ type ChatChannelThreadingReplyModeOptions<TResolvedAccount> =
   | { topLevelReplyToMode: string }
   | {
       scopedAccountReplyToMode: {
-        resolveAccount: (cfg: OpenClawConfig, accountId?: string | null) => TResolvedAccount;
+        resolveAccount: (cfg: QuantumClawConfig, accountId?: string | null) => TResolvedAccount;
         resolveReplyToMode: (
           account: TResolvedAccount,
           chatType?: string | null,

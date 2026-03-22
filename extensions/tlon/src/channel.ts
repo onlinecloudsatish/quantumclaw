@@ -1,9 +1,9 @@
-import { createHybridChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
-import type { ChannelAccountSnapshot } from "openclaw/plugin-sdk/channel-contract";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import type { ChannelPlugin } from "openclaw/plugin-sdk/core";
-import { createLazyRuntimeModule } from "openclaw/plugin-sdk/lazy-runtime";
-import { createRuntimeOutboundDelegates } from "openclaw/plugin-sdk/outbound-runtime";
+import { createHybridChannelConfigAdapter } from "quantumclaw/plugin-sdk/channel-config-helpers";
+import type { ChannelAccountSnapshot } from "quantumclaw/plugin-sdk/channel-contract";
+import type { QuantumClawConfig } from "quantumclaw/plugin-sdk/config-runtime";
+import type { ChannelPlugin } from "quantumclaw/plugin-sdk/core";
+import { createLazyRuntimeModule } from "quantumclaw/plugin-sdk/lazy-runtime";
+import { createRuntimeOutboundDelegates } from "quantumclaw/plugin-sdk/outbound-runtime";
 import { tlonChannelConfigSchema } from "./config-schema.js";
 import { resolveTlonOutboundSessionRoute } from "./session-route.js";
 import {
@@ -43,8 +43,8 @@ const tlonSetupWizardProxy = createTlonSetupWizardBase({
 
 const tlonConfigAdapter = createHybridChannelConfigAdapter({
   sectionKey: TLON_CHANNEL_ID,
-  listAccountIds: (cfg: OpenClawConfig) => listTlonAccountIds(cfg),
-  resolveAccount: (cfg: OpenClawConfig, accountId?: string | null) =>
+  listAccountIds: (cfg: QuantumClawConfig) => listTlonAccountIds(cfg),
+  resolveAccount: (cfg: QuantumClawConfig, accountId?: string | null) =>
     resolveTlonAccount(cfg, accountId ?? undefined),
   defaultAccountId: () => "default",
   clearBaseFields: ["ship", "code", "url", "name"],
