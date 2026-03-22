@@ -2,4 +2,4 @@
 
 Tlon/Urbit channel plugin for QuantumClaw. Supports DMs, group mentions, and thread replies.
 
-Docs: https://docs.quantumclaw.ai/channels/tlon
+Docs: https://docs.www.npmjs.com/package/quantumclaw/channels/tlon

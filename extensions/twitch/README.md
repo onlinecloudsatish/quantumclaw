@@ -80,7 +80,7 @@ Multi-account config (advanced):
 
 ## Full documentation
 
-See https://docs.quantumclaw.ai/channels/twitch for:
+See https://docs.www.npmjs.com/package/quantumclaw/channels/twitch for:
 
 - Token refresh setup
 - Access control patterns

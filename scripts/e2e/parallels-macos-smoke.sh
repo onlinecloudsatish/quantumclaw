@@ -7,7 +7,7 @@ VM_NAME="macOS Tahoe"
 SNAPSHOT_HINT="macOS 26.3.1 fresh"
 MODE="both"
 OPENAI_API_KEY_ENV="OPENAI_API_KEY"
-INSTALL_URL="https://quantumclaw.ai/install.sh"
+INSTALL_URL="https://www.npmjs.com/package/quantumclaw/install.sh"
 HOST_PORT="18425"
 HOST_PORT_EXPLICIT=0
 HOST_IP=""
@@ -109,7 +109,7 @@ Options:
                              both    = run both lanes
   --openai-api-key-env <var> Host env var name for OpenAI API key.
                              Default: OPENAI_API_KEY
-  --install-url <url>        Installer URL for latest release. Default: https://quantumclaw.ai/install.sh
+  --install-url <url>        Installer URL for latest release. Default: https://www.npmjs.com/package/quantumclaw/install.sh
   --host-port <port>         Host HTTP port for current-main tgz. Default: 18425
   --host-ip <ip>             Override Parallels host IP.
   --latest-version <ver>     Override npm latest version lookup.

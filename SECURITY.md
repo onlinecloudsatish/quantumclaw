@@ -13,9 +13,9 @@ Report vulnerabilities directly to the repository where the issue lives:
 - **ClawHub** — [quantumclaw/clawhub](https://github.com/quantumclaw/clawhub)
 - **Trust and threat model** — [quantumclaw/trust](https://github.com/quantumclaw/trust)
 
-For issues that don't fit a specific repo, or if you're unsure, email **[security@quantumclaw.ai](mailto:security@quantumclaw.ai)** and we'll route it.
+For issues that don't fit a specific repo, or if you're unsure, email **[security@www.npmjs.com/package/quantumclaw](mailto:security@www.npmjs.com/package/quantumclaw)** and we'll route it.
 
-For full reporting instructions see our [Trust page](https://trust.quantumclaw.ai).
+For full reporting instructions see our [Trust page](https://trust.www.npmjs.com/package/quantumclaw).
 
 ### Required in Reports
 
@@ -213,7 +213,7 @@ Security boundary notes:
 
 For threat model + hardening guidance (including `quantumclaw security audit --deep` and `--fix`), see:
 
-- `https://docs.quantumclaw.ai/gateway/security`
+- `https://docs.www.npmjs.com/package/quantumclaw/gateway/security`
 
 ### Tool filesystem hardening
 

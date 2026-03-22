@@ -1,7 +1,7 @@
 ---
 summary: "How the installer scripts work (install.sh, install-cli.sh, install.ps1), flags, and automation"
 read_when:
-  - You want to understand `quantumclaw.ai/install.sh`
+  - You want to understand `www.npmjs.com/package/quantumclaw/install.sh`
   - You want to automate installs (CI / headless)
   - You want to install from a GitHub checkout
 title: "Installer Internals"
@@ -9,12 +9,12 @@ title: "Installer Internals"
 
 # Installer internals
 
-QuantumClaw ships three installer scripts, served from `quantumclaw.ai`.
+QuantumClaw ships three installer scripts, served from `www.npmjs.com/package/quantumclaw`.
 
-| Script                             | Platform             | What it does                                                                                 |
-| ---------------------------------- | -------------------- | -------------------------------------------------------------------------------------------- |
+| Script                             | Platform             | What it does                                                                                    |
+| ---------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------- |
 | [`install.sh`](#installsh)         | macOS / Linux / WSL  | Installs Node if needed, installs QuantumClaw via npm (default) or git, and can run onboarding. |
-| [`install-cli.sh`](#install-clish) | macOS / Linux / WSL  | Installs Node + QuantumClaw into a local prefix (`~/.quantumclaw`). No root required.              |
+| [`install-cli.sh`](#install-clish) | macOS / Linux / WSL  | Installs Node + QuantumClaw into a local prefix (`~/.quantumclaw`). No root required.           |
 | [`install.ps1`](#installps1)       | Windows (PowerShell) | Installs Node if needed, installs QuantumClaw via npm (default) or git, and can run onboarding. |
 
 ## Quick commands
@@ -22,31 +22,31 @@ QuantumClaw ships three installer scripts, served from `quantumclaw.ai`.
 <Tabs>
   <Tab title="install.sh">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --help
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --help
     ```
 
   </Tab>
   <Tab title="install-cli.sh">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash
     ```
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --help
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --help
     ```
 
   </Tab>
   <Tab title="install.ps1">
     ```powershell
-    iwr -useb https://quantumclaw.ai/install.ps1 | iex
+    iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1 | iex
     ```
 
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -Tag beta -NoOnboard -DryRun
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -Tag beta -NoOnboard -DryRun
     ```
 
   </Tab>
@@ -103,27 +103,27 @@ The script exits with code `2` for invalid method selection or invalid `--instal
 <Tabs>
   <Tab title="Default">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
   </Tab>
   <Tab title="Skip onboarding">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --no-onboard
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --no-onboard
     ```
   </Tab>
   <Tab title="Git install">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --install-method git
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --install-method git
     ```
   </Tab>
   <Tab title="GitHub main via npm">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --version main
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --version main
     ```
   </Tab>
   <Tab title="Dry run">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --dry-run
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --dry-run
     ```
   </Tab>
 </Tabs>
@@ -131,28 +131,28 @@ The script exits with code `2` for invalid method selection or invalid `--instal
 <AccordionGroup>
   <Accordion title="Flags reference">
 
-| Flag                                  | Description                                                |
-| ------------------------------------- | ---------------------------------------------------------- |
-| `--install-method npm\|git`           | Choose install method (default: `npm`). Alias: `--method`  |
-| `--npm`                               | Shortcut for npm method                                    |
-| `--git`                               | Shortcut for git method. Alias: `--github`                 |
-| `--version <version\|dist-tag\|spec>` | npm version, dist-tag, or package spec (default: `latest`) |
-| `--beta`                              | Use beta dist-tag if available, else fallback to `latest`  |
+| Flag                                  | Description                                                   |
+| ------------------------------------- | ------------------------------------------------------------- |
+| `--install-method npm\|git`           | Choose install method (default: `npm`). Alias: `--method`     |
+| `--npm`                               | Shortcut for npm method                                       |
+| `--git`                               | Shortcut for git method. Alias: `--github`                    |
+| `--version <version\|dist-tag\|spec>` | npm version, dist-tag, or package spec (default: `latest`)    |
+| `--beta`                              | Use beta dist-tag if available, else fallback to `latest`     |
 | `--git-dir <path>`                    | Checkout directory (default: `~/quantumclaw`). Alias: `--dir` |
-| `--no-git-update`                     | Skip `git pull` for existing checkout                      |
-| `--no-prompt`                         | Disable prompts                                            |
-| `--no-onboard`                        | Skip onboarding                                            |
-| `--onboard`                           | Enable onboarding                                          |
-| `--dry-run`                           | Print actions without applying changes                     |
-| `--verbose`                           | Enable debug output (`set -x`, npm notice-level logs)      |
-| `--help`                              | Show usage (`-h`)                                          |
+| `--no-git-update`                     | Skip `git pull` for existing checkout                         |
+| `--no-prompt`                         | Disable prompts                                               |
+| `--no-onboard`                        | Skip onboarding                                               |
+| `--onboard`                           | Enable onboarding                                             |
+| `--dry-run`                           | Print actions without applying changes                        |
+| `--verbose`                           | Enable debug output (`set -x`, npm notice-level logs)         |
+| `--help`                              | Show usage (`-h`)                                             |
 
   </Accordion>
 
   <Accordion title="Environment variables reference">
 
-| Variable                                                | Description                                   |
-| ------------------------------------------------------- | --------------------------------------------- |
+| Variable                                                   | Description                                   |
+| ---------------------------------------------------------- | --------------------------------------------- |
 | `QUANTUMCLAW_INSTALL_METHOD=git\|npm`                      | Install method                                |
 | `QUANTUMCLAW_VERSION=latest\|next\|main\|<semver>\|<spec>` | npm version, dist-tag, or package spec        |
 | `QUANTUMCLAW_BETA=0\|1`                                    | Use beta if available                         |
@@ -163,7 +163,7 @@ The script exits with code `2` for invalid method selection or invalid `--instal
 | `QUANTUMCLAW_DRY_RUN=1`                                    | Dry run mode                                  |
 | `QUANTUMCLAW_VERBOSE=1`                                    | Debug mode                                    |
 | `QUANTUMCLAW_NPM_LOGLEVEL=error\|warn\|notice`             | npm log level                                 |
-| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`                      | Control sharp/libvips behavior (default: `1`) |
+| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`                         | Control sharp/libvips behavior (default: `1`) |
 
   </Accordion>
 </AccordionGroup>
@@ -195,22 +195,22 @@ Designed for environments where you want everything under a local prefix (defaul
 <Tabs>
   <Tab title="Default">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash
     ```
   </Tab>
   <Tab title="Custom prefix + version">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --prefix /opt/quantumclaw --version latest
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --prefix /opt/quantumclaw --version latest
     ```
   </Tab>
   <Tab title="Automation JSON output">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
     ```
   </Tab>
   <Tab title="Run onboarding">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --onboard
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --onboard
     ```
   </Tab>
 </Tabs>
@@ -220,11 +220,11 @@ Designed for environments where you want everything under a local prefix (defaul
 
 | Flag                   | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------- |
-| `--prefix <path>`      | Install prefix (default: `~/.quantumclaw`)                                         |
-| `--version <ver>`      | QuantumClaw version or dist-tag (default: `latest`)                                |
+| `--prefix <path>`      | Install prefix (default: `~/.quantumclaw`)                                      |
+| `--version <ver>`      | QuantumClaw version or dist-tag (default: `latest`)                             |
 | `--node-version <ver>` | Node version (default: `22.22.0`)                                               |
 | `--json`               | Emit NDJSON events                                                              |
-| `--onboard`            | Run `quantumclaw onboard` after install                                            |
+| `--onboard`            | Run `quantumclaw onboard` after install                                         |
 | `--no-onboard`         | Skip onboarding (default)                                                       |
 | `--set-npm-prefix`     | On Linux, force npm prefix to `~/.npm-global` if current prefix is not writable |
 | `--help`               | Show usage (`-h`)                                                               |
@@ -233,15 +233,15 @@ Designed for environments where you want everything under a local prefix (defaul
 
   <Accordion title="Environment variables reference">
 
-| Variable                                    | Description                                                                       |
-| ------------------------------------------- | --------------------------------------------------------------------------------- |
+| Variable                                       | Description                                                                       |
+| ---------------------------------------------- | --------------------------------------------------------------------------------- |
 | `QUANTUMCLAW_PREFIX=<path>`                    | Install prefix                                                                    |
-| `QUANTUMCLAW_VERSION=<ver>`                    | QuantumClaw version or dist-tag                                                      |
+| `QUANTUMCLAW_VERSION=<ver>`                    | QuantumClaw version or dist-tag                                                   |
 | `QUANTUMCLAW_NODE_VERSION=<ver>`               | Node version                                                                      |
 | `QUANTUMCLAW_NO_ONBOARD=1`                     | Skip onboarding                                                                   |
 | `QUANTUMCLAW_NPM_LOGLEVEL=error\|warn\|notice` | npm log level                                                                     |
 | `QUANTUMCLAW_GIT_DIR=<path>`                   | Legacy cleanup lookup path (used when removing old `Peekaboo` submodule checkout) |
-| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`          | Control sharp/libvips behavior (default: `1`)                                     |
+| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`             | Control sharp/libvips behavior (default: `1`)                                     |
 
   </Accordion>
 </AccordionGroup>
@@ -273,34 +273,34 @@ Designed for environments where you want everything under a local prefix (defaul
 <Tabs>
   <Tab title="Default">
     ```powershell
-    iwr -useb https://quantumclaw.ai/install.ps1 | iex
+    iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1 | iex
     ```
   </Tab>
   <Tab title="Git install">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -InstallMethod git
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -InstallMethod git
     ```
   </Tab>
   <Tab title="GitHub main via npm">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -Tag main
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -Tag main
     ```
   </Tab>
   <Tab title="Custom git directory">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -InstallMethod git -GitDir "C:\quantumclaw"
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -InstallMethod git -GitDir "C:\quantumclaw"
     ```
   </Tab>
   <Tab title="Dry run">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -DryRun
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -DryRun
     ```
   </Tab>
   <Tab title="Debug trace">
     ```powershell
     # install.ps1 has no dedicated -Verbose flag yet.
     Set-PSDebug -Trace 1
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -NoOnboard
     Set-PSDebug -Trace 0
     ```
   </Tab>
@@ -313,7 +313,7 @@ Designed for environments where you want everything under a local prefix (defaul
 | --------------------------- | ---------------------------------------------------------- |
 | `-InstallMethod npm\|git`   | Install method (default: `npm`)                            |
 | `-Tag <tag\|version\|spec>` | npm dist-tag, version, or package spec (default: `latest`) |
-| `-GitDir <path>`            | Checkout directory (default: `%USERPROFILE%\quantumclaw`)     |
+| `-GitDir <path>`            | Checkout directory (default: `%USERPROFILE%\quantumclaw`)  |
 | `-NoOnboard`                | Skip onboarding                                            |
 | `-NoGitUpdate`              | Skip `git pull`                                            |
 | `-DryRun`                   | Print actions only                                         |
@@ -322,8 +322,8 @@ Designed for environments where you want everything under a local prefix (defaul
 
   <Accordion title="Environment variables reference">
 
-| Variable                           | Description        |
-| ---------------------------------- | ------------------ |
+| Variable                              | Description        |
+| ------------------------------------- | ------------------ |
 | `QUANTUMCLAW_INSTALL_METHOD=git\|npm` | Install method     |
 | `QUANTUMCLAW_GIT_DIR=<path>`          | Checkout directory |
 | `QUANTUMCLAW_NO_ONBOARD=1`            | Skip onboarding    |
@@ -346,23 +346,23 @@ Use non-interactive flags/env vars for predictable runs.
 <Tabs>
   <Tab title="install.sh (non-interactive npm)">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --no-prompt --no-onboard
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --no-prompt --no-onboard
     ```
   </Tab>
   <Tab title="install.sh (non-interactive git)">
     ```bash
     QUANTUMCLAW_INSTALL_METHOD=git QUANTUMCLAW_NO_PROMPT=1 \
-      curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+      curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
   </Tab>
   <Tab title="install-cli.sh (JSON)">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
     ```
   </Tab>
   <Tab title="install.ps1 (skip onboarding)">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -NoOnboard
     ```
   </Tab>
 </Tabs>
@@ -384,7 +384,7 @@ Use non-interactive flags/env vars for predictable runs.
     The scripts default `SHARP_IGNORE_GLOBAL_LIBVIPS=1` to avoid sharp building against system libvips. To override:
 
     ```bash
-    SHARP_IGNORE_GLOBAL_LIBVIPS=0 curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+    SHARP_IGNORE_GLOBAL_LIBVIPS=0 curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
 
   </Accordion>
@@ -403,7 +403,7 @@ Use non-interactive flags/env vars for predictable runs.
 
     ```powershell
     Set-PSDebug -Trace 1
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -NoOnboard
     Set-PSDebug -Trace 0
     ```
 

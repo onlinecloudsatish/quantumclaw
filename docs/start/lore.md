@@ -119,7 +119,7 @@ In just 3 hours:
 - GitHub renamed: `github.com/quantumclaw/quantumclaw` ✅
 - X handle `@quantumclaw` secured with GOLD CHECKMARK 💰
 - npm packages released under new name
-- Docs migrated to `docs.quantumclaw.ai`
+- Docs migrated to `docs.www.npmjs.com/package/quantumclaw`
 - 200K+ views on announcement in 90 minutes
 
 **The Heroes:**

@@ -119,7 +119,7 @@ sudo sysctl -p
 ### 选项 A：标准安装（推荐）
 
 ```bash
-curl -fsSL https://quantumclaw.ai/install.sh | bash
+curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
 ```
 
 ### 选项 B：可修改安装（适合折腾）

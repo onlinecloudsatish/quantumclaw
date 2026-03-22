@@ -31,7 +31,7 @@ Need to install Node? See [Node setup](/install/node).
     <Tabs>
       <Tab title="macOS / Linux">
         ```bash
-        curl -fsSL https://quantumclaw.ai/install.sh | bash
+        curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
         ```
         <img
   src="/assets/install-script.svg"
@@ -41,7 +41,7 @@ Need to install Node? See [Node setup](/install/node).
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        iwr -useb https://quantumclaw.ai/install.ps1 | iex
+        iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1 | iex
         ```
       </Tab>
     </Tabs>

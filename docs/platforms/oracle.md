@@ -99,7 +99,7 @@ tailscale status
 ## 5) Install QuantumClaw
 
 ```bash
-curl -fsSL https://quantumclaw.ai/install.sh | bash
+curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
 source ~/.bashrc
 ```
 

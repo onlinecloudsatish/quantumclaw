@@ -1,7 +1,7 @@
 ---
 name: command-logger
 description: "Log all command events to a centralized audit file"
-homepage: https://docs.quantumclaw.ai/automation/hooks#command-logger
+homepage: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks#command-logger
 metadata:
   {
     "quantumclaw":

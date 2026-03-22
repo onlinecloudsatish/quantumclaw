@@ -81,7 +81,7 @@ session-memory/
 ---
 name: my-hook
 description: "Short description"
-homepage: https://docs.quantumclaw.ai/automation/hooks#my-hook
+homepage: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks#my-hook
 metadata:
   { "quantumclaw": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
@@ -220,4 +220,4 @@ Test your hooks by:
 
 ## Documentation
 
-Full documentation: https://docs.quantumclaw.ai/automation/hooks
+Full documentation: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks

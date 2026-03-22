@@ -78,7 +78,7 @@ curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
 apt install -y nodejs
 
 # 安装 QuantumClaw
-curl -fsSL https://quantumclaw.ai/install.sh | bash
+curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
 
 # 验证
 quantumclaw --version

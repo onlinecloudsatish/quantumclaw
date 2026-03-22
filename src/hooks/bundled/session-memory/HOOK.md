@@ -1,7 +1,7 @@
 ---
 name: session-memory
 description: "Save session context to memory when /new or /reset command is issued"
-homepage: https://docs.quantumclaw.ai/automation/hooks#session-memory
+homepage: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks#session-memory
 metadata:
   {
     "quantumclaw":

@@ -143,7 +143,7 @@ Hook 包可以携带依赖；它们会安装到 `~/.quantumclaw/hooks/<id>` 下�
 ---
 name: my-hook
 description: "关于此 hook 功能的简短描述"
-homepage: https://docs.quantumclaw.ai/automation/hooks#my-hook
+homepage: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks#my-hook
 metadata:
   { "quantumclaw": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---

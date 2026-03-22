@@ -31,7 +31,7 @@ See [Development channels](/install/development-channels) for channel semantics.
 ## Alternative: re-run the installer
 
 ```bash
-curl -fsSL https://quantumclaw.ai/install.sh | bash
+curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
 ```
 
 Add `--no-onboard` to skip onboarding. For source installs, pass `--install-method git --no-onboard`.
@@ -68,7 +68,7 @@ The auto-updater is off by default. Enable it in `~/.quantumclaw/quantumclaw.jso
 | -------- | ------------------------------------------------------------------------------------------------------------- |
 | `stable` | Waits `stableDelayHours`, then applies with deterministic jitter across `stableJitterHours` (spread rollout). |
 | `beta`   | Checks every `betaCheckIntervalHours` (default: hourly) and applies immediately.                              |
-| `dev`    | No automatic apply. Use `quantumclaw update` manually.                                                           |
+| `dev`    | No automatic apply. Use `quantumclaw update` manually.                                                        |
 
 The gateway also logs an update hint on startup (disable with `update.checkOnStart: false`).
 

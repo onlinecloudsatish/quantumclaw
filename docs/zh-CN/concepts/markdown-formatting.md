@@ -43,7 +43,7 @@ QuantumClaw 通过将出站 Markdown 转换为共享的中间表示（IR），�
 输入 Markdown：
 
 ```markdown
-Hello **world** — see [docs](https://docs.quantumclaw.ai).
+Hello **world** — see [docs](https://docs.www.npmjs.com/package/quantumclaw).
 ```
 
 IR（示意）：
@@ -52,7 +52,7 @@ IR（示意）：
 {
   "text": "Hello world — see docs.",
   "styles": [{ "start": 6, "end": 11, "style": "bold" }],
-  "links": [{ "start": 19, "end": 23, "href": "https://docs.quantumclaw.ai" }]
+  "links": [{ "start": 19, "end": 23, "href": "https://docs.www.npmjs.com/package/quantumclaw" }]
 }
 ```
 

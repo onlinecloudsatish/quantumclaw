@@ -148,7 +148,7 @@ The `HOOK.md` file contains metadata in YAML frontmatter plus Markdown documenta
 ---
 name: my-hook
 description: "Short description of what this hook does"
-homepage: https://docs.quantumclaw.ai/automation/hooks#my-hook
+homepage: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks#my-hook
 metadata:
   { "quantumclaw": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---

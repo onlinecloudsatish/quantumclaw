@@ -96,7 +96,7 @@ Details:
   Source: quantumclaw-bundled
   Path: /path/to/quantumclaw/hooks/bundled/session-memory/HOOK.md
   Handler: /path/to/quantumclaw/hooks/bundled/session-memory/handler.ts
-  Homepage: https://docs.quantumclaw.ai/automation/hooks#session-memory
+  Homepage: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks#session-memory
   Events: command:new
 
 Requirements:

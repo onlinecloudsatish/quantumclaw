@@ -52,7 +52,7 @@ Model note: while many providers/models are supported, for the best experience a
 Runtime: **Node 24 (recommended) or Node 22.16+**.
 
 ```bash
-npm install -g quantumclaw@latest
+npm install -g @quantumclaw/quantumclaw
 # or: pnpm add -g quantumclaw@latest
 
 quantumclaw onboard --install-daemon

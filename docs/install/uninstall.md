@@ -116,7 +116,7 @@ If you used a profile, delete the matching task name and `~\.quantumclaw-<profil
 
 ### Normal install (install.sh / npm / pnpm / bun)
 
-If you used `https://quantumclaw.ai/install.sh` or `install.ps1`, the CLI was installed with `npm install -g quantumclaw@latest`.
+If you used `https://www.npmjs.com/package/quantumclaw/install.sh` or `install.ps1`, the CLI was installed with `npm install -g quantumclaw@latest`.
 Remove it with `npm rm -g quantumclaw` (or `pnpm remove -g` / `bun remove -g` if you installed that way).
 
 ### Source checkout (git clone)

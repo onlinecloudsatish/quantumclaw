@@ -57,7 +57,7 @@ quantumclaw browser --browser-profile work tabs
 
 ```bash
 quantumclaw browser tabs
-quantumclaw browser open https://docs.quantumclaw.ai
+quantumclaw browser open https://docs.www.npmjs.com/package/quantumclaw
 quantumclaw browser focus <targetId>
 quantumclaw browser close <targetId>
 ```

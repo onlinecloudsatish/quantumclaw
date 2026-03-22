@@ -75,7 +75,7 @@ Run a persistent QuantumClaw Gateway on Oracle Cloud's **Always Free** ARM tier 
 
   <Step title="Install QuantumClaw">
     ```bash
-    curl -fsSL https://quantumclaw.ai/install.sh | bash
+    curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
     source ~/.bashrc
     ```
 

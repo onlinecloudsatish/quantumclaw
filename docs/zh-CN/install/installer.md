@@ -1,6 +1,6 @@
 ---
 read_when:
-  - 你想了解 `quantumclaw.ai/install.sh`
+  - 你想了解 `www.npmjs.com/package/quantumclaw/install.sh`
   - 你想自动化安装（CI / 无头）
   - 你想从 GitHub 检出安装
 summary: 安装脚本的工作原理（install.sh、install-cli.sh、install.ps1）、标志和自动化
@@ -16,12 +16,12 @@ x-i18n:
 
 # 安装器内部机制
 
-QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
+QuantumClaw 提供三个安装脚本，由 `www.npmjs.com/package/quantumclaw` 提供。
 
-| 脚本                               | 平台                  | 功能                                                                          |
-| ---------------------------------- | --------------------- | ----------------------------------------------------------------------------- |
+| 脚本                               | 平台                  | 功能                                                                             |
+| ---------------------------------- | --------------------- | -------------------------------------------------------------------------------- |
 | [`install.sh`](#installsh)         | macOS / Linux / WSL   | 如有需要则安装 Node，通过 npm（默认）或 git 安装 QuantumClaw，并可运行新手引导。 |
-| [`install-cli.sh`](#install-clish) | macOS / Linux / WSL   | 将 Node + QuantumClaw 安装到本地前缀（`~/.quantumclaw`）中。无需 root。             |
+| [`install-cli.sh`](#install-clish) | macOS / Linux / WSL   | 将 Node + QuantumClaw 安装到本地前缀（`~/.quantumclaw`）中。无需 root。          |
 | [`install.ps1`](#installps1)       | Windows（PowerShell） | 如有需要则安装 Node，通过 npm（默认）或 git 安装 QuantumClaw，并可运行新手引导。 |
 
 ## 快速命令
@@ -29,31 +29,31 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 <Tabs>
   <Tab title="install.sh">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --help
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --help
     ```
 
   </Tab>
   <Tab title="install-cli.sh">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash
     ```
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --help
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --help
     ```
 
   </Tab>
   <Tab title="install.ps1">
     ```powershell
-    iwr -useb https://quantumclaw.ai/install.ps1 | iex
+    iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1 | iex
     ```
 
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -Tag beta -NoOnboard -DryRun
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -Tag beta -NoOnboard -DryRun
     ```
 
   </Tab>
@@ -110,27 +110,27 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 <Tabs>
   <Tab title="默认">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
   </Tab>
   <Tab title="跳过新手引导">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --no-onboard
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --no-onboard
     ```
   </Tab>
   <Tab title="Git 安装">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --install-method git
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --install-method git
     ```
   </Tab>
   <Tab title="通过 npm 安装 GitHub main">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --version main
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --version main
     ```
   </Tab>
   <Tab title="试运行">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --dry-run
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --dry-run
     ```
   </Tab>
 </Tabs>
@@ -145,7 +145,7 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 | `--git`                               | git 方法快捷方式。别名：`--github`                |
 | `--version <version\|dist-tag\|spec>` | npm 版本、dist-tag 或包规范（默认：`latest`）     |
 | `--beta`                              | 如有可用则使用 beta dist-tag，否则回退到 `latest` |
-| `--git-dir <path>`                    | 检出目录（默认：`~/quantumclaw`）。别名：`--dir`     |
+| `--git-dir <path>`                    | 检出目录（默认：`~/quantumclaw`）。别名：`--dir`  |
 | `--no-git-update`                     | 对现有检出跳过 `git pull`                         |
 | `--no-prompt`                         | 禁用提示                                          |
 | `--no-onboard`                        | 跳过新手引导                                      |
@@ -158,8 +158,8 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 
   <Accordion title="环境变量参考">
 
-| 变量                                                    | 说明                                 |
-| ------------------------------------------------------- | ------------------------------------ |
+| 变量                                                       | 说明                                 |
+| ---------------------------------------------------------- | ------------------------------------ |
 | `QUANTUMCLAW_INSTALL_METHOD=git\|npm`                      | 安装方法                             |
 | `QUANTUMCLAW_VERSION=latest\|next\|main\|<semver>\|<spec>` | npm 版本、dist-tag 或包规范          |
 | `QUANTUMCLAW_BETA=0\|1`                                    | 如有可用则使用 beta                  |
@@ -170,7 +170,7 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 | `QUANTUMCLAW_DRY_RUN=1`                                    | 试运行模式                           |
 | `QUANTUMCLAW_VERBOSE=1`                                    | 调试模式                             |
 | `QUANTUMCLAW_NPM_LOGLEVEL=error\|warn\|notice`             | npm 日志级别                         |
-| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`                      | 控制 sharp/libvips 行为（默认：`1`） |
+| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`                         | 控制 sharp/libvips 行为（默认：`1`） |
 
   </Accordion>
 </AccordionGroup>
@@ -202,22 +202,22 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 <Tabs>
   <Tab title="默认">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash
     ```
   </Tab>
   <Tab title="自定义前缀 + 版本">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --prefix /opt/quantumclaw --version latest
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --prefix /opt/quantumclaw --version latest
     ```
   </Tab>
   <Tab title="自动化 JSON 输出">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
     ```
   </Tab>
   <Tab title="运行新手引导">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --onboard
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --onboard
     ```
   </Tab>
 </Tabs>
@@ -227,11 +227,11 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 
 | 标志                   | 说明                                                                   |
 | ---------------------- | ---------------------------------------------------------------------- |
-| `--prefix <path>`      | 安装前缀（默认：`~/.quantumclaw`）                                        |
-| `--version <ver>`      | QuantumClaw 版本或 dist-tag（默认：`latest`）                             |
+| `--prefix <path>`      | 安装前缀（默认：`~/.quantumclaw`）                                     |
+| `--version <ver>`      | QuantumClaw 版本或 dist-tag（默认：`latest`）                          |
 | `--node-version <ver>` | Node 版本（默认：`22.22.0`）                                           |
 | `--json`               | 输出 NDJSON 事件                                                       |
-| `--onboard`            | 安装后运行 `quantumclaw onboard`                                          |
+| `--onboard`            | 安装后运行 `quantumclaw onboard`                                       |
 | `--no-onboard`         | 跳过新手引导（默认）                                                   |
 | `--set-npm-prefix`     | 在 Linux 上，如果当前前缀不可写，则强制将 npm 前缀设为 `~/.npm-global` |
 | `--help`               | 显示用法（`-h`）                                                       |
@@ -240,15 +240,15 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 
   <Accordion title="环境变量参考">
 
-| 变量                                        | 说明                                                   |
-| ------------------------------------------- | ------------------------------------------------------ |
+| 变量                                           | 说明                                                   |
+| ---------------------------------------------- | ------------------------------------------------------ |
 | `QUANTUMCLAW_PREFIX=<path>`                    | 安装前缀                                               |
-| `QUANTUMCLAW_VERSION=<ver>`                    | QuantumClaw 版本或 dist-tag                               |
+| `QUANTUMCLAW_VERSION=<ver>`                    | QuantumClaw 版本或 dist-tag                            |
 | `QUANTUMCLAW_NODE_VERSION=<ver>`               | Node 版本                                              |
 | `QUANTUMCLAW_NO_ONBOARD=1`                     | 跳过新手引导                                           |
 | `QUANTUMCLAW_NPM_LOGLEVEL=error\|warn\|notice` | npm 日志级别                                           |
 | `QUANTUMCLAW_GIT_DIR=<path>`                   | 旧版清理查找路径（用于删除旧的 `Peekaboo` 子模块检出） |
-| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`          | 控制 sharp/libvips 行为（默认：`1`）                   |
+| `SHARP_IGNORE_GLOBAL_LIBVIPS=0\|1`             | 控制 sharp/libvips 行为（默认：`1`）                   |
 
   </Accordion>
 </AccordionGroup>
@@ -280,34 +280,34 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 <Tabs>
   <Tab title="默认">
     ```powershell
-    iwr -useb https://quantumclaw.ai/install.ps1 | iex
+    iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1 | iex
     ```
   </Tab>
   <Tab title="Git 安装">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -InstallMethod git
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -InstallMethod git
     ```
   </Tab>
   <Tab title="通过 npm 安装 GitHub main">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -Tag main
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -Tag main
     ```
   </Tab>
   <Tab title="自定义 git 目录">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -InstallMethod git -GitDir "C:\quantumclaw"
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -InstallMethod git -GitDir "C:\quantumclaw"
     ```
   </Tab>
   <Tab title="试运行">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -DryRun
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -DryRun
     ```
   </Tab>
   <Tab title="调试跟踪">
     ```powershell
     # install.ps1 目前还没有专门的 -Verbose 标志。
     Set-PSDebug -Trace 1
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -NoOnboard
     Set-PSDebug -Trace 0
     ```
   </Tab>
@@ -316,21 +316,21 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 <AccordionGroup>
   <Accordion title="标志参考">
 
-| 标志                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| `-InstallMethod npm\|git`   | 安装方法（默认：`npm`）                      |
-| `-Tag <tag\|version\|spec>` | npm dist-tag、版本或包规范（默认：`latest`） |
-| `-GitDir <path>`            | 检出目录（默认：`%USERPROFILE%\quantumclaw`）   |
-| `-NoOnboard`                | 跳过新手引导                                 |
-| `-NoGitUpdate`              | 跳过 `git pull`                              |
-| `-DryRun`                   | 仅打印操作                                   |
+| 标志                        | 说明                                          |
+| --------------------------- | --------------------------------------------- |
+| `-InstallMethod npm\|git`   | 安装方法（默认：`npm`）                       |
+| `-Tag <tag\|version\|spec>` | npm dist-tag、版本或包规范（默认：`latest`）  |
+| `-GitDir <path>`            | 检出目录（默认：`%USERPROFILE%\quantumclaw`） |
+| `-NoOnboard`                | 跳过新手引导                                  |
+| `-NoGitUpdate`              | 跳过 `git pull`                               |
+| `-DryRun`                   | 仅打印操作                                    |
 
   </Accordion>
 
   <Accordion title="环境变量参考">
 
-| 变量                               | 说明          |
-| ---------------------------------- | ------------- |
+| 变量                                  | 说明          |
+| ------------------------------------- | ------------- |
 | `QUANTUMCLAW_INSTALL_METHOD=git\|npm` | 安装方法      |
 | `QUANTUMCLAW_GIT_DIR=<path>`          | 检出目录      |
 | `QUANTUMCLAW_NO_ONBOARD=1`            | 跳过新手引导  |
@@ -353,23 +353,23 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 <Tabs>
   <Tab title="install.sh（非交互式 npm）">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash -s -- --no-prompt --no-onboard
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash -s -- --no-prompt --no-onboard
     ```
   </Tab>
   <Tab title="install.sh（非交互式 git）">
     ```bash
     QUANTUMCLAW_INSTALL_METHOD=git QUANTUMCLAW_NO_PROMPT=1 \
-      curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+      curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
   </Tab>
   <Tab title="install-cli.sh（JSON）">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
+    curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install-cli.sh | bash -s -- --json --prefix /opt/quantumclaw
     ```
   </Tab>
   <Tab title="install.ps1（跳过新手引导）">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -NoOnboard
     ```
   </Tab>
 </Tabs>
@@ -391,7 +391,7 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
     这些脚本默认设置 `SHARP_IGNORE_GLOBAL_LIBVIPS=1`，以避免 sharp 针对系统 libvips 进行构建。若要覆盖：
 
     ```bash
-    SHARP_IGNORE_GLOBAL_LIBVIPS=0 curl -fsSL --proto '=https' --tlsv1.2 https://quantumclaw.ai/install.sh | bash
+    SHARP_IGNORE_GLOBAL_LIBVIPS=0 curl -fsSL --proto '=https' --tlsv1.2 https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
 
   </Accordion>
@@ -410,7 +410,7 @@ QuantumClaw 提供三个安装脚本，由 `quantumclaw.ai` 提供。
 
     ```powershell
     Set-PSDebug -Trace 1
-    & ([scriptblock]::Create((iwr -useb https://quantumclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb https://www.npmjs.com/package/quantumclaw/install.ps1))) -NoOnboard
     Set-PSDebug -Trace 0
     ```
 

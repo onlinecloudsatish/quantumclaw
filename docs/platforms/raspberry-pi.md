@@ -112,7 +112,7 @@ sudo sysctl -p
 ### Option A: Standard Install (Recommended)
 
 ```bash
-curl -fsSL https://quantumclaw.ai/install.sh | bash
+curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
 ```
 
 ### Option B: Hackable Install (For tinkering)

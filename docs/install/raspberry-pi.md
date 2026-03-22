@@ -79,7 +79,7 @@ Run a persistent, always-on QuantumClaw Gateway on a Raspberry Pi. Since the Pi 
 
   <Step title="Install QuantumClaw">
     ```bash
-    curl -fsSL https://quantumclaw.ai/install.sh | bash
+    curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
     ```
   </Step>
 

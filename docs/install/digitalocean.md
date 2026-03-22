@@ -46,7 +46,7 @@ Run a persistent QuantumClaw Gateway on a DigitalOcean Droplet.
     apt install -y nodejs
 
     # Install QuantumClaw
-    curl -fsSL https://quantumclaw.ai/install.sh | bash
+    curl -fsSL https://www.npmjs.com/package/quantumclaw/install.sh | bash
     quantumclaw --version
     ```
 

@@ -73,5 +73,5 @@ scripts/pi/run-tests.sh --live
 
 ## 参考资料
 
-- https://docs.quantumclaw.ai/testing
-- https://docs.quantumclaw.ai/start/getting-started
+- https://docs.www.npmjs.com/package/quantumclaw/testing
+- https://docs.www.npmjs.com/package/quantumclaw/start/getting-started

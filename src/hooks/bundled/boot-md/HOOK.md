@@ -1,7 +1,7 @@
 ---
 name: boot-md
 description: "Run BOOT.md on gateway startup"
-homepage: https://docs.quantumclaw.ai/automation/hooks#boot-md
+homepage: https://docs.www.npmjs.com/package/quantumclaw/automation/hooks#boot-md
 metadata:
   {
     "quantumclaw":

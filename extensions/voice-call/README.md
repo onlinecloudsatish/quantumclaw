@@ -9,8 +9,8 @@ Providers:
 - **Plivo** (Voice API + XML transfer + GetInput speech)
 - **Mock** (dev/no network)
 
-Docs: `https://docs.quantumclaw.ai/plugins/voice-call`
-Plugin system: `https://docs.quantumclaw.ai/plugin`
+Docs: `https://docs.www.npmjs.com/package/quantumclaw/plugins/voice-call`
+Plugin system: `https://docs.www.npmjs.com/package/quantumclaw/plugin`
 
 ## Install (local dev)
 
@@ -89,18 +89,18 @@ Notes:
 - Twilio/Telnyx/Plivo require a **publicly reachable** webhook URL.
 - `mock` is a local dev provider (no network calls).
 - Telnyx requires `telnyx.publicKey` (or `TELNYX_PUBLIC_KEY`) unless `skipSignatureVerification` is true.
-- advanced webhook, streaming, and tunnel notes: `https://docs.quantumclaw.ai/plugins/voice-call`
+- advanced webhook, streaming, and tunnel notes: `https://docs.www.npmjs.com/package/quantumclaw/plugins/voice-call`
 
 ## Stale call reaper
 
 See the plugin docs for recommended ranges and production examples:
-`https://docs.quantumclaw.ai/plugins/voice-call#stale-call-reaper`
+`https://docs.www.npmjs.com/package/quantumclaw/plugins/voice-call#stale-call-reaper`
 
 ## TTS for calls
 
 Voice Call uses the core `messages.tts` configuration for
 streaming speech on calls. Override examples and provider caveats live here:
-`https://docs.quantumclaw.ai/plugins/voice-call#tts-for-calls`
+`https://docs.www.npmjs.com/package/quantumclaw/plugins/voice-call#tts-for-calls`
 
 ## CLI
 
