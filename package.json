@@ -1,6 +1,6 @@
 {
-  "name": "@quantumclaw/quantumclaw",
-  "version": "2026.3.22",
+  "name": "quantumclaw",
+  "version": "2026.3.26",
   "description": "Multi-channel AI gateway with extensible messaging integrations",
   "keywords": [],
   "homepage": "https://github.com/quantumclaw/quantumclaw#readme",
