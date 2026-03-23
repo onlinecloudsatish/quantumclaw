@@ -71,7 +71,7 @@ Core skill additions should be rare and require a strong product or security rea
 
 ### MCP Support
 
-QuantumClaw supports MCP through `mcporter`: https://github.com/steipete/mcporter
+QuantumClaw supports MCP through `mcporter`: https://github.com/onlinecloudsatish/mcporter
 
 This keeps MCP integration flexible and decoupled from core runtime:
 
