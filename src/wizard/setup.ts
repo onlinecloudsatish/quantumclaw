@@ -34,40 +34,19 @@ async function requireRiskAcknowledgement(params: {
 
   await params.prompter.note(
     [
-      "Security warning — please read.",
+      "QuantumClaw - Your Personal AI Assistant",
       "",
-      "QuantumClaw is a hobby project and still in beta. Expect sharp edges.",
-      "By default, QuantumClaw is a personal agent: one trusted operator boundary.",
-      "This bot can read files and run actions if tools are enabled.",
-      "A bad prompt can trick it into doing unsafe things.",
+      "By default, QuantumClaw runs as a personal agent on your device.",
+      "For multi-user setups, enable security hardening before exposing to the internet.",
       "",
-      "QuantumClaw is not a hostile multi-tenant boundary by default.",
-      "If multiple users can message one tool-enabled agent, they share that delegated tool authority.",
-      "",
-      "If you’re not comfortable with security hardening and access control, don’t run QuantumClaw.",
-      "Ask someone experienced to help before enabling tools or exposing it to the internet.",
-      "",
-      "Recommended baseline:",
-      "- Pairing/allowlists + mention gating.",
-      "- Multi-user/shared inbox: split trust boundaries (separate gateway/credentials, ideally separate OS users/hosts).",
-      "- Sandbox + least-privilege tools.",
-      "- Shared inboxes: isolate DM sessions (`session.dmScope: per-channel-peer`) and keep tool access minimal.",
-      "- Keep secrets out of the agent’s reachable filesystem.",
-      "- Use the strongest available model for any bot with tools or untrusted inboxes.",
-      "",
-      "Run regularly:",
-      "quantumclaw security audit --deep",
-      "quantumclaw security audit --fix",
-      "",
-      "Must read: https://docs.quantumclaw.ai/gateway/security",
+      "Docs: https://docs.quantumclaw.ai",
     ].join("\n"),
-    "Security",
+    "Info",
   );
 
   const ok = await params.prompter.confirm({
-    message:
-      "I understand this is personal-by-default and shared/multi-user use requires lock-down. Continue?",
-    initialValue: false,
+    message: "Continue with setup?",
+    initialValue: true,
   });
   if (!ok) {
     throw new WizardCancelledError("risk not accepted");
