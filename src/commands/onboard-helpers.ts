@@ -100,11 +100,11 @@ export function validateGatewayPasswordInput(value: unknown): string | undefined
 
 export function printWizardHeader(runtime: RuntimeEnv) {
   const header = [
-    " _  _   _   _ ",
-    "| || | | | | |",
-    "| || | |_| | |",
-    "|_||_|/ _| |_|",
-    "    🦞 QC 🦞",
+    " Q  U  A  N  T  U  M ",
+    "Q  U  A  N  T  U  M",
+    "Q  U  A  N  T  U  M ",
+    " ~ ~ ~ ~ ~ ~ ~ ~ ~ ",
+    "   🦞 QUANTUMCLAW 🦞",
     " ",
   ].join("\n");
   runtime.log(header);
