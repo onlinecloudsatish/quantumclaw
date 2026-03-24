@@ -34,18 +34,15 @@ async function requireRiskAcknowledgement(params: {
 
   await params.prompter.note(
     [
-      "QuantumClaw - Your Personal AI Assistant",
-      "",
-      "By default, QuantumClaw runs as a personal agent on your device.",
-      "For multi-user setups, enable security hardening before exposing to the internet.",
+      "🦞 QuantumClaw - Your Personal AI Assistant",
       "",
       "Docs: https://docs.quantumclaw.ai",
     ].join("\n"),
-    "Info",
+    "Setup",
   );
 
   const ok = await params.prompter.confirm({
-    message: "Continue with setup?",
+    message: "Continue?",
     initialValue: true,
   });
   if (!ok) {
