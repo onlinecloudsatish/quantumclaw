@@ -1,4 +1,4 @@
-const DEFAULT_TAGLINE = "All your chats, one QuantumClaw.";
+const DEFAULT_TAGLINE = "Personal AI Assistant";
 export type TaglineMode = "random" | "default" | "off";
 
 const HOLIDAY_TAGLINES = {
@@ -262,10 +262,13 @@ export function activeTaglines(options: TaglineOptions = {}): string[] {
 }
 
 export function pickTagline(options: TaglineOptions = {}): string {
-  if (options.mode === "off") {
+  // Default to "default" mode (show DEFAULT_TAGLINE) instead of random
+  const mode = options.mode ?? "default";
+  
+  if (mode === "off") {
     return "";
   }
-  if (options.mode === "default") {
+  if (mode === "default") {
     return DEFAULT_TAGLINE;
   }
   const env = options.env ?? process.env;
