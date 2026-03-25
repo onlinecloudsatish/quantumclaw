@@ -28,10 +28,10 @@
 | 📱 **Multi-Platform** | WhatsApp, Telegram, Slack, Discord, Signal, iMessage & more |
 | ⚡ **Automation** | Workflows, scheduled tasks (cron), webhook triggers |
 | 🧠 **Memory** | Persistent memory for context-aware conversations |
-| 🔒 **Enterprise Security** | Input validation, encrypted secrets, audit logging, data protection |
-| 💻 **Code Interpreter** | Run JavaScript/TypeScript in secure sandbox |
+| 🔒 **Enterprise Security** | Sandboxing, input validation, encrypted secrets, audit logging |
+| 💻 **Code Interpreter** | Run JavaScript/TypeScript in secure isolated sandbox |
 | 🎨 **Beautiful UI** | Modern dashboard + Control Center with dark mode |
-| 🎯 **MiniMax Skills** | 10+ AI-powered development skills (frontend, fullstack, mobile, docs) |
+| 🎯 **MiniMax Skills** | 10+ AI-powered development skills |
 
 ## 🚀 Quick Install
 
@@ -71,43 +71,118 @@ quantumclaw browser start
 | **Dashboard** | http://localhost:19999/ | Main QuantumClaw UI |
 | **Control Center** | http://localhost:19999/cc | Observability & monitoring |
 
-### Configuration
+---
+
+## 🔒 Enterprise Security
+
+QuantumClaw includes comprehensive security features to protect your data and system.
+
+### 🛡️ Security Guard
+
+| Feature | Description |
+|---------|-------------|
+| **Input Validation** | Sanitizes all inputs, blocks malicious payloads |
+| **SQL Injection Protection** | Detects and blocks SQL injection attempts |
+| **XSS Protection** | Prevents cross-site scripting attacks |
+| **Command Injection Protection** | Blocks shell command injection |
+| **Path Traversal Protection** | Prevents directory traversal attacks |
+| **SSRF Protection** | Blocks server-side request forgery |
+| **Rate Limiting** | Configurable limits to prevent abuse |
+| **Threat Detection** | Pattern-based detection for malicious code |
+
+### 🔐 Secret Manager
+
+| Feature | Description |
+|---------|-------------|
+| **AES-256 Encryption** | All secrets encrypted at rest |
+| **Master Password** | Key derivation using scrypt |
+| **Auto-Rotation** | Configurable automatic secret rotation |
+| **Metadata Tracking** | Labels, tags, expiration dates |
+| **Hardware Security** | Supports hardware token integration |
 
 ```bash
-# Set configuration
-quantumclaw config set gateway.port 19999
-quantumclaw config set agents.defaults.model "kilo-auto/free"
+# Set a secret
+quantumclaw secrets set API_KEY "your-key-here"
 
-# View config
-quantumclaw config get
+# List secrets
+quantumclaw secrets list
+
+# Rotate a secret
+quantumclaw secrets rotate API_KEY
 ```
 
-## 🔒 Security Features
+### 📋 Audit Logging
 
-QuantumClaw includes enterprise-grade security built-in:
+| Feature | Description |
+|---------|-------------|
+| **Comprehensive Logs** | Every action recorded with timestamps |
+| **Multiple Channels** | File, Discord, Telegram, Slack, custom webhooks |
+| **Search & Analysis** | Queryable audit trail |
+| **Compliance Ready** | Export formats for audits |
+| **Real-time Alerts** | Get notified of suspicious activity |
 
-### Security Guard
-- **Input Validation** — Sanitizes all inputs, blocks SQL injection, XSS, command injection
-- **Rate Limiting** — Prevents abuse with configurable limits
-- **Threat Detection** — Pattern-based detection for malicious payloads
+```bash
+# Enable audit logging
+quantumclaw config set audit.enabled true
 
-### Secret Manager
-- **AES-256 Encryption** — All secrets encrypted at rest
-- **Master Password** — Key derivation with scrypt
-- **Auto-Rotation** — Configurable secret rotation
-- **Metadata Tracking** — Labels, tags, expiration dates
+# View recent audits
+quantumclaw audit list --limit 50
+```
 
-### Audit Logging
-- **Comprehensive Logs** — Every action recorded
-- **Multiple Channels** — File, Discord, Telegram, Slack
-- **Search & Analysis** — Queryable audit trail
-- **Compliance Ready** — Export for audits
+### 🏝️ Sandbox Isolation
 
-### Data Protection
-- **Local Execution** — All data stays on your machine
-- **No External Leaks** — Network isolation options
-- **Secure Storage** — Encrypted config and credentials
-- **Privacy First** — Your data never leaves your device
+QuantumClaw runs code in isolated sandboxes to protect your system:
+
+| Feature | Description |
+|---------|-------------|
+| **Docker-based Isolation** | Containers provide strong isolation |
+| **gVisor Support** | Lightweight kernel-level isolation |
+| **Network Isolation** | Block network access for untrusted code |
+| **Filesystem Limits** | Restrict filesystem access |
+| **Resource Limits** | CPU, memory, and time limits |
+| **No Root Access** | Runs as non-root user |
+| **Ephemeral Storage** | All data discarded after execution |
+
+```json
+// sandbox.config.json
+{
+  "enabled": true,
+  "type": "docker",
+  "image": "ghcr.io/quantumclaw/sandbox:default",
+  "network": "none",
+  "resources": {
+    "cpuLimit": "1",
+    "memoryLimit": "512m",
+    "timeout": 30000
+  },
+  "mounts": {
+    "workspace": "/workspace",
+    "temp": "/tmp"
+  }
+}
+```
+
+### 🌐 Network Security
+
+| Feature | Description |
+|---------|-------------|
+| **Local-only Mode** | Gateway binds to localhost only |
+| **Token Authentication** | All API requests require auth token |
+| **TLS Support** | Optional HTTPS for external access |
+| **IP Allowlist** | Restrict access by IP |
+| **Connection Limits** | Prevent connection exhaustion |
+
+### 🔒 Data Protection
+
+| Feature | Description |
+|---------|-------------|
+| **Local Execution** | All data stays on your machine |
+| **No Telemetry** | No usage data sent anywhere |
+| **Encrypted Config** | Credentials stored encrypted |
+| **Secure Storage** | OS keychain integration |
+| **Memory Protection** | Sensitive data cleared from memory |
+
+---
 
 ## 🎯 MiniMax AI Skills
 
@@ -126,6 +201,8 @@ QuantumClaw includes 10+ development skills powered by MiniMax AI:
 | 📦 minimax-xlsx | Excel spreadsheet handling |
 | 📦 minimax-docx | Word document creation |
 
+---
+
 ## 🏢 Control Center
 
 Built-in observability dashboard for monitoring QuantumClaw:
@@ -140,6 +217,8 @@ Built-in observability dashboard for monitoring QuantumClaw:
 
 Access: `http://localhost:19999/cc`
 
+---
+
 ## 🤖 AI Providers
 
 QuantumClaw supports multiple AI providers:
@@ -152,6 +231,8 @@ QuantumClaw supports multiple AI providers:
 | **Nvidia** | `NVIDIA_API_KEY` | ✅ Free tier |
 | **Anthropic** | `ANTHROPIC_API_KEY` | ❌ Paid |
 
+---
+
 ## 📱 Supported Platforms
 
 - ✅ Telegram
@@ -162,6 +243,8 @@ QuantumClaw supports multiple AI providers:
 - ✅ iMessage
 - ✅ Google Chat
 - ✅ IRC
+
+---
 
 ## 🔧 Configuration
 
@@ -178,6 +261,7 @@ export GROQ_API_KEY="your-key-here"
 # Security
 export QUANTUMCLAW_ENCRYPTION_KEY="your-master-key"
 export QUANTUMCLAW_AUDIT_ENABLED=true
+export QUANTUMCLAW_SANDBOX_ENABLED=true
 ```
 
 ### Config File
@@ -188,8 +272,23 @@ Located at `~/.quantumclaw/quantumclaw.json`:
 {
   "gateway": {
     "port": 19999,
+    "bind": "127.0.0.1",
     "auth": {
       "mode": "token"
+    }
+  },
+  "security": {
+    "sandbox": {
+      "enabled": true,
+      "type": "docker",
+      "network": "none"
+    },
+    "audit": {
+      "enabled": true
+    },
+    "rateLimit": {
+      "windowMs": 60000,
+      "maxRequests": 100
     }
   },
   "agents": {
@@ -200,28 +299,33 @@ Located at `~/.quantumclaw/quantumclaw.json`:
 }
 ```
 
+---
+
 ## 📦 Package Contents
 
 ```
 quantumclaw/
 ├── dist/
-│   ├── control-ui/      # Dashboard UI
-│   ├── control-center/  # Control Center
-│   ├── bundled/         # Bundled plugins
-│   └── plugin-sdk/     # Plugin system
+│   ├── control-ui/           # Dashboard UI
+│   ├── control-center/       # Control Center
+│   ├── bundled/             # Bundled plugins
+│   └── plugin-sdk/         # Plugin system
 ├── src/
-│   ├── security/        # Security modules
-│   │   ├── secret-manager.ts
-│   │   ├── input-validation.ts
-│   │   ├── audit-logger.ts
-│   │   └── ...
-│   ├── automation/      # Workflow engine
-│   │   ├── code-interpreter.ts
-│   │   ├── agentic-workflow.ts
-│   │   └── ...
+│   ├── security/             # Security modules
+│   │   ├── secret-manager.ts      # Encrypted secrets
+│   │   ├── input-validation.ts   # Input sanitization
+│   │   ├── audit-logger.ts        # Audit logging
+│   │   ├── security-guard.ts      # Threat detection
+│   │   └── sandbox/               # Sandboxing
+│   ├── automation/           # Workflow engine
+│   │   ├── code-interpreter.ts   # Code execution
+│   │   ├── agentic-workflow.ts   # AI workflows
+│   │   └── scheduler.ts         # Task scheduling
 │   └── ...
-└── skills/            # Built-in skills
+└── skills/                 # Built-in skills
 ```
+
+---
 
 ## 🧪 Testing
 
@@ -238,6 +342,8 @@ quantumclaw sessions list
 # Test skills
 quantumclaw skills search weather
 ```
+
+---
 
 ## 📡 API Reference
 
@@ -260,6 +366,8 @@ curl -X POST http://localhost:19999/message \
 ws://localhost:19999/ws
 ```
 
+---
+
 ## 🛡️ Data Privacy
 
 QuantumClaw is designed with privacy first:
@@ -269,6 +377,29 @@ QuantumClaw is designed with privacy first:
 3. **Your Keys** — API keys stay in your config
 4. **Encrypted** — Secrets encrypted with AES-256
 5. **Audit Trail** — Full visibility into what's happening
+6. **Sandbox Isolation** — Code runs in isolated containers
+7. **Network Isolation** — Optional air-gapped mode
+
+### Security Best Practices
+
+```bash
+# 1. Use local-only mode (default)
+quantumclaw config set gateway.bind "127.0.0.1"
+
+# 2. Enable sandbox for code execution
+quantumclaw config set security.sandbox.enabled true
+
+# 3. Enable audit logging
+quantumclaw config set security.audit.enabled true
+
+# 4. Use strong tokens
+quantumclaw config set gateway.auth.mode "token"
+
+# 5. Rate limit requests
+quantumclaw config set security.rateLimit.maxRequests 100
+```
+
+---
 
 ## 📄 License
 
