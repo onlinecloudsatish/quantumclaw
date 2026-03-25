@@ -1,147 +1,213 @@
-// QuantumClaw Smart Token Optimizer
-// Routes tasks to optimal model - saves tokens & money!
+// QuantumClaw Smart Router - FREE FIRST Strategy
+// PRIORITY: Kilo (free) → Groq (cheap) → OpenRouter → Premium (last resort)
 
 export interface ModelConfig {
   name: string;
   provider: string;
   costPer1MInput: number;
   costPer1MOutput: number;
-  latency: string; // fast, medium, slow
+  priority: number; // Lower = higher priority (use first)
+  latency: string;
   contextWindow: number;
-  bestFor: string[]; // simple tasks this model excels at
+  bestFor: string[];
 }
 
 export interface TaskContext {
   complexity: 'simple' | 'medium' | 'complex';
   type: 'chat' | 'code' | 'search' | 'analyze' | 'create';
   hasContext: boolean;
-  estimatedTokens: number;
+  estimatedTokens?: number;
+  forcePremium?: boolean; // Override for complex tasks
 }
 
 /**
- * Smart Model Router - Production Token Optimizer
+ * Smart Router - FREE FIRST Strategy
  * 
- * Strategy:
- * - Simple tasks → Use cheap/fast models (save ~90%)
- * - Complex tasks → Use powerful models (best quality)
- * - Routing is transparent to user
+ * Priority Order:
+ * 1. Kilo (free) - 99% of tasks
+ * 2. Groq (~$0.04/1M) - if Kilo fails
+ * 3. OpenRouter (~$0.10/1M) - backup
+ * 4. Premium Claude/GPT - ONLY for complex
  */
 export class SmartRouter {
-  // Model cost hierarchy (cheapest first)
+  // Model priority (lower = use first)
   private models: ModelConfig[] = [
-    // FREE / VERY CHEAP
-    { name: 'kilo-auto/free', provider: 'kilocode', costPer1MInput: 0, costPer1MOutput: 0, 
-      latency: 'fast', contextWindow: 200000, bestFor: ['chat', 'simple'] },
-    { name: 'groq/llama-3.1-8b-instant', provider: 'groq', costPer1MInput: 0.04, costPer1MOutput: 0.04, 
-      latency: 'fast', contextWindow: 128000, bestFor: ['chat', 'search'] },
-    { name: 'openrouter/Nous-Hermes-2-Mistral', provider: 'openrouter', costPer1MInput: 0.1, costPer1MOutput: 0.1, 
-      latency: 'fast', contextWindow: 32000, bestFor: ['chat', 'simple'] },
+    // FREE TIER - USE FIRST!
+    { 
+      name: 'kilo-auto/free', 
+      provider: 'kilocode', 
+      costPer1MInput: 0, 
+      costPer1MOutput: 0,
+      priority: 1, // HIGHEST
+      latency: 'fast', 
+      contextWindow: 200000, 
+      bestFor: ['chat', 'search', 'simple', 'code', 'analyze', 'create'] 
+    },
+    { 
+      name: 'kilo-auto/balanced', 
+      provider: 'kilocode', 
+      costPer1MInput: 0, 
+      costPer1MOutput: 0,
+      priority: 2,
+      latency: 'medium', 
+      contextWindow: 200000, 
+      bestFor: ['code', 'complex'] 
+    },
     
-    // MEDIUM COST
-    { name: 'openrouter/anthropic/claude-3-haiku', provider: 'openrouter', costPer1MInput: 0.25, costPer1MOutput: 1.25, 
-      latency: 'medium', contextWindow: 200000, bestFor: ['code', 'chat'] },
-    { name: 'groq/llama-3.1-70b-versatile', provider: 'groq', costPer1MInput: 0.35, costPer1MOutput: 0.4, 
-      latency: 'medium', contextWindow: 128000, bestFor: ['analyze', 'code'] },
+    // CHEAP TIER - Use if Kilo fails
+    { 
+      name: 'groq/llama-3.1-8b-instant', 
+      provider: 'groq', 
+      costPer1MInput: 0.04, 
+      costPer1MOutput: 0.04,
+      priority: 10,
+      latency: 'fast', 
+      contextWindow: 128000, 
+      bestFor: ['chat', 'search', 'simple'] 
+    },
+    { 
+      name: 'groq/llama-3.1-70b-versatile', 
+      provider: 'groq', 
+      costPer1MInput: 0.35, 
+      costPer1MOutput: 0.4,
+      priority: 11,
+      latency: 'medium', 
+      contextWindow: 128000, 
+      bestFor: ['code', 'analyze'] 
+    },
     
-    // PREMIUM
-    { name: 'openrouter/anthropic/claude-3.5-sonnet', provider: 'openrouter', costPer1MInput: 3, costPer1MOutput: 15, 
-      latency: 'medium', contextWindow: 200000, bestFor: ['complex', 'create'] },
-    { name: 'anthropic/claude-3-opus', provider: 'anthropic', costPer1MInput: 15, costPer1MOutput: 75, 
-      latency: 'slow', contextWindow: 200000, bestFor: ['complex', 'analyze'] },
+    // BACKUP TIER
+    { 
+      name: 'openrouter/anthropic/claude-3-haiku', 
+      provider: 'openrouter', 
+      costPer1MInput: 0.25, 
+      costPer1MOutput: 1.25,
+      priority: 20,
+      latency: 'medium', 
+      contextWindow: 200000, 
+      bestFor: ['code', 'complex'] 
+    },
+    
+    // PREMIUM TIER - LAST RESORT ONLY
+    { 
+      name: 'openrouter/anthropic/claude-3.5-sonnet', 
+      provider: 'openrouter', 
+      costPer1MInput: 3, 
+      costPer1MOutput: 15,
+      priority: 99, // Lowest priority
+      latency: 'medium', 
+      contextWindow: 200000, 
+      bestFor: ['complex'] 
+    },
+    { 
+      name: 'anthropic/claude-3-opus', 
+      provider: 'anthropic', 
+      costPer1MInput: 15, 
+      costPer1MOutput: 75,
+      priority: 100, // LOWEST - only for most complex
+      latency: 'slow', 
+      contextWindow: 200000, 
+      bestFor: ['complex', 'research'] 
+    },
   ];
 
   /**
-   * Analyze task and determine optimal model
+   * Select optimal model - FREE FIRST!
    */
   selectModel(context: TaskContext): ModelConfig {
-    const complexity = context.complexity;
-    const type = context.type;
-    
-    // If complex task, use premium model
+    const { complexity, type, forcePremium } = context;
+
+    // If explicitly forced to premium, use best available
+    if (forcePremium) {
+      const premium = this.models.find(m => m.priority >= 99);
+      return premium || this.models[this.models.length - 1];
+    }
+
+    // Most tasks: use FREE (Kilo)
+    if (complexity === 'simple') {
+      const freeModel = this.models.find(m => m.priority <= 2);
+      if (freeModel) return freeModel;
+    }
+
+    // Medium tasks: still try free first
+    if (complexity === 'medium') {
+      const freeModel = this.models.find(m => m.priority <= 2);
+      if (freeModel) return freeModel;
+    }
+
+    // Complex tasks: try free first, fallback to cheap
     if (complexity === 'complex') {
-      const premium = this.models.find(m => m.bestFor.includes('complex'));
-      if (premium) return premium;
+      // Try Kilo first (it handles most things!)
+      const kilo = this.models.find(m => m.provider === 'kilocode');
+      if (kilo) return kilo;
+      
+      // If Kilo fails, use Groq
+      const groq = this.models.find(m => m.provider === 'groq');
+      if (groq) return groq;
     }
 
-    // If code generation, use medium tier
-    if (type === 'code' && complexity !== 'simple') {
-      const codeModel = this.models.find(m => m.bestFor.includes('code'));
-      if (codeModel) return codeModel;
-    }
-
-    // Simple chat/search → use free/fast models
-    if (complexity === 'simple' || type === 'search') {
-      const fast = this.models.find(m => m.latency === 'fast');
-      if (fast) return fast;
-    }
-
-    // Default to cheap model
-    const defaultModel = this.models.find(m => m.name.includes('free') || m.name.includes('instant'));
+    // Default: Use FREE
+    const defaultModel = this.models.find(m => m.priority === 1);
     return defaultModel || this.models[0];
   }
 
   /**
-   * Quick decision for simple messages
+   * Simple check - should we use free model?
    */
-  isSimpleMessage(message: string): boolean {
-    const simpleIndicators = [
-      'hello', 'hi', 'hey', 'thanks', 'thank you',
-      'what is', 'how do', 'tell me',
-      'weather', 'time', 'date',
-      '?', '.'
+  shouldUseFreeModel(message: string): boolean {
+    // Kilo handles most messages fine
+    // Only force premium for explicitly complex tasks
+    const complexKeywords = [
+      'debug this entire codebase',
+      'architect a new system',
+      'review thousands of lines',
+      'migrate entire database',
+      'write a complete book'
     ];
     
-    const complexIndicators = [
-      'analyze', 'review', 'debug', 'fix', 'build',
-      'create', 'implement', 'design', 'architect',
-      'explain', 'compare', 'optimize'
-    ];
-
-    const msg = message.toLowerCase();
-    const isComplex = complexIndicators.some(w => msg.includes(w));
-    const isVerySimple = simpleIndicators.some(w => msg.includes(w)) && message.length < 50;
-
-    if (isComplex) return false;
-    return true;
+    const msgLower = message.toLowerCase();
+    return !complexKeywords.some(k => msgLower.includes(k));
   }
 
   /**
-   * Estimate cost for a request
+   * Cost estimation
    */
-  estimateCost(model: ModelConfig, inputTokens: number, outputTokens: number): number {
+  getEstimatedCost(model: ModelConfig, inputTokens: number, outputTokens: number): number {
     return (inputTokens / 1_000_000 * model.costPer1MInput) +
            (outputTokens / 1_000_000 * model.costPer1MOutput);
   }
 
   /**
-   * Calculate savings vs using premium
+   * Show savings vs premium
    */
-  calculateSavings(inputTokens: number, outputTokens: number): { withRouter: number; withPremium: number; savings: number } {
-    // Use free model
-    const free = this.models[0];
-    const routerCost = this.estimateCost(free, inputTokens, outputTokens);
-    
-    // Use premium
-    const premium = this.models[this.models.length - 1];
-    const premiumCost = this.estimateCost(premium, inputTokens, outputTokens);
-    
+  getSavings(inputTokens: number = 1000, outputTokens: number = 500): { 
+    usingFree: number; 
+    usingPremium: number; 
+    percentSaved: number 
+  } {
+    const free = this.models.find(m => m.priority === 1)!;
+    const premium = this.models.find(m => m.priority === 100)!;
+
+    const freeCost = this.getEstimatedCost(free, inputTokens, outputTokens);
+    const premiumCost = this.getEstimatedCost(premium, inputTokens, outputTokens);
+
     return {
-      withRouter: Math.round(routerCost * 1000) / 1000,
-      withPremium: Math.round(premiumCost * 1000) / 1000,
-      savings: Math.round((premiumCost - routerCost) / premiumCost * 100)
+      usingFree: freeCost,
+      usingPremium: premiumCost,
+      percentSaved: premiumCost > 0 ? Math.round((1 - freeCost / premiumCost) * 100) : 100
     };
   }
 
   /**
-   * Get all available models
+   * Get all models by priority
    */
-  getModels(): ModelConfig[] {
-    return this.models;
+  getModelsByPriority(): ModelConfig[] {
+    return [...this.models].sort((a, b) => a.priority - b.priority);
   }
 }
 
 export const smartRouter = new SmartRouter();
 
-// Quick usage example:
-// const model = smartRouter.selectModel({ complexity: 'simple', type: 'chat', hasContext: false, estimatedTokens: 100 });
-// console.log(`Using ${model.name} - saves ~${smartRouter.calculateSavings(1000, 500).savings}%`);
+// Example: 
+// const savings = smartRouter.getSavings();
+// console.log(`Using FREE saves ${savings.percentSaved}%`);
