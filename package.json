@@ -1,6 +1,6 @@
 {
   "name": "quantumclaw",
-  "version": "2026.3.39",
+  "version": "2026.3.40",
   "description": "Multi-channel AI gateway with extensible messaging integrations",
   "keywords": [],
   "homepage": "https://github.com/quantumclaw/quantumclaw#readme",
@@ -715,7 +715,6 @@
     "ui:install": "node scripts/ui.js install"
   },
   "dependencies": {
-    "@zvec/zvec": "^0.2.0",
     "@zvec/zvec": "^1.0.0",
     "@agentclientprotocol/sdk": "0.16.1",
     "@anthropic-ai/vertex-sdk": "^0.14.4",
@@ -835,8 +834,7 @@
     "packageExtensions": {
       "@mariozechner/pi-coding-agent": {
         "dependencies": {
-    "@zvec/zvec": "^0.2.0",
-    "@zvec/zvec": "^1.0.0",
+          "@zvec/zvec": "^1.0.0",
           "strip-ansi": "^7.2.0"
         }
       }
