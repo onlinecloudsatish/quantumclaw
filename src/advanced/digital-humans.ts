@@ -24,8 +24,11 @@ export interface BackgroundTask {
 export class DigitalHumanManager {
   private humans: Map<string, DigitalHuman> = new Map();
   private tasks: BackgroundTask[] = [];
+  private maxHumans = 10;
+  private maxTasks = 1000;
 
   createHuman(name: string, role: string): DigitalHuman {
+    if (this.humans.size >= this.maxHumans) throw new Error('Too many humans');
     const human: DigitalHuman = {
       id: `human-${Date.now()}-${Math.random().toString(36).slice(2,9)}`,
       name, role, enabled: true, lastActive: Date.now(), tasksCompleted: 0
@@ -35,6 +38,9 @@ export class DigitalHumanManager {
   }
 
   assignTask(humanId: string, type: string, description: string): BackgroundTask {
+    if (this.tasks.length >= this.maxTasks) {
+      this.tasks = this.tasks.slice(-500);
+    }
     const task: BackgroundTask = {
       id: `task-${Date.now()}-${Math.random().toString(36).slice(2,9)}`,
       type, description, status: 'pending', humanId, createdAt: Date.now()
@@ -62,6 +68,11 @@ export class DigitalHumanManager {
       completed: this.tasks.filter(t => t.status === 'completed').length,
       pending: this.tasks.filter(t => t.status === 'pending').length
     };
+  }
+
+  destroy(): void {
+    this.humans.clear();
+    this.tasks = [];
   }
 }
 

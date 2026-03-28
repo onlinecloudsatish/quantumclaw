@@ -18,8 +18,11 @@ export interface MCPTool {
 export class MCPIntegration {
   private servers: Map<string, MCPServer> = new Map();
   private tools: Map<string, MCPTool> = new Map();
+  private maxServers = 10;
 
   addServer(name: string, url: string): void {
+    if (this.servers.size >= this.maxServers) throw new Error('Too many servers');
+    if (!url.startsWith('https://')) throw new Error('Only HTTPS allowed');
     this.servers.set(name, { name, url, tools: [], connected: false });
   }
 
@@ -41,6 +44,11 @@ export class MCPIntegration {
 
   getConnected(): string[] {
     return Array.from(this.servers.values()).filter(s => s.connected).map(s => s.name);
+  }
+
+  destroy(): void {
+    this.servers.clear();
+    this.tools.clear();
   }
 }
 

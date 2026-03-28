@@ -23,22 +23,22 @@ export class EnterpriseSecurity {
   private auditLog: AuditEvent[] = [];
   private roles: Map<string, Role> = new Map();
   private encryptionKey: Buffer | null = null;
+  private maxAuditEvents = 10000;
 
   constructor(encryptionKey?: string) {
-    if (encryptionKey) {
-      this.encryptionKey = scryptSync(encryptionKey, 'quantumclaw-salt', 32);
-    }
+    if (encryptionKey) this.encryptionKey = scryptSync(encryptionKey, 'quantumclaw-salt', 32);
     this.roles.set('admin', { name: 'Admin', permissions: ['read','write','delete','manage','audit'] });
     this.roles.set('operator', { name: 'Operator', permissions: ['read','write','manage'] });
     this.roles.set('viewer', { name: 'Viewer', permissions: ['read'] });
   }
 
   audit(userId: string, action: string, resource: string, details: string, severity: AuditEvent['severity'] = 'info'): void {
-    this.auditLog.unshift({
+    const event: AuditEvent = {
       id: `audit-${Date.now()}-${Math.random().toString(36).slice(2,9)}`,
       timestamp: Date.now(), userId, action, resource, details, severity
-    });
-    if (this.auditLog.length > 10000) this.auditLog.pop();
+    };
+    this.auditLog.unshift(event);
+    if (this.auditLog.length > this.maxAuditEvents) this.auditLog = this.auditLog.slice(0, this.maxAuditEvents);
   }
 
   encrypt(data: string): string {
