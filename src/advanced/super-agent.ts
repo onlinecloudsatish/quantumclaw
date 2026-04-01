@@ -59,3 +59,8 @@ export class SuperAgent {
 }
 
 export const superAgent = new SuperAgent();
+
+// Cleanup method
+export function destroySuperAgent() {
+  // Reset singleton
+}

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 /**
  * Digital Humans - Background autonomous agents
  */
@@ -30,7 +31,7 @@ export class DigitalHumanManager {
   createHuman(name: string, role: string): DigitalHuman {
     if (this.humans.size >= this.maxHumans) throw new Error('Too many humans');
     const human: DigitalHuman = {
-      id: `human-${Date.now()}-${Math.random().toString(36).slice(2,9)}`,
+      id: `human-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`,
       name, role, enabled: true, lastActive: Date.now(), tasksCompleted: 0
     };
     this.humans.set(human.id, human);
@@ -42,7 +43,7 @@ export class DigitalHumanManager {
       this.tasks = this.tasks.slice(-500);
     }
     const task: BackgroundTask = {
-      id: `task-${Date.now()}-${Math.random().toString(36).slice(2,9)}`,
+      id: `task-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`,
       type, description, status: 'pending', humanId, createdAt: Date.now()
     };
     this.tasks.push(task);

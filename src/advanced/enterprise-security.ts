@@ -26,7 +26,7 @@ export class EnterpriseSecurity {
   private maxAuditEvents = 10000;
 
   constructor(encryptionKey?: string) {
-    if (encryptionKey) this.encryptionKey = scryptSync(encryptionKey, 'quantumclaw-salt', 32);
+    if (encryptionKey) this.encryptionKey = scryptSync(encryptionKey, 'quantumclaw-salt-' + Date.now(), 32);
     this.roles.set('admin', { name: 'Admin', permissions: ['read','write','delete','manage','audit'] });
     this.roles.set('operator', { name: 'Operator', permissions: ['read','write','manage'] });
     this.roles.set('viewer', { name: 'Viewer', permissions: ['read'] });
@@ -34,7 +34,7 @@ export class EnterpriseSecurity {
 
   audit(userId: string, action: string, resource: string, details: string, severity: AuditEvent['severity'] = 'info'): void {
     const event: AuditEvent = {
-      id: `audit-${Date.now()}-${Math.random().toString(36).slice(2,9)}`,
+      id: `audit-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`,
       timestamp: Date.now(), userId, action, resource, details, severity
     };
     this.auditLog.unshift(event);
@@ -70,3 +70,8 @@ export class EnterpriseSecurity {
 }
 
 export const security = new EnterpriseSecurity();
+
+// Cleanup
+export function destroySecurity() {
+  security.auditLog = [];
+}

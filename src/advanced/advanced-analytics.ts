@@ -57,3 +57,9 @@ export class AdvancedAnalytics {
 }
 
 export const analytics = new AdvancedAnalytics();
+
+// Cleanup
+export function destroyAnalytics() {
+  analytics.records = [];
+  analytics.startTime = Date.now();
+}

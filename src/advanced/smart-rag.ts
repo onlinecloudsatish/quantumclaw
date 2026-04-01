@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 /**
  * Smart RAG - Retrieval Augmented Generation
  * Connect to knowledge bases for context-aware AI responses
@@ -52,7 +53,7 @@ export class SmartRAG {
   async addDocument(content: string, source: string, tags: string[] = []): Promise<string> {
     const sanitized = sanitizeInput(content);
     if (sanitized.length > 10000) throw new Error('Document too large');
-    const id = `doc-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+    const id = `doc-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
     this.documents.set(id, {
       id,
       content: sanitized,
