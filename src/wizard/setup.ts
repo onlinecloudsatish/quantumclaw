@@ -38,6 +38,8 @@ async function requireRiskAcknowledgement(params: {
       "",
       "By default, QuantumClaw runs as a personal agent on your device.",
       "",
+      "For multi-user setups, configure authentication before exposing to internet.",
+      "",
       "",
       "",
     ].join("\n"),
