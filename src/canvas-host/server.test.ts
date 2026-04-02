@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs/promises";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
@@ -332,7 +333,7 @@ describe("canvas host", () => {
     const dir = await createCaseDir();
     const a2uiRoot = path.resolve(process.cwd(), "src/canvas-host/a2ui");
     const bundlePath = path.join(a2uiRoot, "a2ui.bundle.js");
-    const linkName = `test-link-${Date.now()}-${Math.random().toString(16).slice(2)}.txt`;
+    const linkName = `test-link-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.txt`;
     const linkPath = path.join(a2uiRoot, linkName);
     let createdBundle = false;
     let createdLink = false;

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -66,7 +67,7 @@ describe("sessions_spawn depth + child limits", () => {
     callGatewayMock.mockClear();
     storeTemplatePath = path.join(
       os.tmpdir(),
-      `quantumclaw-subagent-depth-${Date.now()}-${Math.random().toString(16).slice(2)}-{agentId}.json`,
+      `quantumclaw-subagent-depth-${Date.now()}-${crypto.randomBytes(4).toString("hex")}-{agentId}.json`,
     );
     configOverride = {
       session: createPerSenderSessionConfig({ store: storeTemplatePath }),

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -20,7 +21,7 @@ describe("quantumclaw-tools: subagents steer failure", () => {
     callGatewayMock.mockClear();
     const storePath = path.join(
       os.tmpdir(),
-      `quantumclaw-subagents-steer-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+      `quantumclaw-subagents-steer-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
     );
     setSubagentsConfigOverride({
       session: {

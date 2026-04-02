@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -49,7 +50,7 @@ describe("Agent-specific tool filtering", () => {
     const workspaceDir = await fs.mkdtemp(path.join(os.tmpdir(), "quantumclaw-pi-tools-"));
     const escapedPath = path.join(
       path.dirname(workspaceDir),
-      `escaped-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}.txt`,
+      `escaped-${process.pid}-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.txt`,
     );
     const relativeEscape = path.relative(workspaceDir, escapedPath);
 

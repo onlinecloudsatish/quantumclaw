@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -23,7 +24,7 @@ async function withSymlinkPathEscape<T>(params: {
   run: (relativePath: string) => Promise<T>;
 }): Promise<T> {
   const outsideDir = await fs.mkdtemp(path.join(os.tmpdir(), "quantumclaw-route-escape-"));
-  const linkName = `escape-link-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  const linkName = `escape-link-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
   const linkPath = path.join(params.rootDir, linkName);
   await fs.mkdir(params.rootDir, { recursive: true });
   await fs.symlink(outsideDir, linkPath);

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -83,7 +84,7 @@ describe("quantumclaw-tools: subagents scope isolation", () => {
     callGatewayMock.mockReset();
     storePath = path.join(
       os.tmpdir(),
-      `quantumclaw-subagents-scope-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+      `quantumclaw-subagents-scope-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
     );
     setSubagentsConfigOverride({
       session: createPerSenderSessionConfig({ store: storePath }),

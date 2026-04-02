@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -172,7 +173,7 @@ describe("resolveSubagentToolPolicy depth awareness", () => {
   it("uses stored leaf role for flat depth-1 session keys", () => {
     const storePath = path.join(
       os.tmpdir(),
-      `quantumclaw-subagent-policy-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+      `quantumclaw-subagent-policy-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
     );
     fs.mkdirSync(path.dirname(storePath), { recursive: true });
     fs.writeFileSync(

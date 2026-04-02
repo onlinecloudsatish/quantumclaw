@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -740,7 +741,7 @@ describe("config cli", () => {
     it("rejects --allow-exec without --dry-run", async () => {
       const nonexistentBatchPath = path.join(
         os.tmpdir(),
-        `quantumclaw-config-batch-nonexistent-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+        `quantumclaw-config-batch-nonexistent-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
       );
       await expect(
         runConfigCommand(["config", "set", "--batch-file", nonexistentBatchPath, "--allow-exec"]),
@@ -903,7 +904,7 @@ describe("config cli", () => {
 
       const pathname = path.join(
         os.tmpdir(),
-        `quantumclaw-config-batch-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+        `quantumclaw-config-batch-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
       );
       fs.writeFileSync(pathname, '[{"path":"gateway.auth.mode","value":"token"}]', "utf8");
       try {
@@ -920,7 +921,7 @@ describe("config cli", () => {
     it("rejects malformed batch-file payloads", async () => {
       const pathname = path.join(
         os.tmpdir(),
-        `quantumclaw-config-batch-invalid-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+        `quantumclaw-config-batch-invalid-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
       );
       fs.writeFileSync(pathname, '{"path":"gateway.auth.mode","value":"token"}', "utf8");
       try {

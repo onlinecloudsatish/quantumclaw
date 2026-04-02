@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -25,7 +26,7 @@ function isPathInside(root: string, target: string): boolean {
 }
 
 function makeTmpProbePath(prefix: string): string {
-  return `${prefix}-${Date.now()}-${Math.random().toString(16).slice(2)}.txt`;
+  return `${prefix}-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.txt`;
 }
 
 async function withOutsideHardlinkInQuantumClawTmp<T>(

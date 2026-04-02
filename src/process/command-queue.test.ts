@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { importFreshModule } from "../../test/helpers/import-fresh.js";
 
@@ -215,7 +216,7 @@ describe("command queue", () => {
   });
 
   it("resetAllLanes drains queued work immediately after reset", async () => {
-    const lane = `reset-test-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    const lane = `reset-test-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
     setCommandLaneConcurrency(lane, 1);
 
     let resolve1!: () => void;
@@ -258,7 +259,7 @@ describe("command queue", () => {
   });
 
   it("waitForActiveTasks ignores tasks that start after the call", async () => {
-    const lane = `drain-snapshot-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    const lane = `drain-snapshot-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
     setCommandLaneConcurrency(lane, 2);
 
     let resolve1!: () => void;
@@ -308,7 +309,7 @@ describe("command queue", () => {
   });
 
   it("keeps draining functional after synchronous onWait failure", async () => {
-    const lane = `drain-sync-throw-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    const lane = `drain-sync-throw-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
     setCommandLaneConcurrency(lane, 1);
 
     const deferred = createDeferred();
@@ -359,7 +360,7 @@ describe("command queue", () => {
       import.meta.url,
       "./command-queue.js?scope=shared-b",
     );
-    const lane = `shared-state-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    const lane = `shared-state-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
 
     let release!: () => void;
     const blocker = new Promise<void>((resolve) => {

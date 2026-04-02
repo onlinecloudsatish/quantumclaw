@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -245,7 +246,7 @@ describe("secrets CLI", () => {
   it("forwards --allow-exec to secrets apply dry-run", async () => {
     const planPath = path.join(
       os.tmpdir(),
-      `quantumclaw-secrets-cli-test-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+      `quantumclaw-secrets-cli-test-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
     );
     await fs.writeFile(
       planPath,
@@ -290,7 +291,7 @@ describe("secrets CLI", () => {
   it("forwards --allow-exec to secrets apply write mode", async () => {
     const planPath = path.join(
       os.tmpdir(),
-      `quantumclaw-secrets-cli-test-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+      `quantumclaw-secrets-cli-test-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
     );
     await fs.writeFile(
       planPath,
@@ -332,7 +333,7 @@ describe("secrets CLI", () => {
   it("does not print skipped-exec note when apply dry-run skippedExecRefs is zero", async () => {
     const planPath = path.join(
       os.tmpdir(),
-      `quantumclaw-secrets-cli-test-${Date.now()}-${Math.random().toString(16).slice(2)}.json`,
+      `quantumclaw-secrets-cli-test-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.json`,
     );
     await fs.writeFile(
       planPath,

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -147,7 +148,7 @@ describe("detectChangedScope", () => {
   it("treats base and head as literal git args", () => {
     const markerPath = path.join(
       os.tmpdir(),
-      `quantumclaw-ci-changed-scope-${Date.now()}-${Math.random().toString(16).slice(2)}.tmp`,
+      `quantumclaw-ci-changed-scope-${Date.now()}-${crypto.randomBytes(4).toString("hex")}.tmp`,
     );
     markerPaths.push(markerPath);
 
