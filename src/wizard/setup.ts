@@ -37,9 +37,9 @@ async function requireRiskAcknowledgement(params: {
       "QuantumClaw - Your Personal AI Assistant",
       "",
       "By default, QuantumClaw runs as a personal agent on your device.",
-      "For multi-user setups, enable security hardening before exposing to the internet.",
       "",
-      "Docs: https://docs.quantumclaw.ai",
+      "",
+      "",
     ].join("\n"),
     "Info",
   );
@@ -73,7 +73,7 @@ export async function runSetupWizard(
         [
           ...snapshot.issues.map((iss) => `- ${iss.path}: ${iss.message}`),
           "",
-          "Docs: https://docs.quantumclaw.ai/gateway/configuration",
+          "/gateway/configuration",
         ].join("\n"),
         "Config issues",
       );
