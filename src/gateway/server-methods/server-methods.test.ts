@@ -32,7 +32,7 @@ describe("waitForAgentJob", () => {
     endedAt: number;
     aborted?: boolean;
   }) {
-    const runId = `${params.runIdPrefix}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const runId = `${params.runIdPrefix}-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
     const waitPromise = waitForAgentJob({ runId, timeoutMs: 1_000 });
 
     emitAgentEvent({
@@ -75,7 +75,7 @@ describe("waitForAgentJob", () => {
   });
 
   it("can ignore cached snapshots and wait for fresh lifecycle events", async () => {
-    const runId = `run-ignore-cache-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const runId = `run-ignore-cache-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
     emitAgentEvent({
       runId,
       stream: "lifecycle",
