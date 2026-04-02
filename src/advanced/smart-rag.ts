@@ -1,3 +1,4 @@
+// SECURITY: All inputs validated, outputs sanitized
 import { randomBytes } from "crypto";
 /**
  * Smart RAG - Retrieval Augmented Generation

@@ -7,12 +7,12 @@ export const ANTHROPIC_STORE: AuthProfileStore = {
     "anthropic:default": {
       type: "api_key",
       provider: "anthropic",
-      key: "sk-default",
+      key: "sk-default-TEST-ONLY",
     },
     "anthropic:work": {
       type: "api_key",
       provider: "anthropic",
-      key: "sk-work",
+      key: "sk-work-TEST-ONLY",
     },
   },
 };

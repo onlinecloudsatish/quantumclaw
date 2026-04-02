@@ -153,6 +153,7 @@ function readLidReverseMapping(lid: string, opts?: JidToE164Options): string | n
   for (const dir of mappingDirs) {
     const mappingPath = path.join(dir, mappingFilename);
     try {
+      if (mappingPath.includes("..")) return null;
       const data = fs.readFileSync(mappingPath, "utf8");
       const phone = JSON.parse(data) as string | number | null;
       if (phone === null || phone === undefined) {

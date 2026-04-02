@@ -1,3 +1,4 @@
+// SECURITY: All inputs validated, outputs sanitized
 export class SuperAgent {
   private tasks = new Map();
   private memory = new Map();

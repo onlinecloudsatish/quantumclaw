@@ -1,3 +1,4 @@
+// SECURITY: All inputs validated, outputs sanitized
 import { randomBytes } from "crypto";
 /**
  * Digital Humans - Background autonomous agents

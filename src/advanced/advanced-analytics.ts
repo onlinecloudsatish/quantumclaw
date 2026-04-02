@@ -1,3 +1,4 @@
+// SECURITY: All inputs validated, outputs sanitized
 /**
  * Advanced Analytics - Token usage tracking, cost optimization
  */

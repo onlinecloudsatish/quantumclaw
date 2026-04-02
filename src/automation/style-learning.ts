@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 // QuantumClaw Personal Style Learning
 // AI that learns and adapts to your communication style
 
@@ -89,8 +90,8 @@ export class PersonalStyleLearning {
     }
 
     // Add phrases
-    if (profile.phrases.length > 0 && Math.random() > 0.7) {
-      const phrase = profile.phrases[Math.floor(Math.random() * profile.phrases.length)];
+    if (profile.phrases.length > 0 && crypto.randomBytes(2).readUInt16BE(0) / 65536 > 0.7) {
+      const phrase = profile.phrases[Math.floor(crypto.randomBytes(2).readUInt16BE(0) / 65536 * profile.phrases.length)];
       adapted += ` ${phrase}`;
       adaptations.push(`Added phrase: "${phrase}"`);
     }

@@ -93,7 +93,7 @@ export class SecretManager {
       this.scheduleRotation(key, metadata.rotationPeriod);
     }
 
-    console.log(`🔐 Secret stored: ${key}`);
+    // Secret stored successfully
   }
 
   /**
@@ -146,7 +146,7 @@ export class SecretManager {
         clearTimeout(rotationTimeout);
         this.autoRotate.delete(key);
       }
-      console.log(`🔐 Secret deleted: ${key}`);
+      // Secret deleted successfully
     }
     return deleted;
   }
@@ -314,7 +314,7 @@ export class SecretManager {
     const periodMs = periodDays * 24 * 60 * 60 * 1000;
     
     const timeout = setTimeout(() => {
-      console.log(`🔄 Auto-rotating secret: ${key}`);
+      // Auto-rotating secret
       // In production, this would generate new value and call rotate()
     }, periodMs);
 

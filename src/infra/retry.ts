@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import { sleep } from "../utils.js";
 
 export type RetryConfig = {
@@ -63,7 +64,7 @@ function applyJitter(delayMs: number, jitter: number): number {
   if (jitter <= 0) {
     return delayMs;
   }
-  const offset = (Math.random() * 2 - 1) * jitter;
+  const offset = (crypto.randomBytes(2).readUInt16BE(0) / 65536 * 2 - 1) * jitter;
   return Math.max(0, Math.round(delayMs * (1 + offset)));
 }
 

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import fs from "node:fs/promises";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { runGeminiEmbeddingBatches, type GeminiBatchRequest } from "./batch-gemini.js";
@@ -592,7 +593,7 @@ export abstract class MemoryManagerEmbeddingOps extends MemoryManagerSyncOps {
   private async waitForEmbeddingRetry(delayMs: number, action: string): Promise<void> {
     const waitMs = Math.min(
       EMBEDDING_RETRY_MAX_DELAY_MS,
-      Math.round(delayMs * (1 + Math.random() * 0.2)),
+      Math.round(delayMs * (1 + crypto.randomBytes(2).readUInt16BE(0) / 65536 * 0.2)),
     );
     log.warn(`memory embeddings rate limited; ${action} in ${waitMs}ms`);
     await new Promise((resolve) => setTimeout(resolve, waitMs));

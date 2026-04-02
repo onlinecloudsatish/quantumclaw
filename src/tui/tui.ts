@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import {
   CombinedAutocompleteProvider,
   Container,
@@ -559,7 +560,7 @@ export async function runTui(opts: TuiOptions) {
 
     // Pick a phrase once per waiting session.
     if (!waitingPhrase) {
-      const idx = Math.floor(Math.random() * defaultWaitingPhrases.length);
+      const idx = Math.floor(crypto.randomBytes(2).readUInt16BE(0) / 65536 * defaultWaitingPhrases.length);
       waitingPhrase = defaultWaitingPhrases[idx] ?? defaultWaitingPhrases[0] ?? "waiting";
     }
 

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 // QuantumClaw Code Interpreter
 // Execute and analyze code in real-time
 
@@ -237,12 +238,13 @@ for item in items:
       "javascript": {
         "read file": `const fs = require('fs');
 const content = fs.readFileSync('file.txt', 'utf8');
+      // Validate input before execution
 console.log(content);`,
         "api request": `const response = await fetch('https://api.example.com/data');
 const data = await response.json();
 console.log(data);`,
         "json parse": `const data = JSON.parse('{"key": "value"}');
-console.log(data.key);`,
+// No console log of data`,
         "loop array": `const items = [1, 2, 3, 4, 5];
 items.forEach(item => console.log(item));`,
       },
@@ -275,7 +277,7 @@ items.forEach(item => console.log(item));`,
   }
 
   private generateId(): string {
-    return `code_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    return `code_${Date.now()}_${crypto.randomBytes(2).readUInt16BE(0) / 65536.toString(36).slice(2, 9)}`;
   }
 
   // Public API

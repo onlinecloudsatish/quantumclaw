@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import { setTimeout as delay } from "node:timers/promises";
 
 export type BackoffPolicy = {
@@ -9,7 +10,7 @@ export type BackoffPolicy = {
 
 export function computeBackoff(policy: BackoffPolicy, attempt: number) {
   const base = policy.initialMs * policy.factor ** Math.max(attempt - 1, 0);
-  const jitter = base * policy.jitter * Math.random();
+  const jitter = base * policy.jitter * crypto.randomBytes(2).readUInt16BE(0) / 65536;
   return Math.min(policy.maxMs, Math.round(base + jitter));
 }
 

@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import path from "node:path";
 import { confirm, isCancel } from "@clack/prompts";
 import {
@@ -102,7 +103,7 @@ const UPDATE_QUIPS = [
 ];
 
 function pickUpdateQuip(): string {
-  return UPDATE_QUIPS[Math.floor(Math.random() * UPDATE_QUIPS.length)] ?? "Update complete.";
+  return UPDATE_QUIPS[Math.floor(crypto.randomBytes(2).readUInt16BE(0) / 65536 * UPDATE_QUIPS.length)] ?? "Update complete.";
 }
 
 function resolveGatewayInstallEntrypointCandidates(root?: string): string[] {

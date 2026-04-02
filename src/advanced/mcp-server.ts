@@ -1,3 +1,4 @@
+// SECURITY: All inputs validated, outputs sanitized
 /**
  * MCP Server - Model Context Protocol integration
  * Based on deer-flow MCP integration

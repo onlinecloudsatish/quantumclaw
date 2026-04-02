@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 // QuantumClaw Audit Logging System
 // Comprehensive action tracking and security monitoring
 
@@ -399,7 +400,7 @@ export class AuditLogger {
   }
 
   private generateId(): string {
-    return `audit_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    return `audit_${Date.now()}_${crypto.randomBytes(2).readUInt16BE(0) / 65536.toString(36).slice(2, 9)}`;
   }
 }
 

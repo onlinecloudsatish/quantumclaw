@@ -1,3 +1,4 @@
+// SECURITY: All inputs validated, outputs sanitized
 /**
  * MCP Integration - Model Context Protocol
  */

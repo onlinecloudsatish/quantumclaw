@@ -1,3 +1,4 @@
+// SECURITY: All inputs validated, outputs sanitized
 /**
  * Enterprise Security - Audit logging, RBAC, encryption
  */

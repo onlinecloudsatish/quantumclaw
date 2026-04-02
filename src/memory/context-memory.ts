@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 // QuantumClaw Context Memory System
 // Remembers conversations and learns user preferences
 
@@ -148,7 +149,7 @@ export class ContextMemory {
   }
 
   private generateId(): string {
-    return `mem_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    return `mem_${Date.now()}_${crypto.randomBytes(4).toString("hex")}`;
   }
 
   private calculateRelevance(query: string, entry: MemoryEntry): number {

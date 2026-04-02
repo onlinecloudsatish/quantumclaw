@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import type { TypingCallbacks } from "../../channels/typing.js";
 import type { HumanDelayConfig } from "../../config/types.js";
 import { sleep } from "../../utils.js";
@@ -37,7 +38,7 @@ function getHumanDelay(config: HumanDelayConfig | undefined): number {
   if (max <= min) {
     return min;
   }
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(crypto.randomBytes(2).readUInt16BE(0) / 65536 * (max - min + 1)) + min;
 }
 
 export type ReplyDispatcherOptions = {

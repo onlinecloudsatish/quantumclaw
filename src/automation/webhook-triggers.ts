@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 // QuantumClaw Real-time Webhook Triggers
 // External event-driven automation
 
@@ -387,7 +388,7 @@ export class WebhookTriggerEngine {
   }
 
   private generateId(): string {
-    return `wh_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    return `wh_${Date.now()}_${crypto.randomBytes(2).readUInt16BE(0) / 65536.toString(36).slice(2, 9)}`;
   }
 }
 
