@@ -1,0 +1,17 @@
+{
+  "name": "neuroclaw",
+  "version": "1.0.0",
+  "description": "AI CLI built from Claude Code source maps",
+  "main": "bin/neuroclaw.ts",
+  "type": "module",
+  "bin": {
+    "neuroclaw": "./bin/neuroclaw.ts"
+  },
+  "scripts": {
+    "start": "npx tsx bin/neuroclaw.ts",
+    "help": "npx tsx bin/neuroclaw.ts help"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
