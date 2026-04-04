@@ -1,0 +1,21 @@
+{
+  "name": "new-claw",
+  "version": "1.0.0",
+  "description": "CLI built from Claude Code source map patterns + Claw Code architecture",
+  "main": "index.ts",
+  "type": "module",
+  "bin": {
+    "newclaw": "./index.ts"
+  },
+  "scripts": {
+    "start": "npx tsx index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "quirer": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
